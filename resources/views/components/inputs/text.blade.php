@@ -1,0 +1,7 @@
+<div class="{{isset($col)?'col-md-'.$col:'col-md-6'}} mb-10">
+    <label class="form-label {{isset($required)?'required':''}}">{{$label}}</label>
+    <input type="text" name="{{$name}}" id="{{$name}}" class="form-control form-control-solid"
+           placeholder="{{__('dash.enter')}} {{$label}}" maxlength="150"
+           value="{{isset($data) ? old($name, $data) : old($name) }}" />
+    {{-- @isset($hint)<div class="text-muted fs-7">{{$hint}}</div>@endif --}}
+</div>
