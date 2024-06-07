@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\HomeDashController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
 
@@ -59,4 +58,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //settings
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('dashboard.settings.update');
+
+
+    //products
+    Route::get('products', [ProductController::class, 'index'])->name('dashboard.products.index');
+    Route::get('products/create', [ProductController::class, 'create'])->name('dashboard.products.create');
+    Route::post('products/store', [ProductController::class, 'store'])->name('dashboard.products.store');
+    Route::get('products/{obj}/edit', [ProductController::class, 'edit'])->name('dashboard.products.edit');
+    Route::post('products/{obj}/update', [ProductController::class, 'update'])->name('dashboard.products.update');
+    Route::delete('products/{obj}/delete', [ProductController::class, 'destroy'])->name('dashboard.products.destroy');
 });
