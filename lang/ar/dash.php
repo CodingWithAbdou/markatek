@@ -35,12 +35,19 @@ return [
     'title' => 'عنوان',
     'name' => 'إسم',
     'enter' => 'أدخل',
+    'ok' => 'حسنا',
+    'save changes' => 'حفظ التغيرات',
     'Allowed image types' => 'صيغ الصور المسموحة',
     'change' => 'غير',
     'description' => 'وصف',
     'created successfully' => 'تم الإنشاء بنجاح',
+    'updated successfully' => 'تم التحديث بنجاح',
     'main_data' => 'المعلومات الأساسية',
     'categories' => 'تصنيفات',
+    'are_you_sure_delete' => 'هل أنت متأكد من الحذف',
+    'no_cancel' => 'لا، إلغاء',
+    'confirm_delete' => 'نعم، حذف',
+    'deleted_successfully' => 'تم الحذف بنجاح',
 
 
 ];

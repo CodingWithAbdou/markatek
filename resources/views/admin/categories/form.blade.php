@@ -28,7 +28,7 @@
 
         <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px min-w-lg-300px mb-7 me-lg-10">
             <x-inputs.image label="{{ __('dash.image') }}" name="image_path" required=""
-                data="{{ isset($data) ? $data->image : '' }}" />
+                data="{{ isset($data) ? $data->image_path : '' }}" />
         </div>
 
         <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -44,7 +44,7 @@
                             data="{{ isset($data) ? $data->name : '' }}" />
 
                         <x-inputs.textarea label="{{ __('dash.description') }}" name="description" required=""
-                            data="{{ isset($data) ? $data->email : '' }}" />
+                            data="{{ isset($data) ? $data->description : '' }}" />
                     </div>
                 </div>
             </div>
