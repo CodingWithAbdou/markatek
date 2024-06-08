@@ -56,14 +56,24 @@
                         <x-inputs.number label="{{ __('dash.quantity') }}" name="quantity" required=""
                             data="{{ isset($data) ? $data->quantity : '' }}" />
 
+                        @if (isset($data))
+                            @foreach ($data->images as $image)
+                                <div class="col-md-6">
+                                    <x-inputs.image label="{{ __('dash.image') . ' ' . $loop->index + 1 }}"
+                                        name="images[{{ $image->id }}]" required="" data="{{ $image->path }}" />
+                                </div>
+                            @endforeach
+                        @endif
 
                         <div class="mb-3">
                             <label for="images" class="form-label">{{ __('dash.upload_images') }}</label>
-                            <input class="form-control" type="file" id="images" name="images[]"
+                            <input class="form-control" type="file" id="images" name="new_images[]"
                                 accept="{{ acceptImageType() }}" multiple>
-                            <div class="text-muted fs-7">{{ __('dash.Allowed image types') }}: {{ acceptImageType() }}
+                            <div class="text-muted fs-7">{{ __('dash.Allowed image types') }}:
+                                {{ acceptImageType() }}
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

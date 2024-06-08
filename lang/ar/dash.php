@@ -49,6 +49,8 @@ return [
     'main_data' => 'المعلومات الأساسية',
     'categories' => 'تصنيفات',
     'remove' => 'حذف',
+    'delete' => 'حذف',
+    'edit' => 'تعديل',
     'are_you_sure_delete' => 'هل أنت متأكد من الحذف',
     'no_cancel' => 'لا، إلغاء',
     'confirm_delete' => 'نعم، حذف',

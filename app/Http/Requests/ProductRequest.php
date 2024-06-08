@@ -24,11 +24,11 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required',
             'category_id' => 'required',
-            'cover_path' => 'required|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'cover_path' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             'description' => 'nullable',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'images.*' => 'image|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            // 'images.*' => 'required|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];
     }
 }

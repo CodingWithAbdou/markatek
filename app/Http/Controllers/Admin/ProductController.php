@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProjectModel;
 use Illuminate\Http\Request;
@@ -32,20 +33,18 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $data = $request->except('images');
+        $data = $request->except('new_images');
         $data['cover_path'] = generalUpload('Product', $request->cover_path);
         $product = Product::create($data);
 
-        if ($request->images) {
-
-            foreach ($request->images as $image) {
-                $product->images()->create([
+        if ($request->new_images) {
+            foreach ($request->new_images as $image) {
+                Image::create([
                     'product_id' => $product->id,
                     'path' => generalUpload('Product', $image)
                 ]);
             }
         }
-
 
         $status = true;
         $msg = __('dash.created successfully');
@@ -56,19 +55,39 @@ class ProductController extends Controller
 
     public function edit(Product $obj)
     {
-        return view('admin.categories.form', ['data' => $obj]);
+        return view('admin.products.form', ['data' => $obj]);
     }
 
     public function update(ProductRequest $request, Product $obj)
     {
 
-        $data = $request->all();
+        $data = $request->except(['new_images', 'images']);
         if ($request->cover_path) {
             $data['cover_path'] = generalUpload("Product", $request->cover_path);
         } else {
             $data['cover_path'] = $obj->cover_path;
         }
+
         $obj->update($data);
+
+        if ($request->new_images) {
+            foreach ($request->new_images as $image) {
+                Image::create([
+                    'product_id' => $obj->id,
+                    'path' => generalUpload('Product', $image)
+                ]);
+            }
+        }
+
+        if ($request->images) {
+            $keys = array_keys($request->images);
+            $images = Image::wherein('id', $keys)->get();
+            foreach ($images as $image) {
+                $image->update([
+                    'path' => generalUpload('Product', $request->images[$image->id])
+                ]);
+            }
+        }
 
         $status = true;
         $msg = __('dash.updated successfully');
