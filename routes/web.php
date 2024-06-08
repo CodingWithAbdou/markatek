@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeDashController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProductController;
@@ -59,6 +60,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('dashboard.settings.update');
 
+
+    //categories
+    Route::get('categories', [CategoryController::class, 'index'])->name('dashboard.categories.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('dashboard.categories.create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('dashboard.categories.store');
+    Route::get('categories/{obj}/edit', [CategoryController::class, 'edit'])->name('dashboard.categories.edit');
+    Route::post('categories/{obj}/update', [CategoryController::class, 'update'])->name('dashboard.categories.update');
+    Route::delete('categories/{obj}/delete', [CategoryController::class, 'destroy'])->name('dashboard.categories.destroy');
 
     //products
     Route::get('products', [ProductController::class, 'index'])->name('dashboard.products.index');

@@ -34,6 +34,13 @@ return [
     'products' => 'منتجات',
     'title' => 'عنوان',
     'name' => 'إسم',
+    'enter' => 'أدخل',
+    'Allowed image types' => 'صيغ الصور المسموحة',
+    'change' => 'غير',
+    'description' => 'وصف',
+    'created successfully' => 'تم الإنشاء بنجاح',
+    'main_data' => 'المعلومات الأساسية',
+    'categories' => 'تصنيفات',
 
 
 ];

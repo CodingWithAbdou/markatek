@@ -42,12 +42,12 @@
                     @foreach ($data as $record)
                         <tr>
                             <td>
-                                <div class="symbol symbol-50px bg-dark p-3"><img src="{{ asset($record->image) }}"
+                                <div class="symbol symbol-50px bg-dark p-3"><img src="{{ asset($record->image_path) }}"
                                         alt="" class="object-cover"></div>
                             </td>
                             <td>{{ $record->name }}</td>
                             <td>{{ $record->created_at }}</td>
-                            <x-action-btn.products :record="$record" />
+                            <x-action-btn.categories :record="$record" />
                         </tr>
                     @endforeach
                 </tbody>

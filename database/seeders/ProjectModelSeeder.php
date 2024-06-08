@@ -40,12 +40,23 @@ class ProjectModelSeeder extends Seeder
 
         ProjectModel::create([
             'parent_id' => '0',
+            'route_key' => 'categories',
+            'model' => 'App\Models\Category',
+            'model_name' => 'Category',
+            'title_ar' => 'التصنيفات',
+            "is_menu" => '1',
+            "icon" =>  'fa fa-bars',
+            "order_by" => '1'
+        ]);
+
+        ProjectModel::create([
+            'parent_id' => '0',
             'route_key' => 'products',
             'model' => 'App\Models\Product',
             'model_name' => 'Product',
             'title_ar' => 'المنتجات',
             "is_menu" => '1',
-            "icon" =>  'fa fa-archive',
+            "icon" =>  'fa fa-cubes',
             "order_by" => '1'
         ]);
     }

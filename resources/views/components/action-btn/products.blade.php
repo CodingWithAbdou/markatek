@@ -1,5 +1,5 @@
 <td>
-    <a href="{{ route('dashboard.users.edit', $record) }}"
+    <a href="{{ route('dashboard.products.edit', $record) }}"
         class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1" data-bs-toggle="tooltip"
         data-bs-placement="bottom" title="{{ __('dash.edit') }}">
         <span class="svg-icon svg-icon-3">
@@ -14,8 +14,8 @@
         </span>
     </a>
     <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn"
-        data-url="{{ route('dashboard.users.destroy', $record) }}" data-bs-toggle="tooltip" data-bs-placement="bottom"
-        title="{{ __('dash.delete') }}">
+        data-url="{{ route('dashboard.products.destroy', $record) }}" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" title="{{ __('dash.delete') }}">
         <span class="text">
             <span class="svg-icon svg-icon-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
