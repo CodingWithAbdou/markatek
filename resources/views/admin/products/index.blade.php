@@ -42,7 +42,7 @@
                     @foreach ($data as $record)
                         <tr>
                             <td>
-                                <div class="symbol symbol-50px bg-dark p-3"><img src="{{ asset($record->image) }}"
+                                <div class="symbol symbol-50px bg-dark p-3"><img src="{{ asset($record->cover_path) }}"
                                         alt="" class="object-cover"></div>
                             </td>
                             <td>{{ $record->name }}</td>

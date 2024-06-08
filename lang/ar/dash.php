@@ -39,15 +39,19 @@ return [
     'save changes' => 'حفظ التغيرات',
     'Allowed image types' => 'صيغ الصور المسموحة',
     'change' => 'غير',
+    'choose' => 'إختر',
+    'price' => 'السعر',
+    'cover_image' => 'صورة الغلاف',
+    'quantity' => 'الكمية',
     'description' => 'وصف',
     'created successfully' => 'تم الإنشاء بنجاح',
     'updated successfully' => 'تم التحديث بنجاح',
     'main_data' => 'المعلومات الأساسية',
     'categories' => 'تصنيفات',
+    'remove' => 'حذف',
     'are_you_sure_delete' => 'هل أنت متأكد من الحذف',
     'no_cancel' => 'لا، إلغاء',
     'confirm_delete' => 'نعم، حذف',
     'deleted_successfully' => 'تم الحذف بنجاح',
-
-
+    'upload_images' => 'أرفع صور للمنتج',
 ];

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,12 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'image_path' => 'required|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'category_id' => 'required',
+            'cover_path' => 'required|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             'description' => 'nullable',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'images.*' => 'image|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];
     }
 }

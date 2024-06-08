@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category\CreateRequest;
-use App\Http\Requests\Category\UpdateRequest;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\ProjectModel;
 use Illuminate\Http\Request;
@@ -29,9 +28,9 @@ class CategoryController extends Controller
         return view('admin.categories.form');
     }
 
-    public function store(CreateRequest $request)
+    public function store(CategoryRequest $request)
     {
-        $data = $request->all();
+        $data =  $request->validated();
         $data['image_path'] = generalUpload('Category', $request->image_path);
         Category::create($data);
 
@@ -47,10 +46,10 @@ class CategoryController extends Controller
         return view('admin.categories.form', ['data' => $obj]);
     }
 
-    public function update(UpdateRequest $request, Category $obj)
+    public function update(CategoryRequest $request, Category $obj)
     {
 
-        $data = $request->all();
+        $data = $request->validated();
         if ($request->image_path) {
             $data['image_path'] = generalUpload("Category", $request->image_path);
         } else {
