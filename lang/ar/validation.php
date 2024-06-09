@@ -197,6 +197,7 @@ return [
 
     'attributes' => [
         'name' => 'الإسم'
+        
     ],
 
 ];

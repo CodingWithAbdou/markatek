@@ -7,10 +7,13 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ReorderController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +31,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
+
+// item order
+Route::get('/{segment}/re-order/{id?}', [ReorderController::class, 'index'])->name('dashboard.reorder.index');
+Route::post('/re-order/update', [ReorderController::class, 'update'])->name('dashboard.reorder.update');
+
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {
@@ -62,6 +71,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('dashboard.settings.update');
 
+    //banners
+    Route::get('banners', [BannerController::class, 'index'])->name('dashboard.banners.index');
+    Route::get('banners/create', [BannerController::class, 'create'])->name('dashboard.banners.create');
+    Route::post('banners/store', [BannerController::class, 'store'])->name('dashboard.banners.store');
+    Route::get('banners/{obj}/edit', [BannerController::class, 'edit'])->name('dashboard.banners.edit');
+    Route::post('banners/{obj}/update', [BannerController::class, 'update'])->name('dashboard.banners.update');
+    Route::delete('banners/{obj}/delete', [BannerController::class, 'destroy'])->name('dashboard.banners.destroy');
 
     //categories
     Route::get('categories', [CategoryController::class, 'index'])->name('dashboard.categories.index');
@@ -94,4 +110,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('coupons/{obj}/edit', [CouponController::class, 'edit'])->name('dashboard.coupons.edit');
     Route::post('coupons/{obj}/update', [CouponController::class, 'update'])->name('dashboard.coupons.update');
     Route::delete('coupons/{obj}/delete', [CouponController::class, 'destroy'])->name('dashboard.coupons.destroy');
+
+    //orders
+    Route::get('orders', [OrderController::class, 'index'])->name('dashboard.orders.index');
+    Route::get('orders/create', [OrderController::class, 'create'])->name('dashboard.orders.create');
+    Route::post('orders/store', [OrderController::class, 'store'])->name('dashboard.orders.store');
+    Route::get('orders/{obj}/edit', [OrderController::class, 'edit'])->name('dashboard.orders.edit');
+    Route::post('orders/{obj}/update', [OrderController::class, 'update'])->name('dashboard.orders.update');
+    Route::delete('orders/{obj}/delete', [OrderController::class, 'destroy'])->name('dashboard.orders.destroy');
 });

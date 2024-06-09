@@ -40,6 +40,17 @@ class ProjectModelSeeder extends Seeder
 
         ProjectModel::create([
             'parent_id' => '0',
+            'route_key' => 'banners',
+            'title_ar' => 'البنرت',
+            'model' => 'Banner',
+            'model_name' => 'App\Models\Banner',
+            "is_menu" => '1',
+            "icon" =>  'fa fa-image',
+            "order_by" => '1'
+        ]);
+
+        ProjectModel::create([
+            'parent_id' => '0',
             'route_key' => 'categories',
             'title_ar' => 'التصنيفات',
             "is_menu" => '1',
@@ -74,13 +85,13 @@ class ProjectModelSeeder extends Seeder
             "order_by" => '1'
         ]);
 
-        // ProjectModel::create([
-        //     'parent_id' => '0',
-        //     'route_key' => 'orders',
-        //     'title_ar' => 'الطلبات',
-        //     "is_menu" => '1',
-        //     "icon" =>  'fa fa-shopping-basket',
-        //     "order_by" => '1'
-        // ]);
+        ProjectModel::create([
+            'parent_id' => '0',
+            'route_key' => 'orders',
+            'title_ar' => 'الطلبات',
+            "is_menu" => '1',
+            "icon" =>  'fa fa-shopping-basket',
+            "order_by" => '1'
+        ]);
     }
 }

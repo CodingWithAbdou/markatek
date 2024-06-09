@@ -19,11 +19,12 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 8, 2);
             $table->unsignedInteger('quantity');
+            $table->integer('order_by')->nullable();;
 
             $table->foreign('category_id')
-            ->references('id')
-            ->on('categories')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('piece');
             $table->string('house_number');
             $table->decimal('real_cost', 8, 2);
-            $table->decimal('coupon_discount', 8, 2)->default(0.00);
+            $table->bigInteger('coupon_discount')->default(0);
             $table->decimal('delivery_cost', 8, 2)->default(0.00);
             $table->decimal('total_cost', 8, 2);
             $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');

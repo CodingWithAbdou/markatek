@@ -41,7 +41,7 @@
     <!--------------
             Main Content
         --------------->
-    <main class="min-h-[600px]">
+    <main class="min-h-[600px] px-2 md:w-10/12 mx-auto py-8">
         @yield('content')
     </main>
     <!--------------
