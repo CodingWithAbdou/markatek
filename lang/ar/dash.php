@@ -59,4 +59,8 @@ return [
     'upload_images' => 'أرفع صور للمنتج',
     'places' => 'مناطق',
     'delivery_price' => 'سعر التوصيل',
+    'code' => 'الكود',
+    'discount' => 'قمية التخفيض',
+    'status' => 'حالة',
+    'coupons' => 'كوبونات',
 ];

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PlaceController;
@@ -85,4 +86,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('places/{obj}/edit', [PlaceController::class, 'edit'])->name('dashboard.places.edit');
     Route::post('places/{obj}/update', [PlaceController::class, 'update'])->name('dashboard.places.update');
     Route::delete('places/{obj}/delete', [PlaceController::class, 'destroy'])->name('dashboard.places.destroy');
+
+    //copouns
+    Route::get('coupons', [CouponController::class, 'index'])->name('dashboard.coupons.index');
+    Route::get('coupons/create', [CouponController::class, 'create'])->name('dashboard.coupons.create');
+    Route::post('coupons/store', [CouponController::class, 'store'])->name('dashboard.coupons.store');
+    Route::get('coupons/{obj}/edit', [CouponController::class, 'edit'])->name('dashboard.coupons.edit');
+    Route::post('coupons/{obj}/update', [CouponController::class, 'update'])->name('dashboard.coupons.update');
+    Route::delete('coupons/{obj}/delete', [CouponController::class, 'destroy'])->name('dashboard.coupons.destroy');
 });

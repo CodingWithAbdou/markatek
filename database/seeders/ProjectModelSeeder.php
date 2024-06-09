@@ -64,5 +64,23 @@ class ProjectModelSeeder extends Seeder
             "icon" =>  'fa fa-map-signs',
             "order_by" => '1'
         ]);
+
+        ProjectModel::create([
+            'parent_id' => '0',
+            'route_key' => 'coupons',
+            'title_ar' => 'الكوبونات',
+            "is_menu" => '1',
+            "icon" =>  'fa fa-plus-square',
+            "order_by" => '1'
+        ]);
+
+        // ProjectModel::create([
+        //     'parent_id' => '0',
+        //     'route_key' => 'orders',
+        //     'title_ar' => 'الطلبات',
+        //     "is_menu" => '1',
+        //     "icon" =>  'fa fa-shopping-basket',
+        //     "order_by" => '1'
+        // ]);
     }
 }

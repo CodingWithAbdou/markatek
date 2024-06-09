@@ -26,11 +26,6 @@
         action="{{ isset($data) ? route('dashboard.' . $model->route_key . '.update', $data) : route('dashboard.' . $model->route_key . '.store') }}"
         class="form d-flex flex-column flex-lg-row">
 
-        <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px min-w-lg-300px mb-7 me-lg-10">
-            <x-inputs.image label="{{ __('dash.cover_image') }}" name="cover_path" required=""
-                data="{{ isset($data) ? $data->cover_path : '' }}" />
-        </div>
-
         <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
             <div class="card card-flush py-4">
                 <div class="card-header">
@@ -40,39 +35,16 @@
                 </div>
                 <div class="card-body py-0">
                     <div class="row">
-                        <x-inputs.text label="{{ __('dash.name') }}" name="name" required=""
-                            data="{{ isset($data) ? $data->name : '' }}" />
-                        {{ dd(\App\Models\Category::all()) }}
-                        <x-inputs.select label="{{ __('dash.categories') }}" name="category_id" required=""
-                            data="{{ isset($data) ? $data->category_id : '' }}" :list="\App\Models\Category::all()" optionValue="id"
+                        <x-inputs.text label="{{ __('dash.code') }}" name="code" required=""
+                            data="{{ isset($data) ? $data->code : '' }}" />
+
+                        <x-inputs.number label="{{ __('dash.discount') }}" name="discount" required=""
+                            data="{{ isset($data) ? $data->discount : '' }}" />
+
+                        <x-inputs.select label="{{ __('dash.status') }}" name="status" required=""
+                            data="{{ isset($data) ? $data->status : '' }}" :list="[['value' => 1, 'name' => 'نشظ'], ['value' => 0, 'name' => 'غير نشظ']]" optionValue="value"
                             optionName="name" />
 
-                        <x-inputs.textarea label="{{ __('dash.description') }}" name="description" required=""
-                            data="{{ isset($data) ? $data->description : '' }}" />
-
-                        <x-inputs.number label="{{ __('dash.price') }}" name="price" required=""
-                            data="{{ isset($data) ? $data->price : '' }}" />
-
-                        <x-inputs.number label="{{ __('dash.quantity') }}" name="quantity" required=""
-                            data="{{ isset($data) ? $data->quantity : '' }}" />
-
-                        @if (isset($data))
-                            @foreach ($data->images as $image)
-                                <div class="col-md-6">
-                                    <x-inputs.image label="{{ __('dash.image') . ' ' . $loop->index + 1 }}"
-                                        name="images[{{ $image->id }}]" required="" data="{{ $image->path }}" />
-                                </div>
-                            @endforeach
-                        @endif
-
-                        <div class="mb-3">
-                            <label for="new_images" class="form-label">{{ __('dash.upload_images') }}</label>
-                            <input class="form-control" type="file" id="new_images" name="new_images[]"
-                                accept="{{ acceptImageType() }}" multiple>
-                            <div class="text-muted fs-7">{{ __('dash.Allowed image types') }}:
-                                {{ acceptImageType() }}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

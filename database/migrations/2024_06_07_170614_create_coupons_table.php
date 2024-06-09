@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->decimal('discount', 5, 2)->default(0.00);
+            $table->bigInteger('discount')->default(0.00);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

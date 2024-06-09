@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PlaceRequest;
-use App\Models\Place;
+use App\Http\Requests\CouponRequest;
+use App\Models\Coupon;
 use App\Models\ProjectModel;
 use Illuminate\Http\Request;
 
-class PlaceController extends Controller
+class CouponController extends Controller
 {
     public $model;
+
     public function __construct()
     {
-        $this->model = ProjectModel::where('route_key', 'places')->first();
+        $this->model = ProjectModel::where('route_key', 'coupons')->first();
         view()->share('model', $this->model);
     }
 
     public function index()
     {
-        $data = Place::orderBy('created_at', 'desc')->get();
-        return view('admin.places.index', compact('data'));
+        $data = Coupon::orderBy('created_at', 'desc')->get();
+        return view('admin.coupons.index', compact('data'));
     }
 
     public function create()
     {
-        return view('admin.places.form');
+        return view('admin.coupons.form');
     }
 
-    public function store(PlaceRequest $request)
+    public function store(CouponRequest $request)
     {
         $data =  $request->validated();
-        Place::create($data);
+        Coupon::create($data);
 
         $status = true;
         $msg = __('dash.created successfully');
@@ -39,12 +40,12 @@ class PlaceController extends Controller
         return response()->json(compact('status', 'msg', 'url'));
     }
 
-    public function edit(Place $obj)
+    public function edit(Coupon $obj)
     {
-        return view('admin.places.form', ['data' => $obj]);
+        return view('admin.coupons.form', ['data' => $obj]);
     }
 
-    public function update(PlaceRequest $request, Place $obj)
+    public function update(CouponRequest $request, Coupon $obj)
     {
 
         $data = $request->validated();
@@ -57,7 +58,7 @@ class PlaceController extends Controller
         return response()->json(compact('status', 'msg', 'url'));
     }
 
-    public function destroy(Request $request, Place $obj)
+    public function destroy(Request $request, Coupon $obj)
     {
         try {
             $obj->delete();
