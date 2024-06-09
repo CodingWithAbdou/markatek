@@ -50,10 +50,13 @@ return [
     'categories' => 'تصنيفات',
     'remove' => 'حذف',
     'delete' => 'حذف',
+    'name' => 'الإسم',
     'edit' => 'تعديل',
     'are_you_sure_delete' => 'هل أنت متأكد من الحذف',
     'no_cancel' => 'لا، إلغاء',
     'confirm_delete' => 'نعم، حذف',
     'deleted_successfully' => 'تم الحذف بنجاح',
     'upload_images' => 'أرفع صور للمنتج',
+    'places' => 'مناطق',
+    'delivery_price' => 'سعر التوصيل',
 ];

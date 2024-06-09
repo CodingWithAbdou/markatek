@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PlaceController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -76,4 +77,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('products/{obj}/edit', [ProductController::class, 'edit'])->name('dashboard.products.edit');
     Route::post('products/{obj}/update', [ProductController::class, 'update'])->name('dashboard.products.update');
     Route::delete('products/{obj}/delete', [ProductController::class, 'destroy'])->name('dashboard.products.destroy');
+
+    //places
+    Route::get('places', [PlaceController::class, 'index'])->name('dashboard.places.index');
+    Route::get('places/create', [PlaceController::class, 'create'])->name('dashboard.places.create');
+    Route::post('places/store', [PlaceController::class, 'store'])->name('dashboard.places.store');
+    Route::get('places/{obj}/edit', [PlaceController::class, 'edit'])->name('dashboard.places.edit');
+    Route::post('places/{obj}/update', [PlaceController::class, 'update'])->name('dashboard.places.update');
+    Route::delete('places/{obj}/delete', [PlaceController::class, 'destroy'])->name('dashboard.places.destroy');
 });

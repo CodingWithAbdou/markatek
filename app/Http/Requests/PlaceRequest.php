@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Routing\Route;
 
-class CategoryRequest extends FormRequest
+class PlaceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +21,9 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $routeName = $this->route()->getName();
-        $methodName = explode('.', $routeName)[2];
-        $validator = $methodName == 'update' ? 'nullable' : 'required';
         return [
             'name' => 'required',
-            'image_path' => "$validator|max:" . getMaxSize() . "|mimes:" . acceptImageType(0),
-            'description' => 'nullable',
+            'delivery_price' => 'required',
         ];
     }
 }

@@ -172,6 +172,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+
         ],
 
         'form' => [
@@ -194,6 +195,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'الإسم'
+    ],
 
 ];

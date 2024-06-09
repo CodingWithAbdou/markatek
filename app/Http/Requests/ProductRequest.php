@@ -21,14 +21,19 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        $routeName = $this->route()->getName();
+        $methodName = explode('.', $routeName)[2];
+        $validator = $methodName == 'update' ? 'nullable' : 'required';
+
         return [
             'name' => 'required',
             'category_id' => 'required',
-            'cover_path' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'cover_path' =>   $validator   . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             'description' => 'nullable',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
-            // 'images.*' => 'required|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'images[]' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'new_images[]' =>  'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];
     }
 }
