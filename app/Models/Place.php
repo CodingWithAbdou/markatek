@@ -9,5 +9,5 @@ class Place extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'delivery_price'];
+    protected $guarded = [];
 }

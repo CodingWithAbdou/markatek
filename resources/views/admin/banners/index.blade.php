@@ -21,8 +21,8 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-                <x-table.item_order />
                 <x-table.export />
+                <x-table.item_order />
                 <x-table.create />
             </div>
         </div>

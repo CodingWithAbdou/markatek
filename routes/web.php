@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('main');
 
 // item order
-Route::get('/{segment}/re-order/{id?}', [ReorderController::class, 'index'])->name('dashboard.reorder.index');
+Route::get('/{segment}/re-order', [ReorderController::class, 'index'])->name('dashboard.reorder.index');
 Route::post('/re-order/update', [ReorderController::class, 'update'])->name('dashboard.reorder.update');
 
 

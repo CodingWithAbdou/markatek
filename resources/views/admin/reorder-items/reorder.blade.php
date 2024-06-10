@@ -31,12 +31,15 @@
                                     class="card card-custom mb-2 draggable slider-order-div">
                                     <div class="card-header draggable-handle border">
                                         <div class="card-title">
-                                            <h3 class="card-label">
-                                                <div class="symbol symbol-50px bg-dark p-3"><img
-                                                        src="{{ asset($item->image_path) }}" alt=""
-                                                        class="object-cover"></div>
-
-                                                {{-- {{ $item->title_color ? $item->title . $item->title_color : $item->name ?? (strip_tags($item->title) ?? ($item->file_name ?? ((getLocale() == 'ar' ? $item->name_ar : $item->name_en) ?? strip_tags($item->description)))) }} --}}
+                                            @if ($item->image_path || $item->cover_path)
+                                                <div class="card-label">
+                                                    <div class="symbol symbol-50px bg-dark p-3"><img
+                                                            src="{{ asset($item->image_path ?? $item->cover_path) }}"
+                                                            alt="" class="object-cover"></div>
+                                                </div>
+                                            @endif
+                                            <h3 class="mx-4">
+                                                {{ $item->name ?? 'oke' }}
                                             </h3>
                                         </div>
                                         <div class="card-toolbar">

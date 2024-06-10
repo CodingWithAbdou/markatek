@@ -52,6 +52,8 @@ class ProjectModelSeeder extends Seeder
         ProjectModel::create([
             'parent_id' => '0',
             'route_key' => 'categories',
+            'model' => 'Category',
+            'model_name' => 'App\Models\Category',
             'title_ar' => 'التصنيفات',
             "is_menu" => '1',
             "icon" =>  'fa fa-bars',
@@ -62,6 +64,8 @@ class ProjectModelSeeder extends Seeder
             'parent_id' => '0',
             'route_key' => 'products',
             'title_ar' => 'المنتجات',
+            'model' => 'Product',
+            'model_name' => 'App\Models\Product',
             "is_menu" => '1',
             "icon" =>  'fa fa-cubes',
             "order_by" => '1'
@@ -70,6 +74,8 @@ class ProjectModelSeeder extends Seeder
         ProjectModel::create([
             'parent_id' => '0',
             'route_key' => 'places',
+            'model' => 'Place',
+            'model_name' => 'App\Models\Place',
             'title_ar' => 'المناطق',
             "is_menu" => '1',
             "icon" =>  'fa fa-map-signs',

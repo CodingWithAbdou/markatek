@@ -21,10 +21,8 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-                {{-- @if ($model->is_orderable) --}}
-                {{-- <x-table.item_order /> --}}
-                {{-- @endif --}}
                 <x-table.export />
+                <x-table.item_order />
                 <x-table.create />
             </div>
         </div>

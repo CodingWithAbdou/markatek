@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
             'category_id' => 'required',
             'cover_path' =>   $validator   . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             'description' => 'nullable',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|max:9999999.99',
             'quantity' => 'required|numeric',
             'images[]' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             'new_images[]' =>  'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),

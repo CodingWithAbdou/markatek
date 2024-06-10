@@ -40,29 +40,6 @@ class BannerController extends Controller
         return response()->json(compact('status', 'msg', 'url'));
     }
 
-    public function edit(Category $obj)
-    {
-        return view('admin.categories.form', ['data' => $obj]);
-    }
-
-    public function update(CategoryRequest $request, Category $obj)
-    {
-
-        $data = $request->validated();
-        if ($request->image_path) {
-            $data['image_path'] = generalUpload("Category", $request->image_path);
-        } else {
-            $data['image_path'] = $obj->image_path;
-        }
-        $obj->update($data);
-
-        $status = true;
-        $msg = __('dash.updated successfully');
-        $url = route('dashboard.' . $this->model->route_key . '.index');
-
-        return response()->json(compact('status', 'msg', 'url'));
-    }
-
     public function destroy(Request $request, Banner $obj)
     {
         try {

@@ -42,7 +42,6 @@
                     <div class="row">
                         <x-inputs.text label="{{ __('dash.name') }}" name="name" required=""
                             data="{{ isset($data) ? $data->name : '' }}" />
-                        {{ dd(\App\Models\Category::all()) }}
                         <x-inputs.select label="{{ __('dash.categories') }}" name="category_id" required=""
                             data="{{ isset($data) ? $data->category_id : '' }}" :list="\App\Models\Category::all()" optionValue="id"
                             optionName="name" />
