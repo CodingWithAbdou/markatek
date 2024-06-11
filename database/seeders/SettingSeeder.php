@@ -65,5 +65,37 @@ class SettingSeeder extends Seeder
             "category" => "1",
             "order_by" => "1",
         ]);
+        Setting::create([
+            "setting_key" => "facebook",
+            "setting_value" => "11",
+            "title_ar" => "حساب الفيسيوك",
+            "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+        Setting::create([
+            "setting_key" => "instagram",
+            "setting_value" => "11",
+            "title_ar" => "حساب الإنستقرام",
+            "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+        Setting::create([
+            "setting_key" => "whatsapp",
+            "setting_value" => "11",
+            "title_ar" => "رقم الواتس اب",
+            "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+        Setting::create([
+            "setting_key" => "gmail",
+            "setting_value" => "11",
+            "title_ar" => "حساب الايميل",
+            "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
     }
 }

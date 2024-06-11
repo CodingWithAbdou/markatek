@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\Front\ProductPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OrderController;
@@ -31,6 +32,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
+Route::get('show/{category}/products', [ProductPageController::class, 'products'])->name('product.index');
+
+
+
 
 // item order
 Route::get('/{segment}/re-order', [ReorderController::class, 'index'])->name('dashboard.reorder.index');

@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .container {
+        @apply mx-auto max-w-7xl px-2 sm:px-6 lg:px-8;
+    }
+}
+
 body {
     font-family: "Noto Kufi Arabic", sans-serif;
+}
+
+:root {
+    --main-color: #f9fafb;
+    --secound-color: #404040;
+}
+
+.main_color_t {
+    color: var(--main-color);
+}
+.main_color_b {
+    background: var(--main-color);
+}
+
+.secound_color_t {
+    color: var(--secound-color);
+}
+.secound_color_b {
+    background: var(--secound-color);
 }

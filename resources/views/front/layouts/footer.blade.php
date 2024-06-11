@@ -1,18 +1,52 @@
-<footer class="bg-white border border-gray-300 rounded-lg shadow dark:bg-gray-900 m-4">
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="{{ route('main') }}">
-                <img class="h-8 w-auto"
-                    src="{{ App\Models\Setting::where('setting_key', 'logo')->first()->setting_value }}" alt="ماركتك">
-            </a>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">التصنيف الاول</a>
-                </li>
+<footer class="">
+    <div class="m-4 rounded-lg shadow border bg-white">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="{{ route('main') }}">
+                    <img class="h-8 w-auto"
+                        src="{{ asset(App\Models\Setting::where('setting_key', 'logo')->first()->setting_value) }}"
+                        alt="ماركتك">
+                </a>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium  sm:mb-0 secound_color_t">
+                    @php
+                        $facebook = App\Models\Setting::where('setting_key', 'facebook')->first()->setting_value;
+                        $instagram = App\Models\Setting::where('setting_key', 'instagram')->first()->setting_value;
+                        $whatsapp = App\Models\Setting::where('setting_key', 'whatsapp')->first()->setting_value;
+                        $gmail = App\Models\Setting::where('setting_key', 'gmail')->first()->setting_value;
+                    @endphp
+                    <li>
+                        @if ($facebook)
+                            <a href="{{ $facebook }}" target="__blank"
+                                class="hover:opacity-75 transition duration-200 me-4 ">
+                                <i class='bx bxl-facebook-circle text-3xl text-[#1877f2]'></i>
+                            </a>
+                        @endif
 
-            </ul>
+                        @if ($instagram)
+                            <a href="{{ $instagram }}" target="__blank"
+                                class="hover:opacity-75 transition duration-200 me-4 ">
+                                <i class='bx bxl-instagram text-3xl text-[#c32aa3]'></i>
+                            </a>
+                        @endif
+
+                        @if ($whatsapp)
+                            <a href="{{ $whatsapp }}" target="__blank"
+                                class="hover:opacity-75 transition duration-200 me-4 ">
+                                <i class='bx bxl-whatsapp text-3xl text-[#25d366]'></i>
+                            </a>
+                        @endif
+
+                        @if ($gmail)
+                            <a href="{{ $gmail }}" target="__blank"
+                                class="hover:opacity-75 transition duration-200 me-4 ">
+                                <i class='bx bxl-gmail text-3xl text-neutral-7700'></i>
+                            </a>
+                        @endif
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-300 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm secound_color_t sm:text-center ">جميع الحقوق محفوضة مؤسسة
         </div>
-        <hr class="my-6 border-gray-300 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">جميع الحقوق محفوضة مؤسسة
     </div>
 </footer>
