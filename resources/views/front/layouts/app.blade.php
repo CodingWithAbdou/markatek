@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Khaldi Abdou  https://khaldiabdou.com" />
     <meta name="copyright" content="https://github.com/CodingWithAbdou" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     {{-- FavIcon --}}
     <link rel="shortcut icon" href="images/logo2.jpeg" type="image/x-icon" />
     {{-- Font Family --}}
@@ -24,13 +24,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/slick/slick-theme.css') }}" />
     {{-- Library Icons --}}
     <link href="{{ asset('../node_modules/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     @vite('resources/css/app.css')
     @stack('style')
 
     <title></title>
 </head>
 
-<body class="relative" style="background:#f0f0f0">
+<body class="relative bg-gray-100">
     <!--------------
             Preloader
         --------------->
@@ -63,8 +67,11 @@
     <script src="{{ asset('assets/lib/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('assets/lib/aos.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/lib/slick/slick.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @vite('resources/js/app.js')
+
 
     @stack('script')
 </body>

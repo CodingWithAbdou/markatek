@@ -53,10 +53,26 @@
                             <span class="mt-1">تتبع الطلبات</span>
                         </a>
 
-                        <a href="{{ route('main') }}"
+                        <a href="{{ route('cart.index') }}"
                             class=" flex items-center justify-center gap-1 text-neutral-800 rounded-md ps-3 py-2 text-sm font-medium"
                             aria-current="page">
-                            <i class='bx bx-shopping-bag text-2xl'></i>
+                            <div class="relative">
+                                @php
+                                    $cart = session()->get('cart', []);
+                                @endphp
+                                @if (count($cart))
+                                    <span id="badge-cart"
+                                        class="absolute -bottom-2 -right-2 bg-orange-500 flex items-center font-bold justify-center w-4 h-4 rounded-full text-[10px] text-white">
+                                        {{ count($cart) }}
+                                    </span>
+                                @else
+                                    <span id="badge-cart"
+                                        class="hidden absolute -bottom-2 -right-2 bg-orange-500  items-center font-bold justify-center w-4 h-4 rounded-full text-[10px] text-white">
+                                    </span>
+                                @endif
+
+                                <i id="cart" class='bx bx-shopping-bag text-2xl relative'></i>
+                            </div>
                             <span class="mt-1">سلة التسوق</span>
 
                         </a>

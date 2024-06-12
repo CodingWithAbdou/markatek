@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ProductPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -34,9 +35,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('main');
 Route::get('show/{category}/products', [ProductPageController::class, 'products'])->name('product.index');
 
-
-
-
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
+Route::post('/cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
 
 
 
