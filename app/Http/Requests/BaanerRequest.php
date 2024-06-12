@@ -30,7 +30,7 @@ class BaanerRequest extends FormRequest
             'title_ar' => 'nullable',
             // 'description_en' => 'nullable',
             'description_ar' => 'nullable',
-            'image_path' => $methodName . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'image_path' => $validator . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];
     }
 }

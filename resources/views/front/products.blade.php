@@ -1,58 +1,46 @@
 @extends('front.layouts.app')
 
 @section('content')
-    <div class="slider">
-        @foreach ($category->products as $product)
-            <div
-                class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
-                <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-                    <div class="shrink-0 md:order-1">
-                        <img class="h-20 w-20 dark:hidden rounded-lg" src="{{ asset($product->cover_path) }}" alt="" />
+    <section class="py-12 max-w-full mx-auto px-4 md:px-12">
+        <div class="flex items-center  gap-2 text-neutral-800 w-fit mx-auto text-5xl mb-16 relative ">
+            <i class='bx bx-category-alt'></i>
+            <h2 class="">المنتجات</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            @forelse ($category->products as $product)
+                <div
+                    class="relative z-40 col-span-1 flex max-w-md overflow-hidden bg-white rounded-lg shadow border border-neutral-200 ">
+                    <div class="w-1/3 bg-cover bg-gray-300 border-l  border-neutral-200 ">
+                        <img class="w-full h-full object-cover " src="{{ asset($product->cover_path) }}" width="400"
+                            alt="">
                     </div>
-
-                    <label for="counter-input" class="sr-only">Choose quantity:</label>
-                    <div class="flex items-center justify-between md:order-3 md:justify-end">
-                        <div class="flex items-center" data-book='{{ $product->id }}'>
-                            <button type="button" id="" data-input-counter-decrement="counter-input"
-                                class="decrement-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 1h16" />
-                                </svg>
+                    <div class="w-2/3 p-4 md:p-4 flex flex-col justify-between">
+                        <h1 class="text-xl font-bold text-nutueral-800 dark:text-white">{{ $product->name }}</h1>
+                        <p class="mt-2 text-sm text-nutueral-400 dark:text-nutueral-300">{{ $product->description }}</p>
+                        <div class="flex justify-between mt-3 item-center">
+                            <h1 class="text-lg font-bold text-nutueral-700 dark:text-nutueral-200 md:text-xl">
+                                {{ $product->price }}
+                            </h1>
+                            <button id="add-to-cart"
+                                class="flex items-center gap-2 px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded-lg dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600
+                                ">
+                                <span> اضف
+                                    الي السلة</span>
+                                <i class='bx bx-cart-add text-white text-xl'></i>
                             </button>
-                            <input type="text" id="" data-input-counter
-                                class="counter-input w-16 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
-                                placeholder="" value="1" required />
-                            <button type="button" id="" data-input-counter-increment="counter-input"
-                                class=" increment-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                        <a href="#"
-                            class="text-base font-medium text-gray-900 hover:underline dark:text-white">{{ $product->name }}</a>
-
-                        <div class="flex items-center gap-4">
-                            <form action="#">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                <div class="text-start md:order-4 md:w-32 mb-2">
-                                    <p class="text-xs text-neutral-600900 dark:text-white">سعر المنتج :
-                                        <span class="text-xs underline"> {{ $product->price }} $ </span>
-                                    </p>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
+
+            @empty
+                <div class="col-span-3 px-4 py-3 leading-normal text-indigo-700 border border-indigo-500 rounded-lg"
+                    role="alert">
+                    <p>لا توجد منتجات تحت هذا التصنيف</p>
+                </div>
+            @endforelse
+        </div>
+    </section>
 @endsection
+@push('script')
+    <script></script>
+@endpush

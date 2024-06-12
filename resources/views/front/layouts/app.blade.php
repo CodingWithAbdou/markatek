@@ -30,14 +30,16 @@
     <title></title>
 </head>
 
-<body>
+<body class="relative" style="background:#f0f0f0">
     <!--------------
             Preloader
         --------------->
     <!-- <div class="preloader" data-preloader>
             <div class="circle"></div>
         </div> -->
-
+    <span class="absolute w-1/4 h-full block opacity-[3%] -top-20 -left-50"
+        style="background-image: url('{{ asset('assets/images/backgroud.svg') }}')">
+    </span>
 
     <!--------------
             Navigation
@@ -48,10 +50,8 @@
     <!--------------
             Main Content
         --------------->
-    <main class="min-h-[600px] relative overflow-hidden ">
-        <span class="absolute w-1/4 h-full block opacity-5 -top-20 -left-50"
-            style="background-image: url('{{ asset('assets/images/backgroud.svg') }}')">
-        </span>
+    <main class="min-h-[600px] relative overflow-hidden">
+
         @yield('content')
     </main>
     <!--------------

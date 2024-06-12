@@ -43,7 +43,7 @@
                         <x-inputs.text label="{{ __('dash.name') }}" name="name" required=""
                             data="{{ isset($data) ? $data->name : '' }}" />
 
-                        <x-inputs.textarea label="{{ __('dash.description') }}" name="description" required=""
+                        <x-inputs.text label="{{ __('dash.description') }}" name="description" required=""
                             data="{{ isset($data) ? $data->description : '' }}" />
                     </div>
                 </div>

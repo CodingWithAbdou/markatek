@@ -5,12 +5,16 @@
             <div class="flex gap-4 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex flex-shrink-0 items-center">
                     <a href="{{ route('main') }}">
-                        <img class="h-8 w-auto"
+                        <img class="h-10 w-auto"
                             src="{{ asset(App\Models\Setting::where('setting_key', 'logo')->first()->setting_value) }}"
                             alt="ماركتك">
                     </a>
+                    <a href="{{ route('main') }}"
+                        class="flex items-center justify-center gap-1 text-neutral-800 rounded-md px-3 py-2 text-sm font-medium ms-8"
+                        aria-current="page">
+                        <span><i class='bx bx-home-alt-2 text-xl'></i></span>
+                        <span class="mt-1">الرئيسية</span></a>
                 </div>
-
                 {{-- @auth
                     <div class=" ml-6 block">
                         <div class="flex space-x-4">
@@ -25,7 +29,7 @@
                 <div class="flex-1 flex  items-center justify-center gap-8">
                     <div class="pt-2 relative mx-auto text-gray-600">
                         <input
-                            class="border border-neutral-300  bg-white h-10 py-2 text-sm px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-neutral-400"
+                            class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-neutral-400"
                             type="search" name="search" placeholder="إبحث عن المنتجات">
                         <button type="submit" class="absolute left-0 top-0 mt-5 ml-4">
                             <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -60,14 +64,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</nav>
-<nav class="relative z-10  bg-neutral-700 py-2 shadow-sm ">
-    <div class="flex">
-        <a href="{{ route('main') }}"
-            class="flex items-center gap-1 px-4 md:px-44 rounded-md py-2 text-sm font-medium text-white transition duration-200 hover:text-gray-100"
-            aria-current="page">
-            <span><i class='bx bx-home-alt-2  '></i></span>
-            الرئيسية</a>
     </div>
 </nav>

@@ -2,27 +2,31 @@
 
 use Illuminate\Support\Facades\Http;
 
-function getLocale(){
+function getLocale()
+{
     return app()->getLocale();
 }
 
-function apiGetLocale(){
-    if(app()->getLocale() == 'ar'){
+function apiGetLocale()
+{
+    if (app()->getLocale() == 'ar') {
         return 'AR';
-    }else{
+    } else {
         return 'EN';
     }
 }
 
-function getLocale2(){
-    if(app()->getLocale() == 'ar'){
+function getLocale2()
+{
+    if (app()->getLocale() == 'ar') {
         return 'NA';
-    }else{
+    } else {
         return 'FO';
     }
 }
 
-function getInput($input, $trans, $locale='en'){
+function getInput($input, $trans, $locale = 'en')
+{
     $values = [];
     foreach ($input as $index => $field) {
         foreach ($trans as $tran) {
@@ -37,11 +41,12 @@ function getInput($input, $trans, $locale='en'){
     return $input;
 }
 
-function generalUpload($model, $file){
+function generalUpload($model, $file)
+{
     if ($file) {
-        if (config('app.WITH_PUBLIC')){
+        if (config('app.WITH_PUBLIC')) {
             $dir = 'public/uploads/' . $model;
-        }else{
+        } else {
             $dir = 'uploads/' . $model;
         }
 
@@ -61,33 +66,37 @@ function generalUpload($model, $file){
         $status = \File::copy($file, $newDir);
 
         if ($status) {
-            return 'uploads/'.$model.'/'.$fileName;
+            return 'uploads/' . $model . '/' . $fileName;
         }
     }
 }
-function deleteUpload($path){
-    if(\File::exists(public_path($path))){
+function deleteUpload($path)
+{
+    if (\File::exists(public_path($path))) {
         \File::delete(public_path($path));
         return true;
-    }else{
+    } else {
         return true;
     }
 }
-function acceptImageType($val=1){
-    if($val==0){
+function acceptImageType($val = 1)
+{
+    if ($val == 0) {
         return 'png,svg,jpg,jpeg,webp';
     }
     return '.png, .svg, .jpg, .jpeg, .webp';
 }
-function acceptFileType($val=1){
-    if($val==0){
+function acceptFileType($val = 1)
+{
+    if ($val == 0) {
         return 'pdf,ppt,pptx,doc,docx,xls,xlsx,rtf';
     }
     return '.pdf, .ppt, .pptx, .doc, .docx, .xls, .xlsx, .rtf';
 }
-function getMaxSize($type=null){
-    if($type == 'mb'){
+function getMaxSize($type = null)
+{
+    if ($type == 'mb') {
         return 2;
     }
-    return 2048;
+    return 3048;
 }
