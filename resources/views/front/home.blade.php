@@ -1,16 +1,24 @@
 @extends('front.layouts.app')
 
 @section('content')
-    <div class="slider">
-        @foreach ($banners as $banner)
-            <div class="rounded-lg  max-h-[200px] overflow-hidden">
-                <img class="w-full h-[200px]  object-cover  rounded-lg shadow-sm border-indigo-200"
-                    src="{{ asset($banner->image_path) }}" loading="lazy" alt="">
-            </div>
-        @endforeach
-    </div>
-
-    <div class="mt-24">
+    @if ($banners->count() > 0)
+        <div class=" rounded-lg slider">
+            @foreach ($banners as $banner)
+                <div class="relative overflow-hidden" style="max-height: calc(100vh - 132px);">
+                    <span class="absolute  inset-0 bg-neutral-800 opacity-70"></span>
+                    <div class="absolute left-2/4 top-2/4  -translate-x-2/4  -translate-y-2/4  text-white">
+                        <h1 class="text-center text-4xl md:text-7xl">
+                            {{ $banner->{'title_ar'} }}
+                        </h1>
+                        <p class="text-center  mt-4">{{ $banner->{'description_ar'} }}</p>
+                    </div>
+                    <img class="w-full object-cover  shadow-sm border-indigo-200" style="height: calc(100vh - 132px);"
+                        src="{{ asset($banner->image_path) }}"alt="">
+                </div>
+            @endforeach
+        </div>
+    @endif
+    <div class="mt-12">
         <h3 class="text-neutral-700 text-4xl w-fit mx-auto mb-12">التصــنيفات</h3>
         <div class="grid grid-cols-3 gap-6">
             @foreach ($categories as $category)

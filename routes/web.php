@@ -37,9 +37,6 @@ Route::get('show/{category}/products', [ProductPageController::class, 'products'
 
 
 
-// item order
-Route::get('/{segment}/re-order', [ReorderController::class, 'index'])->name('dashboard.reorder.index');
-Route::post('/re-order/update', [ReorderController::class, 'update'])->name('dashboard.reorder.update');
 
 
 
@@ -57,6 +54,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //logout
     Route::get('logout', [LoginController::class, 'logout'])->name('dashboard.logout');
 
+    // item order
+    Route::get('/{segment}/re-order', [ReorderController::class, 'index'])->name('dashboard.reorder.index');
+    Route::post('/re-order/update', [ReorderController::class, 'update'])->name('dashboard.reorder.update');
 
     //profile
     Route::get('profile', [ProfileController::class, 'index'])->name('dashboard.profile.index');

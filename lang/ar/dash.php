@@ -72,4 +72,5 @@ return [
     'reorder_data' => 'ترتيب البيانات',
     'banners' => 'البنرات',
     'message' => 'عرض',
+    'Social Media' => 'حسابات التواصل الاجتماعي',
 ];

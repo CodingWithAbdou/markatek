@@ -48,7 +48,10 @@
     <!--------------
             Main Content
         --------------->
-    <main class="min-h-[600px] container py-12">
+    <main class="min-h-[600px] relative overflow-hidden ">
+        <span class="absolute w-1/4 h-full block opacity-5 -top-20 -left-50"
+            style="background-image: url('{{ asset('assets/images/backgroud.svg') }}')">
+        </span>
         @yield('content')
     </main>
     <!--------------

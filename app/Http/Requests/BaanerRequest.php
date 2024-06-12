@@ -21,8 +21,16 @@ class BaanerRequest extends FormRequest
      */
     public function rules(): array
     {
+        $routeName = $this->route()->getName();
+        $methodName = explode('.', $routeName)[2];
+        $validator = $methodName == 'update' ? 'nullable' : 'required';
+
         return [
-            'image_path' => 'required|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            // 'title_en' => 'nullable',
+            'title_ar' => 'nullable',
+            // 'description_en' => 'nullable',
+            'description_ar' => 'nullable',
+            'image_path' => $methodName . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];
     }
 }

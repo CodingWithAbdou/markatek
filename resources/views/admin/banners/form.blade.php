@@ -26,7 +26,10 @@
         action="{{ isset($data) ? route('dashboard.' . $model->route_key . '.update', $data) : route('dashboard.' . $model->route_key . '.store') }}"
         class="form d-flex flex-column flex-lg-row">
 
-
+        <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px min-w-lg-300px mb-7 me-lg-10">
+            <x-inputs.image label="{{ __('dash.image') }}" name="image_path" required=""
+                data="{{ isset($data) ? $data->image_path : '' }}" />
+        </div>
 
         <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
             <div class="card card-flush py-4">
@@ -36,9 +39,14 @@
                     </div>
                 </div>
                 <div class="card-body py-0">
-                    <x-inputs.image label="{{ __('dash.image') }}" name="image_path" required=""
-                        data="{{ isset($data) ? $data->image_path : '' }}" />
-
+                    <x-inputs.text label="{{ __('dash.title') . ' Ar' }}" name="title_ar" required=""
+                        data="{{ isset($data) ? $data->title_ar : '' }}" />
+                    {{-- <x-inputs.text label="{{ __('dash.title') . ' En' }}" name="title_en" required=""
+                        data="{{ isset($data) ? $data->title_en : '' }}" /> --}}
+                    <x-inputs.text label="{{ __('dash.description') . ' Ar' }}" name="description_ar" required=""
+                        data="{{ isset($data) ? $data->description_ar : '' }}" />
+                    {{-- <x-inputs.text label="{{ __('dash.description') . ' En' }}" name="description_en" required=""
+                        data="{{ isset($data) ? $data->description_en : '' }}" /> --}}
                 </div>
             </div>
 
