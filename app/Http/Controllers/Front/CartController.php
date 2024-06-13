@@ -11,16 +11,17 @@ class CartController extends Controller
     public function index()
     {
         $cart = session()->get('cart', []);
-        // session()->forget('cart');
+        $global = 0;
+        foreach ($cart as $item) {
+            $global += $item['price'] * $item['quantity'];
+        }
 
-        return view('front.cart', ['items' => $cart]);
+        return view('front.cart', ['items' => $cart, 'global' => $global]);
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $product_id = $request->product;
-
         $cart = session()->get('cart', []);
 
         $quantity = $request->quantity;
@@ -57,6 +58,7 @@ class CartController extends Controller
         $cart_items = count($cart);
         $msg = 'delete';
         $status = true;
-        return response()->json(compact('status', 'msg', 'cart_items'));
+        $view = view('front.products_cart', ['items' => $cart])->render();
+        return response()->json(compact('status', 'msg', 'cart_items', 'view'));
     }
 }
