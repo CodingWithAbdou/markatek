@@ -152,7 +152,7 @@
                             </div>
                             <div></div>
 
-                            <div>
+                            <div id="coupon-content">
                                 <label for="voucher"
                                     class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> فعل الكوبون
                                 </label>
@@ -261,7 +261,8 @@
                     url: "{{ route('coupon.apply') }}",
                     data: data,
                     success: function(response) {
-
+                        toastr.success(`تم خصم ${response.discount}% بنجاح`);
+                        $('#coupon-content').remove()
                     },
                     error: function(response) {}
                 });

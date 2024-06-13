@@ -4,7 +4,7 @@
     @if ($banners->count() > 0)
         <section class=" rounded-lg slider">
             @foreach ($banners as $banner)
-                <div class="relative overflow-hidden" style="max-height: calc(100vh - 79px);">
+                <div class="relative overflow-hidden" style="max-height: calc(100vh - 130px);">
                     @if ($banner->{'title_ar'} || $banner->{'description_ar'})
                         <span class="absolute  inset-0 bg-neutral-800 opacity-70"></span>
                     @endif
@@ -14,7 +14,7 @@
                         </h1>
                         <p class="text-center  mt-6">{{ $banner->{'description_ar'} }}</p>
                     </div>
-                    <img class="w-full object-cover  shadow-sm border-indigo-200" style="height: calc(100vh - 79px);"
+                    <img class="w-full object-cover  shadow-sm border-indigo-200" style="height: calc(100vh - 130px);"
                         src="{{ asset($banner->image_path) }}"alt="">
                 </div>
             @endforeach

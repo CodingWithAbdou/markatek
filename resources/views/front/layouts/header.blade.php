@@ -9,11 +9,6 @@
                             src="{{ asset(App\Models\Setting::where('setting_key', 'logo')->first()->setting_value) }}"
                             alt="ماركتك">
                     </a>
-                    <a href="{{ route('main') }}"
-                        class="flex items-center justify-center gap-1 text-neutral-800 rounded-md px-3 py-2 text-sm font-medium ms-8"
-                        aria-current="page">
-                        <span><i class='bx bx-home-alt-2 text-xl'></i></span>
-                        <span class="mt-1">الرئيسية</span></a>
                 </div>
                 {{-- @auth
                     <div class=" ml-6 block">
@@ -26,7 +21,7 @@
                 @endauth --}}
             </div>
             <div>
-                <div class="flex-1 flex  items-center justify-center gap-8">
+                <div class="flex-1 flex  items-center justify-center gap-8 mb-2">
                     <div class="pt-2 relative mx-auto text-gray-600">
                         <input
                             class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-neutral-400"
@@ -82,3 +77,12 @@
         </div>
     </div>
 </nav>
+<div class="relative z-10  bg-teal-600 py-2 shadow-sm ">
+    <div class="flex">
+        <a href="{{ route('main') }}"
+            class="flex items-center gap-1 px-4 md:px-44 rounded-md py-2 text-sm font-medium text-white transition duration-200 hover:text-gray-100"
+            aria-current="page">
+            <span><i class='bx bx-home-alt-2  '></i></span>
+            الرئيسية</a>
+    </div>
+</div>
