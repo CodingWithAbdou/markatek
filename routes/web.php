@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\ProductPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -39,7 +40,10 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 Route::post('/cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
 
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
 
+Route::post('/coupon/apply', [CheckoutController::class, 'apply'])->name('coupon.apply');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {

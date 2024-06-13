@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->unsignedBigInteger('place_id')->nullable();
             $table->string('country')->default('الكويت');
             $table->string('email')->nullable();
             $table->string('phone');
-            $table->unsignedBigInteger('coupon_id')->nullable();
-            $table->unsignedBigInteger('place_id')->nullable();
             $table->string('avenue');
             $table->string('street');
             $table->string('piece');

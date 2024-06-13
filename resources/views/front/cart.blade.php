@@ -20,8 +20,8 @@
 
                     <hr class="my-4" />
 
-                    <a href="#"
-                        class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">إكمال
+                    <a href="{{ route('checkout.index') }}"
+                        class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-indigo-500 py-1.5 font-medium text-indbg-indigo-50 hover:bg-indigo-600">إكمال
                         الطلب</a>
                 </div>
             </div>
