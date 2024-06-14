@@ -12,24 +12,29 @@
     }
 
     function showValidationError(form, index, value) {
-        console.log(index, value)
         form.find("input[name='" + index + "'][type=file]").parents('.error-here').append(
-            '<div class="invalid-feedback d-block">' + value + '</div');
-        form.find("input[name='" + index + "'][type!=file]").parent().append('<div class="invalid-feedback d-block">' +
-            value + '</div');
-        form.find("select[name='" + index + "']").parent().append('<div class="invalid-feedback d-block">' + value +
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+        form.find("input[name='" + index + "'][type!=file]").parent().append(
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+        form.find("select[name='" + index + "']").parent().append(
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value +
             '</div');
-        form.find("textarea[name='" + index + "']").parent().append('<div class="invalid-feedback d-block">' + value +
+        form.find("textarea[name='" + index + "']").parent().append(
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value +
             '</div');
         form.find("input[name='" + index + "[]'][type=file]").parents('.error-here').append(
-            '<div class="invalid-feedback d-block">' + value + '</div');
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
         form.find("input[name='" + index + "[]'][type!=file]").parent().append(
-            '<div class="invalid-feedback d-block">' + value + '</div');
-        form.find("select[name='" + index + "[]']").parent().append('<div class="invalid-feedback d-block">' + value +
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+        form.find("select[name='" + index + "[]']").parent().append(
+            '<div class="block text-xs text-red-600 invalid-feedback">' + value +
             '</div');
-        form.find("textarea[name='" + index + "[]']").parent().append('<div class="invalid-feedback d-block">' + value +
-            '</div');
+        form.find("textarea[name='" + index + "[]']").parent().append(
+            '<div class="block text-xs text-red-600 invalid-feedback">' +
+            value + '</div');
     }
+
+
 
     function HideValidationError(form) {
         form.find('.invalid-feedback').remove();

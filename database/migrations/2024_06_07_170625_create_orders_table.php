@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('coupon_id')->nullable();
-            $table->unsignedBigInteger('place_id')->nullable();
             $table->string('country')->default('الكويت');
-            $table->string('email')->nullable();
             $table->string('phone');
-            $table->string('avenue');
-            $table->string('street');
+            $table->string('email')->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable()->comment('if coupon is applied');
+            $table->unsignedBigInteger('place_id')->nullable();
             $table->string('piece');
+            $table->string('street');
+            $table->string('avenue');
             $table->string('house_number');
+            $table->text('note');
+            $table->text('coupon');
+            $table->enum('payment_method', ['knet', 'credit_card']);
+
             $table->decimal('real_cost', 8, 2);
             $table->bigInteger('coupon_discount')->default(0);
             $table->decimal('delivery_cost', 8, 2)->default(0.00);

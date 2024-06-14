@@ -43,7 +43,7 @@ Route::post('/cart/destroy', [CartController::class, 'destroy'])->name('cart.des
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
 
-Route::post('/coupon/apply', [CheckoutController::class, 'apply'])->name('coupon.apply');
+Route::post('/coupon/apply', [CheckoutController::class, 'applyCopoun'])->name('coupon.apply');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {

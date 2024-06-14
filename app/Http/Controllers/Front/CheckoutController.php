@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckoutRequest;
 use App\Models\Coupon;
 use App\Models\Place;
 use Illuminate\Http\Request;
@@ -15,12 +16,12 @@ class CheckoutController extends Controller
         return view('front.checkout', compact('places'));
     }
 
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
-        // dd($request->all());
+        dd($request->validated());
     }
 
-    public function apply(Request $request)
+    public function applyCopoun(Request $request)
     {
         $this->validate($request, [
             'coupon' => 'required|min:4|max:191|string'
