@@ -13,9 +13,18 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->unsignedBigInteger('product_id');
+            $table->string('code')->nullable();;
             $table->bigInteger('discount')->default(0.00);
             $table->boolean('status')->default(true);
+            $table->dateTime('expired_at')->nullable();
+            $table->dateTime('used_at')->nullable();
+            $table->integer('usage_limit')->default(1);
+
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -22,18 +22,20 @@ class CheckoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "country" => 'required|string|max:191',
-            "phone" => 'required|string|max:191',
-            "email" => 'required|email|max:191',
-            "place_id" => 'required|integer',
-            "piece" => 'required|string|max:191',
-            "street" => 'required|string|max:191',
-            "avenue" => 'required|string|max:191',
-            "house_number" => 'required|email|max:191',
-            "notes" => 'required|string',
-            "coupon" => 'nullable',
-            "house_number" => 'required',
-            "paymanet-method" => 'required',
+            // "country" => 'required|string|max:191',
+            // "phone" => 'required|string|max:191',
+            // "email" => 'nullable|email|max:191',
+            // "place_id" => 'required|integer',
+            // "piece" => 'required|string|max:191',
+            // "street" => 'required|string|max:191',
+            // "avenue" => 'required|string|max:191',
+            // "house_number" => 'required|email|max:191',
+            // "notes" => 'required|string',
+            // "coupon" => 'nullable',
+            // "house_number" => 'required',
+            // "paymanet-method" => 'required',
+            // "terms" => 'required',
+
         ];
     }
 }

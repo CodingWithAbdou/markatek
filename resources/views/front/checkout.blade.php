@@ -100,7 +100,8 @@
                                 <select id="select-city-input-3" name="place_id"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 h-12 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500">
                                     @foreach ($places as $place)
-                                        <option selected>{{ $place->name }}</option>
+                                        <option value="{{ $place->id }}" {{ $loop->index == 0 ? 'selected' : '' }}>
+                                            {{ $place->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -141,8 +142,6 @@
                                     placeholder="أدخل رقم المنزل" />
                             </div>
 
-
-
                             <div>
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ملاحظة</label>
@@ -173,23 +172,25 @@
                         <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">المجموع</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">$8,094.00</dd>
+                                <dd class="text-base font-medium text-gray-900 dark:text-white">{{ $sub_total }}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">تكلفة التوصيل</dt>
-                                <dd class="text-base font-medium text-green-500">0</dd>
+                                <dd class="text-base font-medium text-red-500">{{ $places->first()->delivery_price }}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">كود خصم</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">$99</dd>
+                                <dd id="coupon-cost" class="text-base font-medium text-green-500 dark:text-white">0</dd>
                             </dl>
 
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-bold text-gray-900 dark:text-white">الإجمالي</dt>
-                                <dd class="text-base font-bold text-gray-900 dark:text-white">$8,392.00</dd>
+                                <dd id="total-cost" class="text-base font-bold text-gray-900 dark:text-white">
+                                    {{ $total }}
+                                </dd>
                             </dl>
 
                             <div class="py-8">
@@ -272,11 +273,22 @@
                     data: data,
                     success: function(response) {
                         toastr.success(`تم خصم ${response.discount}% بنجاح`);
-                        $('#coupon-content').remove()
+                        $('#coupon-content').attr('disabled', 'disabled');
+                        $("#coupon-cost").html(response.discount);
+                        freshTotal({{ $places->first()->delivery_price }})
                     },
                     error: function(response) {}
                 });
             })
+
+            function freshTotal(delivery_pricee) {
+                let total = 0;
+                let sub_total = {{ $sub_total }};
+                let delivery_price = delivery_pricee;
+                let coupon = $('#coupon-cost').html();
+                total = sub_total + delivery_price - coupon;
+                $('#total-cost').html(total);
+            }
         });
     </script>
 @endpush

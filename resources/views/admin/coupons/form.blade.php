@@ -38,13 +38,21 @@
                         <x-inputs.text label="{{ __('dash.code') }}" name="code" required=""
                             data="{{ isset($data) ? $data->code : '' }}" />
 
+                        <x-inputs.select label="{{ __('dash.product') }}" name="product_id" required=""
+                            data="{{ isset($data) ? $data->product_id : '' }}" :list="App\Models\Product::all()" optionValue="id"
+                            optionName="name" />
+
                         <x-inputs.number label="{{ __('dash.discount') }}" name="discount" required=""
                             data="{{ isset($data) ? $data->discount : '' }}" />
 
-                        <x-inputs.select label="{{ __('dash.status') }}" name="status" required=""
-                            data="{{ isset($data) ? $data->status : '' }}" :list="[['value' => 1, 'name' => 'نشظ'], ['value' => 0, 'name' => 'غير نشظ']]" optionValue="value"
-                            optionName="name" />
+                        <x-inputs.number label="{{ __('dash.max_usage') }}" name="usage_limit" required=""
+                            data="{{ isset($data) ? $data->usage_limit : '' }}" />
 
+                        <x-inputs.date label="{{ __('dash.used_at') }}" name="used_at" required=""
+                            data="{{ isset($data) ? substr($data->used_at, 0, 10) : '' }}" />
+
+                        <x-inputs.date label="{{ __('dash.expired_at') }}" name="expired_at" required=""
+                            data="{{ isset($data) ? substr($data->expired_at, 0, 10) : '' }}" />
                     </div>
                 </div>
             </div>
