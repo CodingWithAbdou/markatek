@@ -39,7 +39,7 @@
                 <tbody class="fw-bold text-gray-800">
                     @foreach ($data as $record)
                         <tr>
-                            <td>{{ $record->name }}</td>
+                            <td>{{ $record->{'name_' . getLocale()} }}</td>
                             <td>{{ $record->delivery_price }}</td>
                             <td>{{ $record->created_at }}</td>
                             <x-action-btn.places :record="$record" />

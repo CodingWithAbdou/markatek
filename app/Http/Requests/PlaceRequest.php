@@ -22,7 +22,8 @@ class PlaceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name_ar' => 'required',
+            'name_en' => 'required',
             'delivery_price' => 'required',
         ];
     }

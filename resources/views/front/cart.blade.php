@@ -3,9 +3,19 @@
 
 
 @section('content')
-    <section class="py-12 max-w-full mx-auto px-4 md:px-12">
-        <div class="h-screen  pt-20">
-            <h1 class="mb-10 text-center text-2xl font-bold">عربة التسوق</h1>
+    <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
+        <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span>عربة التسوق</h2>
+            <div class="pt-8">
+                <a class="hover:text-primary" href="{{ route('main') }}">الرئسية</a>
+                /
+                <span>عربة التسوق</span>
+            </div>
+        </div>
+    </section>
+    <section class="max-w-screen-2xl mx-auto px-4 md:px-12">
+        <div class="">
+            <h1 class="mb-10 text-center text-2xl font-bold"></h1>
             <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:gap-6 xl:px-0">
                 <div id="items" class="rounded-lg md:w-2/3">
                     @include('front.products_cart')
@@ -19,9 +29,8 @@
                     </div>
 
                     <hr class="my-4" />
-
                     <a href="{{ route('checkout.index') }}"
-                        class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-indigo-500 py-1.5 font-medium text-indbg-indigo-50 hover:bg-indigo-600">إكمال
+                        class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-primary py-1.5 font-medium ">إكمال
                         الطلب</a>
                 </div>
             </div>

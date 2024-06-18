@@ -3,13 +3,21 @@
 
 
 @section('content')
-    <section class="py-8  dark:bg-gray-900 md:py-16">
-        <div class="flex items-center  gap-2 text-neutral-800 w-fit mx-auto text-5xl mb-16 relative ">
-            <i class='bx bx-category-alt'></i>
-            <h2 class="">تكملة الطلب</h2>
+    <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
+        <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span>تكملة الطلب</h2>
+            <div class="pt-8">
+                <a class="hover:text-primary" href="{{ route('main') }}">الرئسية</a>
+                /
+                <a class="hover:text-primary" href="{{ route('cart.index') }}">العربة</a>
+                /
+                <span>تكملة الطلب</span>
+            </div>
         </div>
+    </section>
+    <section class="pb-8  dark:bg-gray-900 ">
         <form id="checkout-form" action="{{ route('checkout.store') }}" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-            <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16 bg-white  p-12  border shadow-md rounded-xl">
+            <div class=" lg:flex lg:items-start lg:gap-12 xl:gap-16 bg-white  p-12  border shadow-md rounded-xl">
                 <div class="min-w-0 flex-1 space-y-8">
                     <div class="space-y-4">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -101,13 +109,14 @@
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 h-12 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500">
                                     @foreach ($places as $place)
                                         <option value="{{ $place->id }}" {{ $loop->index == 0 ? 'selected' : '' }}>
-                                            {{ $place->name }}</option>
+                                            {{ $place->{'name_' . getLocale()} }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div>
-                                <label for="your_name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                <label for="your_name"
+                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                                     قطعة </label>
                                 <input type="text" id="your_name" name="piece"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
@@ -160,7 +169,7 @@
                                         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                         placeholder="أدخل برومو كود" />
                                     <button type="button" id="btn-apply"
-                                        class="flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indbg-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indbg-indigo-800">تطبيق</button>
+                                        class="flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">تطبيق</button>
                                 </div>
                             </div>
                         </div>
@@ -195,14 +204,14 @@
 
                             <div class="py-8">
                                 <div class="flex items-center mb-4">
-                                    <input id="default-radio-1" type="radio" value="" name="paymanet_method"
+                                    <input id="default-radio-1" type="radio" value="1" name="paymanet-method"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-radio-1"
                                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">كي نت</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input checked id="default-radio-2" type="radio" value=""
-                                        name="payment_method"
+                                    <input checked id="default-radio-2" type="radio" value="2"
+                                        name="paymanet-method"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-radio-2"
                                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">فيزا / ماستر
@@ -220,7 +229,7 @@
                         </div>
 
                         <button
-                            class="flex mt-12 items-center w-full justify-center rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indbg-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indbg-indigo-800">إتمام
+                            class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">إتمام
                             الطلب</button>
                     </div>
                 </div>
@@ -272,12 +281,18 @@
                     url: "{{ route('coupon.apply') }}",
                     data: data,
                     success: function(response) {
-                        toastr.success(`تم خصم ${response.discount}% بنجاح`);
-                        $('#coupon-content').attr('disabled', 'disabled');
+                        if (response.msg == 'coupon_applied') {
+                            toastr.success(`تم خصم ${response.discount} بنجاح`);
+                        } else {
+                            toastr.error('الكوبون غير صالح');
+                        }
+                        $('#coupon_value').attr('disabled', 'disabled');
                         $("#coupon-cost").html(response.discount);
                         freshTotal({{ $places->first()->delivery_price }})
                     },
-                    error: function(response) {}
+                    error: function(response) {
+                        toastr.success(`تم خصم ${response.discount}% بنجاح`);
+                    }
                 });
             })
 

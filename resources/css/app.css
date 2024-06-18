@@ -7,6 +7,15 @@
         @apply mx-auto max-w-7xl px-2 sm:px-6 lg:px-8;
     }
 }
+
+@layer base {
+    :root {
+        --color-primary: 13 148 136;
+        --color-secondary: #ffffff;
+        /* ... */
+    }
+}
+
 @layer utilities {
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
@@ -18,20 +27,25 @@ body {
     font-family: "Noto Kufi Arabic", sans-serif;
 }
 
-:root {
-    --main-color: #f9fafb;
-    --secound-color: #404040;
-}
-
-.toast.toast-success {
-    z-index: 99999 !important;
-}
+/* slick */
 
 .slick-dots {
     bottom: 25px;
 }
 .slick-dotted.slick-slider {
     margin-bottom: -7px;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+    color: #222;
+}
+.slick-dots li.slick-active button:before {
+    color: rgb(var(--color-primary));
+}
+
+.toast.toast-success {
+    z-index: 99999 !important;
 }
 
 .main_color_t {

@@ -23,20 +23,22 @@ class CheckoutController extends Controller
 
     public function store(CheckoutRequest $request)
     {
-        $data = $request->except(['coupon', 'terms', 'real_cost', 'coupon_discount', 'delivery_cost', 'total_cost']);
+        // $data = $request->except(['coupon', 'terms', 'real_cost', 'coupon_discount', 'delivery_cost', 'total_cost']);
+        // dd($request->coupon);
+        $data = $request->validated();
+        unset($data['coupon'], $data['terms']);
+
         $session = collect(session()->get('cart', []));
         $productIds = $session->pluck('id')->toArray();
         $quantities = $session->pluck('quantity')->toArray();
-
         $totalCost = 0;
         $products = Product::whereIn('id', $productIds)->get();
         for ($i = 0; $i < count($products); $i++) {
             $totalCost += $products[$i]->price * $quantities[$i];
         }
+        $data['real_cost'] = $totalCost;
         $data['delivery_cost'] = Place::find($data['place_id'])->delivery_price;
         // $data['coupon_discount'] =
-        $data['coupon_name'] =
-            dd($totalCost);
     }
 
     public function applyCopoun(Request $request)
@@ -45,15 +47,16 @@ class CheckoutController extends Controller
             'coupon' => 'required|min:4|max:191|string'
         ]);
         $coupon = Coupon::where('code', $request->coupon)->first();
-
-        if ($coupon && $coupon->status == 1 && $coupon->code === $request->coupon) {
+        $session = collect(session()->get('cart', []));
+        $productIds = $session->pluck('id')->toArray();
+        if ($coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
+            $product_price = Product::find($coupon->product_id)->first()->price;
             $msg = 'coupon_applied';
-            $discount = $coupon->discount;
+            $discount = round($product_price /  $coupon->discount);
         } else {
             $msg = 'coupon_not_applied';
             $discount = 0;
         }
-
         $status = 'success';
         return response()->json(
             compact('status', 'msg', 'discount')

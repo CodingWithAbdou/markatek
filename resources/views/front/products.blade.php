@@ -1,15 +1,21 @@
 @extends('front.layouts.app')
 
 @section('content')
-    <section class="py-12 max-w-full mx-auto px-4 md:px-12">
-        <div class="flex items-center  gap-2 text-neutral-800 w-fit mx-auto text-5xl mb-16 relative ">
-            <i class='bx bx-category-alt'></i>
-            <h2 class="">المنتجات</h2>
+    <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
+        <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span> منتجات </span> {{ $category->name }}</h2>
+            <div class="pt-8">
+                <a class="hover:text-primary" href="{{ route('main') }}">الرئسية</a>
+                /
+                <span>المنتجات</span>
+            </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    </section>
+    <section class="max-w-screen-2xl mx-auto p-4 md:px-12 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3   gap-4 ">
             @forelse ($category->products as $product)
                 <div
-                    class="relative z-40 col-span-1 flex max-w-md overflow-hidden bg-white rounded-lg shadow border border-neutral-200 ">
+                    class="relative z-40 col-span-1 flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg border border-neutral-200 ">
                     <div class="w-1/3 bg-cover bg-gray-300 border-l  border-neutral-200 ">
                         <img class="w-full h-full object-cover " src="{{ asset($product->cover_path) }}" width="400"
                             alt="">
@@ -37,14 +43,14 @@
                                 <div id="input-{{ $product->id }}"
                                     class="{{ isset($cart["$product->id"]) ? 'flex' : 'hidden' }} items-center justify-center border-gray-100">
                                     <span
-                                        class="desc_product cursor-pointer rounded-r  py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                                        class="desc_product cursor-pointer rounded-r  py-1 px-3.5 duration-100 hover:bg-primary hover:text-white">
                                         - </span>
                                     <input class="count_product h-8 w-8 border  bg-white text-center text-xs outline-none"
                                         type="number"
                                         value="{{ isset($cart["$product->id"]) ? $cart["$product->id"]['quantity'] : '1' }}"
                                         min="1" disabled />
                                     <span
-                                        class="asc_product  cursor-pointer rounded-l  py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                                        class="asc_product  cursor-pointer rounded-l  py-1 px-3 duration-100 hover:bg-primary hover:text-white">
                                         + </span>
                                 </div>
                             </form>
@@ -53,7 +59,7 @@
                 </div>
 
             @empty
-                <div class="col-span-3 px-4 py-3 leading-normal text-indigo-700 border border-indigo-500 rounded-lg"
+                <div class="col-span-3 px-4 py-3 leading-normal text-primary border border-primary rounded-lg"
                     role="alert">
                     <p>لا توجد منتجات تحت هذا التصنيف</p>
                 </div>

@@ -36,7 +36,7 @@
                         <th class="min-w-150px">{{ __('dash.discount') }}</th>
                         <th class="min-w-150px">{{ __('dash.status') }}</th>
                         <th class="min-w-150px">{{ __('dash.used_at') }}</th>
-                        <th class="min-w-150px">{{ __('dash.expired_atس') }}</th>
+                        <th class="min-w-150px">{{ __('dash.expired_at') }}</th>
                         <th class="min-w-70px no-export">{{ __('dash.actions') }}</th>
                     </tr>
                 </thead>
