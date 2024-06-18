@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->unsignedBigInteger('coupon_id')->nullable()->comment('if coupon is applied');
             $table->unsignedBigInteger('place_id')->nullable();
-            $table->string('piece');
-            $table->string('street');
-            $table->string('avenue');
-            $table->string('house_number');
-            $table->text('note');
-            $table->text('coupon');
+            $table->string('piece')->nullable();
+            $table->string('street')->nullable();
+            $table->string('avenue')->nullable();
+            $table->string('house_number')->nullable();
+            $table->text('note')->nullable()->nullable();
+            $table->text('coupon')->nullable();
             $table->enum('payment_method', ['knet', 'credit_card']);
 
             $table->decimal('real_cost', 8, 2);

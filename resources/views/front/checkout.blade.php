@@ -86,7 +86,7 @@
                                     <div class="relative w-full">
                                         <input type="text" id="phone-input" name="phone"
                                             class="z-20 block w-full rounded-e-lg border border-s-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:border-s-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500"
-                                            pattern="" placeholder="123-456-7890" />
+                                            placeholder="123-456-7890" />
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
                             <div>
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ملاحظة</label>
-                                <textarea id="message" rows="4" name="notes"
+                                <textarea id="message" rows="4" name="note"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="أدخل ملاحظة..."></textarea>
                             </div>
@@ -204,14 +204,14 @@
 
                             <div class="py-8">
                                 <div class="flex items-center mb-4">
-                                    <input id="default-radio-1" type="radio" value="1" name="paymanet-method"
+                                    <input id="default-radio-1" type="radio" value="knet" name="payment_method"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-radio-1"
                                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">كي نت</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input checked id="default-radio-2" type="radio" value="2"
-                                        name="paymanet-method"
+                                    <input checked id="default-radio-2" type="radio" value="credit_card"
+                                        name="payment_method"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-radio-2"
                                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">فيزا / ماستر
@@ -286,7 +286,8 @@
                         } else {
                             toastr.error('الكوبون غير صالح');
                         }
-                        $('#coupon_value').attr('disabled', 'disabled');
+                        $('#coupon_value').attr('readonly', '');
+                        $('#btn-apply').attr('disabled', 'disabled');
                         $("#coupon-cost").html(response.discount);
                         freshTotal({{ $places->first()->delivery_price }})
                     },
