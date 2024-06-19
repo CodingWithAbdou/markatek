@@ -51,6 +51,4 @@ class FatoorahServices
         $response  = $this->buildRequest('v2/getPaymentStatus', 'POST', $data);
         return $response;
     }
-
-
 }

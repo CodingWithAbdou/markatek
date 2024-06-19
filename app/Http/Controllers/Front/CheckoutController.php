@@ -61,7 +61,7 @@ class CheckoutController extends Controller
         }
         $input['total_cost'] = $input['real_cost'] + $input['delivery_cost'] - $input['coupon_discount'];
 
-        if ($input['paymanet-method'] == 'credit_card')  $paymentMethodId = 2;
+        if ($input['payment_method'] == 'credit_card')  $paymentMethodId = 2;
         else $paymentMethodId = 1;
 
         $data = [
@@ -78,17 +78,27 @@ class CheckoutController extends Controller
             if ($response['IsSuccess'] == true) {
                 $InvoiceId  = $response['Data']['InvoiceId']; // save this id with your order table
                 $InvoiceURL = $response['Data']['PaymentURL'];
+                $input['InvoiceId'] = $InvoiceId;
             }
             $msg = 'change_url';
             $url = $response['Data']['PaymentURL'];
             $status = 'success';
-            return response()->json(compact('status', 'msg', 'url'));
+        } else {
+            $msg = 'dont_change_url';
+            $url = '/';
+            $status = 'error';
         }
+        $input['unique_id'] = session()->get('unique_id');
+        if (Order::where('unique_id', $input['unique_id'])->exists() and Order::where('unique_id', $input['unique_id'])->where('payment_status', 'unpaid')->exists()) {
+            Order::where('unique_id', $input['unique_id'])->delete();
+        }
+        Order::create($input);
+        return response()->json(compact('status', 'msg', 'url'));
     }
 
     public function error(Request $request)
     {
-        return $request;
+        return view('front.error_paid');
     }
 
     public function callback(Request $request)
@@ -98,24 +108,22 @@ class CheckoutController extends Controller
             'KeyType' => 'paymentId'
         ];
         $response = $this->fatoorahServices->getPaymentStatus($data);
-        return $response;
-        if (!isset($response->Data->InvoiceId)) {
+        if (!isset($response['Data']['InvoiceId'])) {
             return response()->json(["error" => 'error', 'status' => false], 404);
         }
-        $InvoiceId =  $response->Data->InvoiceId; // get your order by payment_id
-        if ($response->IsSuccess == true) {
-            // if ($response->Data->InvoiceStatus == "Paid") //||$response->Data->InvoiceStatus=='Pending'
-            // if ($your_order_total_price == $response->Data->InvoiceValue) {
+        // return $response;
 
-            /**
-             *
-             * The payment has been completed successfully. You can change the status of the order
-             *
-             */
-            // }
+        $InvoiceId = $response['Data']['InvoiceId'];
+        if ($response['IsSuccess'] == "true" and Order::where('InvoiceId', $InvoiceId)->exists() and Order::where('InvoiceId', $InvoiceId)->where('payment_status', 'unpaid')->exists()) {
+            $order = Order::where('InvoiceId', $InvoiceId)->first();
+            $order->update([
+                'PaymentId' =>  $response['Data']['InvoiceTransactions'][0]['PaymentId'],
+                'TransactionDate' =>  $response['Data']['InvoiceTransactions'][0]['TransactionDate'],
+                'payment_status' => 'paid'
+            ]);
         }
 
-        // return response()->json(["error" => 'error', 'status' => false], 404);
+        return view('front.success_paid', compact('order'));
     }
 
 

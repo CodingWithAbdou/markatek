@@ -25,12 +25,17 @@ return new class extends Migration
             $table->text('note')->nullable()->nullable();
             $table->text('coupon')->nullable();
             $table->enum('payment_method', ['knet', 'credit_card']);
+            $table->text('InvoiceId')->nullable();
+            $table->text('PaymentId')->nullable();
+            $table->text('unique_id')->nullable();
+            $table->date('TransactionDate')->nullable();
 
             $table->decimal('real_cost', 8, 2);
             $table->bigInteger('coupon_discount')->default(0);
             $table->decimal('delivery_cost', 8, 2)->default(0.00);
             $table->decimal('total_cost', 8, 2);
             $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
+            $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->timestamps();
         });
     }
