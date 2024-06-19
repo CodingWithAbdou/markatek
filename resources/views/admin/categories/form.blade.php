@@ -40,11 +40,10 @@
                 </div>
                 <div class="card-body py-0">
                     <div class="row">
-                        <x-inputs.text label="{{ __('dash.name') }}" name="name" required=""
-                            data="{{ isset($data) ? $data->name : '' }}" />
-
-                        <x-inputs.text label="{{ __('dash.description') }}" name="description" required=""
-                            data="{{ isset($data) ? $data->description : '' }}" />
+                        <x-inputs.text label="{{ __('dash.name') . ' AR' }}" name="name_ar" required=""
+                            data="{{ isset($data) ? $data->name_ar : '' }}" />
+                        <x-inputs.text label="{{ __('dash.name') . ' En' }}" name="name_en" required=""
+                            data="{{ isset($data) ? $data->name_en : '' }}" />
                     </div>
                 </div>
             </div>

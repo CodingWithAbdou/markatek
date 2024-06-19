@@ -40,14 +40,19 @@
                 </div>
                 <div class="card-body py-0">
                     <div class="row">
-                        <x-inputs.text label="{{ __('dash.name') }}" name="name" required=""
-                            data="{{ isset($data) ? $data->name : '' }}" />
+                        <x-inputs.text label="{{ __('dash.name') . ' AR' }}" name="name_ar" required=""
+                            data="{{ isset($data) ? $data->name_ar : '' }}" />
+                        <x-inputs.text label="{{ __('dash.name') . ' Em' }}" name="name_en" required=""
+                            data="{{ isset($data) ? $data->name_en : '' }}" />
                         <x-inputs.select label="{{ __('dash.categories') }}" name="category_id" required=""
                             data="{{ isset($data) ? $data->category_id : '' }}" :list="\App\Models\Category::all()" optionValue="id"
                             optionName="name" />
 
-                        <x-inputs.textarea label="{{ __('dash.description') }}" name="description" required=""
-                            data="{{ isset($data) ? $data->description : '' }}" />
+                        <x-inputs.textarea label="{{ __('dash.description') . ' AR' }}" name="description_ar"
+                            required="" data="{{ isset($data) ? $data->description_ar : '' }}" />
+
+                        <x-inputs.textarea label="{{ __('dash.description') . ' En' }}" name="description_en"
+                            required="" data="{{ isset($data) ? $data->description_en : '' }}" />
 
                         <x-inputs.number label="{{ __('dash.price') }}" name="price" required=""
                             data="{{ isset($data) ? $data->price : '' }}" />
@@ -85,7 +90,6 @@
                         {{ __('dash.please wait') }}</span>
                 </button>
             </div>
-
         </div>
 
     </form>

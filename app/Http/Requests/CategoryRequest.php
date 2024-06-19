@@ -26,7 +26,8 @@ class CategoryRequest extends FormRequest
         $methodName = explode('.', $routeName)[2];
         $validator = $methodName == 'update' ? 'nullable' : 'required';
         return [
-            'name' => 'required',
+            'name_ar' => 'required',
+            'name_en' => 'required',
             'image_path' => "$validator|max:" . getMaxSize() . "|mimes:" . acceptImageType(0),
             'description' => 'nullable',
         ];

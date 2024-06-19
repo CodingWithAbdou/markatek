@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('setting_key');
             $table->string('setting_value');
             $table->string('title_ar');
+            $table->string('title_en');
             $table->string('type_id')->default('1')->comment('1 input, 2 image , 3 textarea, 4 manual');
             $table->string('category')->default('1')->comment('1 basic, 2 contact info, 3 social media, 4 other, 5 services');
             $table->integer('order_by');

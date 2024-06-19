@@ -26,10 +26,12 @@ class ProductRequest extends FormRequest
         $validator = $methodName == 'update' ? 'nullable' : 'required';
 
         return [
-            'name' => 'required',
+            'name_ar' => 'required',
+            'name_en' => 'required',
             'category_id' => 'required',
             'cover_path' =>   $validator   . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
-            'description' => 'nullable',
+            'description_ar' => 'nullable',
+            'description_en' => 'nullable',
             'price' => 'required|numeric|max:9999999.99',
             'quantity' => 'required|numeric',
             'images[]' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),

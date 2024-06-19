@@ -16,6 +16,7 @@ return new class extends Migration
             $table->tinyInteger("parent_id");
             $table->string("route_key")->nullable();
             $table->string('title_ar');
+            $table->string('title_en');
             $table->tinyInteger("is_menu");
             $table->string('icon');
             $table->integer('order_by')->nullable();;

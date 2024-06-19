@@ -38,12 +38,13 @@
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                     @foreach ($data as $record)
+                        \
                         <tr>
                             <td>
                                 <div class="symbol symbol-50px bg-dark p-3"><img src="{{ asset($record->image_path) }}"
                                         alt="" class="object-cover"></div>
                             </td>
-                            <td>{{ $record->name }}</td>
+                            <td>{{ $record->{'name_' . getLocale()} }}</td>
                             <td>{{ $record->created_at }}</td>
                             <x-action-btn.categories :record="$record" />
                         </tr>

@@ -39,14 +39,16 @@
                     </div>
                 </div>
                 <div class="card-body py-0">
-                    <x-inputs.text label="{{ __('dash.title') . ' Ar' }}" name="title_ar" required=""
-                        data="{{ isset($data) ? $data->title_ar : '' }}" />
-                    {{-- <x-inputs.text label="{{ __('dash.title') . ' En' }}" name="title_en" required=""
-                        data="{{ isset($data) ? $data->title_en : '' }}" /> --}}
-                    <x-inputs.text label="{{ __('dash.description') . ' Ar' }}" name="description_ar" required=""
-                        data="{{ isset($data) ? $data->description_ar : '' }}" />
-                    {{-- <x-inputs.text label="{{ __('dash.description') . ' En' }}" name="description_en" required=""
-                        data="{{ isset($data) ? $data->description_en : '' }}" /> --}}
+                    <div class="row">
+                        <x-inputs.text label="{{ __('dash.title') . ' Ar' }}" name="title_ar" required=""
+                            data="{{ isset($data) ? $data->title_ar : '' }}" />
+                        <x-inputs.text label="{{ __('dash.title') . ' En' }}" name="title_en" required=""
+                            data="{{ isset($data) ? $data->title_en : '' }}" />
+                        <x-inputs.textarea label="{{ __('dash.description') . ' Ar' }}" name="description_ar"
+                            required="" data="{{ isset($data) ? $data->description_ar : '' }}" />
+                        <x-inputs.textarea label="{{ __('dash.description') . ' En' }}" name="description_en"
+                            required="" data="{{ isset($data) ? $data->description_en : '' }}" />
+                    </div>
                 </div>
             </div>
 

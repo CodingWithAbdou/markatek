@@ -26,9 +26,9 @@ class BaanerRequest extends FormRequest
         $validator = $methodName == 'update' ? 'nullable' : 'required';
 
         return [
-            // 'title_en' => 'nullable',
+            'title_en' => 'nullable',
             'title_ar' => 'nullable',
-            // 'description_en' => 'nullable',
+            'description_en' => 'nullable',
             'description_ar' => 'nullable',
             'image_path' => $validator . '|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];

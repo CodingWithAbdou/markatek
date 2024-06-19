@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('country')->default('الكويت');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->unsignedBigInteger('coupon_id')->nullable()->comment('if coupon is applied');
             $table->unsignedBigInteger('place_id')->nullable();

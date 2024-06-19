@@ -21,6 +21,7 @@ class CheckoutController extends Controller
 
     public function index()
     {
+
         $places = Place::orderBy('order_by', 'asc')->get();
         $sub_total = collect(session()->get('cart', []))->sum(function ($item) {
             return $item['price'] * $item['quantity'];
@@ -33,7 +34,6 @@ class CheckoutController extends Controller
     {
         $input = $request->validated();
         unset($input['terms']);
-
         $session = collect(session()->get('cart', []));
         $productIds = $session->pluck('id')->toArray();
         $quantities = $session->pluck('quantity')->toArray();
@@ -108,10 +108,9 @@ class CheckoutController extends Controller
             'KeyType' => 'paymentId'
         ];
         $response = $this->fatoorahServices->getPaymentStatus($data);
-        if (!isset($response['Data']['InvoiceId'])) {
-            return response()->json(["error" => 'error', 'status' => false], 404);
-        }
-        // return $response;
+        // if (!isset($response['Data']['InvoiceId'])) {
+        //     return response()->json(["error" => 'error', 'status' => false], 404);
+        // }
 
         $InvoiceId = $response['Data']['InvoiceId'];
         if ($response['IsSuccess'] == "true" and Order::where('InvoiceId', $InvoiceId)->exists() and Order::where('InvoiceId', $InvoiceId)->where('payment_status', 'unpaid')->exists()) {
@@ -121,16 +120,10 @@ class CheckoutController extends Controller
                 'TransactionDate' =>  $response['Data']['InvoiceTransactions'][0]['TransactionDate'],
                 'payment_status' => 'paid'
             ]);
+            session()->flush();
+            return view('front.success_paid', compact('order'));
         }
-
-        return view('front.success_paid', compact('order'));
     }
-
-
-
-
-
-
 
 
     public function applyCopoun(Request $request)
