@@ -37,7 +37,17 @@
             <!--begin::Toolbar wrapper-->
             <div class="d-flex align-items-stretch flex-shrink-0">
 
-
+                <div class="d-flex align-items-center ms-1 ms-lg-3">
+                    @if (app()->getLocale() == 'ar')
+                        <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
+                            href="{{ route('lang.switchLang', 'en') }}">EN
+                        </a>
+                    @else
+                        <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
+                            href="{{ route('lang.switchLang', 'ar') }}">AR
+                        </a>
+                    @endif
+                </div>
                 <!--begin::User menu-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->

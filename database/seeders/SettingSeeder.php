@@ -107,5 +107,36 @@ class SettingSeeder extends Seeder
             "category" => "3",
             "order_by" => "1",
         ]);
+        Setting::create([
+            "setting_key" => "website_name_en",
+            "setting_value" => "markatak",
+            "title_ar" => "اسم الموقع",
+            "title_en" => "Website Name",
+            "type_id" => "1",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+
+
+        Setting::create([
+            "setting_key" => "description_en",
+            "setting_value" => "11",
+            "title_ar" => " وصف الموقع ",
+            "title_en" => " Website Description ",
+            "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+
+
+        Setting::create([
+            "setting_key" => "footer_description_en",
+            "setting_value" => "test",
+            "title_ar" => "وصف الفوتر ",
+            "title_en" => "Footer Description",
+            "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
     }
 }

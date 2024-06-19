@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switchLang');
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
 Route::get('show/{category}/products', [ProductPageController::class, 'products'])->name('product.index');
