@@ -196,7 +196,24 @@ return [
     */
 
     'attributes' => [
-        'name' => 'Name'
+        'name' => 'Name',
+        'name_ar' => 'Arabic Name',
+        'name_en' => 'English Name',
+        'image_path' => 'Image',
+        'cover_path' => 'Image',
+        'category_id' => 'Category',
+        'price' => 'Price',
+        'quantity' => 'Quantity',
+        'delivery_price' => 'Delivery Price',
+        'code' => 'Code',
+        'product_id' => 'Product',
+        'discount' => 'Discount',
+        'usage_limit' => 'Usage Limit',
+        'used_at' => 'Start of Usage',
+        'expired_at' => 'End of Usage',
+        'email' => 'Email',
+        'password' => 'Password',
+        'password_confirmation' => 'Password Confirmation',
 
     ],
 

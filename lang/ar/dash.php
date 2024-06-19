@@ -73,4 +73,16 @@ return [
     'banners' => 'البنرات',
     'message' => 'عرض',
     'Social Media' => 'حسابات التواصل الاجتماعي',
+
+
+    'password_confirmation' => 'تأكيد كلمة المرور',
+    'password' => 'كلمة المرور',
+    'used_at' => 'بداية العمل',
+    'expired_at' => 'انتهاء العمل',
+    'product' => 'منتج',
+    'max_usage' => 'مرات الاستخدام',
+    'message' => 'عرض',
+    'message' => 'عرض',
+    'message' => 'عرض',
+    'message' => 'عرض',
 ];

@@ -73,4 +73,12 @@ return [
     'banners' => 'Banners',
     'message' => 'Message',
     'Social Media' => 'Social Media Accounts',
+
+    'password_confirmation' => 'Password Confirmation',
+    'password' => 'Password',
+    'used_at' => 'Start Date',
+    'expired_at' => 'End Date',
+    'product' => 'Product',
+    'max_usage' => 'Max Usage',
+    'message' => 'Message',
 ];

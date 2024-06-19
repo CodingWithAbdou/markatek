@@ -39,7 +39,7 @@
                                                 </div>
                                             @endif
                                             <h3 class="mx-4">
-                                                {{ $item->name ?? 'oke' }}
+                                                {{ $item->{'name_' . getLocale()} }}
                                             </h3>
                                         </div>
                                         <div class="card-toolbar">

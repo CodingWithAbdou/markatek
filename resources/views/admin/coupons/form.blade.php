@@ -40,9 +40,9 @@
 
                         <x-inputs.select label="{{ __('dash.product') }}" name="product_id" required=""
                             data="{{ isset($data) ? $data->product_id : '' }}" :list="App\Models\Product::all()" optionValue="id"
-                            optionName="name" />
+                            optionName="{{ 'name_' . getLocale() }}" />
 
-                        <x-inputs.number label="{{ __('dash.discount') }}" name="discount" required=""
+                        <x-inputs.number label="{{ __('dash.discount') . '%' }}" name="discount" required=""
                             data="{{ isset($data) ? $data->discount : '' }}" />
 
                         <x-inputs.number label="{{ __('dash.max_usage') }}" name="usage_limit" required=""

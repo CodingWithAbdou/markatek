@@ -196,8 +196,24 @@ return [
     */
 
     'attributes' => [
-        'name' => 'الإسم'
-        
+        'name' => 'الإسم',
+        'name_ar' => ' الإسم العربي',
+        'name_en' => 'الإسم الإنجليزي',
+        'image_path' => 'الصورة',
+        'cover_path' => 'الصورة',
+        'category_id' => 'التصنيف',
+        'price' => 'السعر',
+        'quantity' => 'الكمية',
+        'delivery_price' => 'سعر التوصيل',
+        'code' => 'الكود',
+        'product_id' => 'المنتج',
+        'discount ' => 'التخفيض',
+        'usage_limit' => 'عدد الإستعملات',
+        'used_at' => 'بداية الإستعمال',
+        'expired_at' => 'نهاية الإستعمال',
+        'email' => 'الايميل',
+        'password' => 'كلمة المرور',
+        'password_confirmation' => 'تاكيد كلمة المرور',
     ],
 
 ];

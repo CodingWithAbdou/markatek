@@ -46,7 +46,7 @@
                             data="{{ isset($data) ? $data->name_en : '' }}" />
                         <x-inputs.select label="{{ __('dash.categories') }}" name="category_id" required=""
                             data="{{ isset($data) ? $data->category_id : '' }}" :list="\App\Models\Category::all()" optionValue="id"
-                            optionName="name" />
+                            optionName="{{ 'name_' . getLocale() }}" />
 
                         <x-inputs.textarea label="{{ __('dash.description') . ' AR' }}" name="description_ar"
                             required="" data="{{ isset($data) ? $data->description_ar : '' }}" />
