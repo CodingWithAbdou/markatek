@@ -37,6 +37,7 @@
                     <div class="row">
                         <x-inputs.text label="{{ __('dash.name') . ' AR' }}" name="name_ar" required=""
                             data="{{ isset($data) ? $data->name_ar : '' }}" />
+                            
                         <x-inputs.text label="{{ __('dash.name') . ' EN' }}" name="name_en" required=""
                             data="{{ isset($data) ? $data->name_en : '' }}" />
 

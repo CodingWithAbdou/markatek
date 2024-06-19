@@ -255,7 +255,10 @@
 
                     data: new FormData(this),
                     success: function(response) {
-                        toastr.success('تمت عملية الشراء بنجاح');
+                        // toastr.success('تمت عملية الشراء بنجاح');
+                        if (response.msg == 'change_url') {
+                            window.location.href = response.url;
+                        }
                     },
                     error: function(response) {
                         let array = []
@@ -265,7 +268,7 @@
                             showValidationError(form, index, value);
                         });
 
-                        toastr.error('حدث خطأ ما');
+                        // toastr.error('حدث خطأ ما');
                     }
                 });
             })
@@ -283,11 +286,11 @@
                     success: function(response) {
                         if (response.msg == 'coupon_applied') {
                             toastr.success(`تم خصم ${response.discount} بنجاح`);
+                            $('#coupon_value').attr('readonly', '');
+                            $('#btn-apply').attr('disabled', 'disabled');
                         } else {
                             toastr.error('الكوبون غير صالح');
                         }
-                        $('#coupon_value').attr('readonly', '');
-                        $('#btn-apply').attr('disabled', 'disabled');
                         $("#coupon-cost").html(response.discount);
                         freshTotal({{ $places->first()->delivery_price }})
                     },

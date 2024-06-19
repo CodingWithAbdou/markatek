@@ -11,12 +11,12 @@
                 <input type="hidden" name="product" value="{{ $item['id'] }}">
                 <div class="flex items-center border-gray-100">
                     <span
-                        class="desc_product cursor-pointer rounded-r  py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                        class="desc_product cursor-pointer rounded-r  py-1 px-3.5 duration-100 hover:bg-primary hover:text-white">
                         - </span>
                     <input class="count_product h-8 w-8 border  bg-white text-center text-xs outline-none"
                         type="number" value="{{ $item['quantity'] }}" min="1" disabled />
                     <span
-                        class="asc_product cursor-pointer rounded-l  py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                        class="asc_product cursor-pointer rounded-l  py-1 px-3 duration-100 hover:bg-primary hover:text-white">
                         + </span>
                 </div>
             </div>

@@ -14,27 +14,32 @@
         </div>
     </section>
     <section class="max-w-screen-2xl mx-auto px-4 md:px-12">
-        <div class="">
-            <h1 class="mb-10 text-center text-2xl font-bold"></h1>
-            <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:gap-6 xl:px-0">
-                <div id="items" class="rounded-lg md:w-2/3">
-                    @include('front.products_cart')
-                </div>
-                <!-- Sub total -->
-
-                <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                    <div class="mb-2 flex justify-between">
-                        <p class="text-gray-700">مجموع المنتجات</p>
-                        <p id="global" class="text-gray-700">{{ $global }}</p>
+        @if (count($items) > 0)
+            <div class="">
+                <div class=" justify-center px-6 md:flex md:gap-6 xl:px-0">
+                    <div id="items" class="rounded-lg md:w-2/3">
+                        @include('front.products_cart')
                     </div>
+                    <!-- Sub total -->
 
-                    <hr class="my-4" />
-                    <a href="{{ route('checkout.index') }}"
-                        class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-primary py-1.5 font-medium ">إكمال
-                        الطلب</a>
+                    <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+                        <div class="mb-2 flex justify-between">
+                            <p class="text-gray-700">مجموع المنتجات</p>
+                            <p id="global" class="text-gray-700">{{ $global }}</p>
+                        </div>
+
+                        <hr class="my-4" />
+                        <a href="{{ route('checkout.index') }}"
+                            class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-primary py-1.5 font-medium ">إكمال
+                            الطلب</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @else
+            <div class="col-span-3 px-4 py-3 leading-normal text-primary border border-primary rounded-lg" role="alert">
+                <p>لا توجد منتجات في العربة</p>
+            </div>
+        @endif
     </section>
 @endsection
 @push('script')

@@ -43,6 +43,12 @@ Route::post('/cart/destroy', [CartController::class, 'destroy'])->name('cart.des
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
 
+Route::get('/callback', [CheckoutController::class, 'callback'])->name('fatoorah.callback');
+Route::get('/error', [CheckoutController::class, 'error'])->name('fatoorah.error');
+
+
+
+
 Route::post('/coupon/apply', [CheckoutController::class, 'applyCopoun'])->name('coupon.apply');
 
 
