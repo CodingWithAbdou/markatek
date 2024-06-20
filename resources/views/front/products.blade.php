@@ -3,7 +3,8 @@
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
         <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
-            <h2 class=" text-5xl font-bold text-neutral-700"> <span> منتجات </span> {{ $category->{'name_' . getLocale()} }}
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span> {{ __('front.product_of') }} </span>
+                {{ $category->{'name_' . getLocale()} }}
             </h2>
             <div class="pt-8">
                 <a class="hover:text-primary" href="{{ route('main') }}">{{ __('front.home') }}</a>
@@ -14,7 +15,7 @@
     </section>
     <section class="max-w-screen-2xl mx-auto p-4 md:px-12 ">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3   gap-4 ">
-            @forelse ($category->products as $product)
+            @forelse ($products as $product)
                 <div
                     class="relative z-40 col-span-1 flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg border border-neutral-200 ">
                     <div class="w-1/3 bg-cover bg-gray-300 border-l  border-neutral-200 ">
@@ -41,20 +42,20 @@
                                 <button id="btn-{{ $product->id }}"
                                     class="{{ isset($cart["$product->id"]) ? 'hidden' : 'flex' }}  items-center gap-2 px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded-lg dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600
                                     ">
-                                    <span>{{ __('front.add_to_cart') }}</span>
+                                    <span class="hidden md:inline-block">{{ __('front.add_to_cart') }}</span>
                                     <i class='bx bx-cart-add text-white text-xl'></i>
                                 </button>
                                 <div id="input-{{ $product->id }}"
                                     class="{{ isset($cart["$product->id"]) ? 'flex' : 'hidden' }} items-center justify-center border-gray-100">
                                     <span
-                                        class="desc_product cursor-pointer rounded-r  py-1 px-3.5 duration-100 hover:bg-primary hover:text-white">
+                                        class="desc_product cursor-pointer rtl:rounded-r ltr:rounded-l  py-1 px-3.5 duration-100 hover:bg-primary hover:text-white">
                                         - </span>
                                     <input class="count_product h-8 w-8 border  bg-white text-center text-xs outline-none"
                                         type="number"
                                         value="{{ isset($cart["$product->id"]) ? $cart["$product->id"]['quantity'] : '1' }}"
                                         min="1" disabled />
                                     <span
-                                        class="asc_product  cursor-pointer rounded-l  py-1 px-3 duration-100 hover:bg-primary hover:text-white">
+                                        class="asc_product  cursor-pointer rtl:rounded-l ltr:rounded-r  py-1 px-3 duration-100 hover:bg-primary hover:text-white">
                                         + </span>
                                 </div>
                             </form>

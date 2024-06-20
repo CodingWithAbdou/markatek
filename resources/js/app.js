@@ -1,2 +1,5 @@
 import "./bootstrap";
-// import "boxicons";
+
+toastr.options = {
+    positionClass: "toast-bottom-center", // Change this to the desired position
+};

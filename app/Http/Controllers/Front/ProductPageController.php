@@ -10,6 +10,7 @@ class ProductPageController extends Controller
 {
     public function products(Category $category)
     {
-        return view('front.products', compact('category'));
+        $products = $category->products()->get();
+        return view('front.products', compact('category', 'products'));
     }
 }

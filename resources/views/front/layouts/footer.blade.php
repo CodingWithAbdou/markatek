@@ -10,7 +10,7 @@
                     </a> --}}
                     <div class="flex items-center gap-4">
                         <h3 class="text-neutral-600">{{ __('front.contact_us') }}</h3>
-                        <ul class="flex flex-wrap items-center mb-6 text-sm font-medium  sm:mb-0 secound_color_t">
+                        <ul class="flex flex-wrap items-center text-sm font-medium  sm:mb-0 secound_color_t">
                             @php
                                 $facebook = App\Models\Setting::where('setting_key', 'facebook')->first()
                                     ->setting_value;
@@ -55,13 +55,15 @@
                 </div>
                 <ul class="flex gap-4 flex-wrap items-center mb-6 text-sm font-medium  sm:mb-0 secound_color_t">
                     <li>
-                        <img class="grayscale" src="{{ asset('assets/images/mastercard.png') }}" alt="">
+                        <img class="grayscale" src="{{ asset('assets/images/mastercard.png') }}" width="30"
+                            alt="">
                     </li>
                     <li>
-                        <img class="grayscale" src="{{ asset('assets/images/visacard.png') }}" alt="">
+                        <img class="grayscale" src="{{ asset('assets/images/visacard.png') }}" width="30"
+                            alt="">
                     </li>
                     <li>
-                        <img class="w-12 grayscale" src="{{ asset('assets/images/keynet.png') }}" width="200"
+                        <img class="w-12 grayscale" src="{{ asset('assets/images/keynet.png') }}" width="30"
                             alt="">
                     </li>
                 </ul>

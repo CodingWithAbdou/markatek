@@ -53,7 +53,7 @@
     <!--------------
             Main Content
         --------------->
-    <main class="min-h-[600px] relative overflow-hidden">
+    <main class="min-h-[600px] relative overflow-hidden pt-[132px]">
         @yield('content')
     </main>
     <!--------------

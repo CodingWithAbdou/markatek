@@ -38,7 +38,6 @@ class CartController extends Controller
                 "id" => $product_id,
                 "quantity" => $quantity,
                 "price" => $product->price,
-                "image" => $product->cover_path
             ];
             $price = $product->price;
             $msg = __('set_number');
@@ -57,9 +56,12 @@ class CartController extends Controller
         unset($cart[$product_id]);
         session()->put('cart', $cart);
         $cart_items = count($cart);
+        $session = collect(session()->get('cart', []));
+        $product_ids = $session->pluck('id')->toArray();
+        $items = Product::whereIn('id', $product_ids)->get();
         $msg = 'delete';
         $status = true;
-        $view = view('front.products_cart', ['items' => $cart])->render();
+        $view = view('front.products_cart', ['items' => $items])->render();
         return response()->json(compact('status', 'msg', 'cart_items', 'view'));
     }
 }

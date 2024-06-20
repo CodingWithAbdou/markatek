@@ -2,7 +2,7 @@
 
 @section('content')
     @if ($banners->count() > 0)
-        <section class=" rounded-lg slider">
+        <section class="slider rounded-lg  ">
             @foreach ($banners as $banner)
                 <div class="relative overflow-hidden max-h-[450px]">
                     @if ($banner->{'title_' . getLocale()} || $banner->{'description_ar'})
@@ -63,8 +63,8 @@
                             style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
                         </div>
                         <span
-                            class="absolute top-2 right-3 text-white z-10 block opacity-75 -mb-1 text-xs mt-2 bg-primary rounded-lg p-2">عدد
-                            {{ __('front.products') }}
+                            class="absolute top-2 right-3 text-white z-10 block opacity-75 -mb-1 text-xs mt-2 bg-primary rounded-lg p-2">
+                            {{ __('front.count_of_products') }}
                             :
                             {{ $category->products->count() }}</span>
 

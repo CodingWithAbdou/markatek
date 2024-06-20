@@ -5,38 +5,36 @@
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
         <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
-            <h2 class=" text-5xl font-bold text-neutral-700"> <span>تكملة الطلب</h2>
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span>{{ __('front.finsh_order') }}</h2>
             <div class="pt-8">
-                <a class="hover:text-primary" href="{{ route('main') }}">الرئسية</a>
+                <a class="hover:text-primary" href="{{ route('main') }}">{{ __('front.home') }}</a>
                 /
-                <a class="hover:text-primary" href="{{ route('cart.index') }}">العربة</a>
+                <a class="hover:text-primary" href="{{ route('cart.index') }}">{{ __('front.cart') }}</a>
                 /
-                <span>تكملة الطلب</span>
+                <span>{{ __('front.finsh_order') }}</span>
             </div>
         </div>
     </section>
     <section class="pb-8  dark:bg-gray-900 ">
         <form id="checkout-form" action="{{ route('checkout.store') }}" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-            <div class=" lg:flex lg:items-start lg:gap-12 xl:gap-16 bg-white  p-12  border shadow-md rounded-xl">
+            <div class=" lg:flex lg:items-start lg:gap-12 xl:gap-16 bg-white  p-12  border shadow-md rounded-xl ">
                 <div class="min-w-0 flex-1 space-y-8">
                     <div class="space-y-4">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
                             <div>
-                                <div class="mb-2 flex items-center gap-2">
-                                    <label for="select-country-input-3"
-                                        class="block text-sm font-medium text-gray-900 dark:text-white"> الدولة * </label>
+                                <div class="">
+                                    <label for="select-country-input-3" class="label_desgin">
+                                        {{ __('front.country') }} <span class="text-primary font-bold">*</span> </label>
                                 </div>
-                                <select id="select-country-input-3" name="country"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500">
-                                    <option value="KW" selected>الكويت </option>
-                                    <option value="SA">السعودية</option>
+                                <select id="select-country-input-3" name="country" class="select_design">
+                                    <option value="KW" selected>{{ __('front.Kuwait') }} </option>
                                 </select>
                             </div>
 
                             <div>
-                                <label for="phone-input-3"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> رقم الهاتف*
+                                <label for="phone-input" class="label_desgin"> {{ __('front.phone_number') }} <span
+                                        class="text-primary font-bold">*</span>
                                 </label>
                                 <div class="flex items-center">
                                     <button id="dropdown-phone-button-3"
@@ -85,28 +83,26 @@
 
                                     <div class="relative w-full">
                                         <input type="text" id="phone-input" name="phone"
-                                            class="z-20 block w-full rounded-e-lg border border-s-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:border-s-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500"
+                                            class="input_desgin pl-16 rounded-tr-none rounded-br-none ltr:rounded-tl-none ltr:rounded-bl-none "
                                             placeholder="123-456-7890" />
                                     </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="your_email"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> الإيميل*
+                            <div class="">
+                                <label for="your_email" class="label_desgin ">
+                                    {{ __('front.email') }} <span class="text-primary font-bold">*</span>
                                 </label>
-                                <input type="email" id="your_email" name="email"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50  p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    placeholder="name@flowbite.com" />
+                                <input type="email" id="your_email" name="email" class="input_desgin"
+                                    placeholder="test@test.com" />
                             </div>
 
                             <div>
-                                <div class="mb-2 flex items-center gap-2">
-                                    <label for="select-city-input-3"
-                                        class="block text-sm font-medium text-gray-900 dark:text-white"> المنطقة* </label>
+                                <div class="">
+                                    <label for="select-city-input-3" class="label_desgin">
+                                        {{ __('front.place') }} <span class="text-primary font-bold">*</span> </label>
                                 </div>
-                                <select id="select-city-input-3" name="place_id"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 h-12 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500">
+                                <select id="select-city-input-3" name="place_id" class="select_design">
                                     @foreach ($places as $place)
                                         <option value="{{ $place->id }}" {{ $loop->index == 0 ? 'selected' : '' }}>
                                             {{ $place->{'name_' . getLocale()} }}</option>
@@ -115,61 +111,51 @@
                             </div>
 
                             <div>
-                                <label for="your_name"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                    قطعة </label>
-                                <input type="text" id="your_name" name="piece"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    placeholder="أدخل إسم القطعة" />
+                                <label for="your_peice" class="label_desgin">
+                                    {{ __('front.piece') }} <span class="text-primary font-bold">*</span></label>
+                                <input type="text" id="your_peice" name="piece" class="input_desgin"
+                                    placeholder=" {{ __('front.enter_number_piece') }} " />
                             </div>
 
                             <div>
-                                <label for="your_name"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                    الشارع </label>
-                                <input type="text" id="your_name" name="street"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    placeholder="أدخل إسم الشارع" />
-                            </div>
-
-
-                            <div>
-                                <label for="your_name"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                    جادة </label>
-                                <input type="text" id="your_name" name="avenue"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    placeholder="Bonnie Green" />
+                                <label for="your_street" class="label_desgin">
+                                    {{ __('front.street') }} <span class="text-primary font-bold">*</span></label>
+                                <input type="text" id="your_street" name="street" class="input_desgin"
+                                    placeholder=" {{ __('front.enter_street') }}" />
                             </div>
 
                             <div>
-                                <label for="your_name"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                    رقم المنزل </label>
-                                <input type="text" id="your_name" name="house_number"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    placeholder="أدخل رقم المنزل" />
+                                <label for="your_avenue" class="label_desgin">
+                                    {{ __('front.avenue') }} <span class="text-primary font-bold">*</span></label>
+                                <input type="text" id="your_avenue" name="avenue" class="input_desgin"
+                                    placeholder=" {{ __('front.avenue_example') }}" />
                             </div>
 
                             <div>
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ملاحظة</label>
-                                <textarea id="message" rows="4" name="note"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="أدخل ملاحظة..."></textarea>
+                                <label for="your_house_number" class="label_desgin">
+                                    {{ __('front.number_house') }}<span class="text-primary font-bold">*</span></label>
+                                <input type="text" id="your_house_number" name="house_number" class="input_desgin"
+                                    placeholder=" {{ __('front.enter_number_house') }}" />
                             </div>
+
+                            <div>
+                                <label for="message" class="label_desgin"> {{ __('front.note') }} <span
+                                        class="text-primary font-bold">*</span></label>
+                                <textarea id="message" rows="4" name="note" class="input_desgin resize-none h-fit block p-4"
+                                    placeholder=" {{ __('front.enter_note') }}..."></textarea>
+                            </div>
+
                             <div></div>
 
                             <div id="coupon-content">
-                                <label for="voucher"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> فعل الكوبون
+                                <label for="your_coupon" class="label_desgin"> {{ __('front.active_you_coupon') }}<span
+                                        class="text-primary font-bold">*</span>
                                 </label>
                                 <div class="flex max-w-md items-center gap-4">
-                                    <input id="coupon_value" type="text" id="voucher" name="coupon"
-                                        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                        placeholder="أدخل برومو كود" />
+                                    <input id="coupon_value" type="text" id="your_coupon" name="coupon"
+                                        class="input_desgin" placeholder=" {{ __('front.enter_promo_code') }}" />
                                     <button type="button" id="btn-apply"
-                                        class="flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">تطبيق</button>
+                                        class="flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">{{ __('front.applay') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -180,56 +166,63 @@
                     <div class="flow-root">
                         <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
                             <dl class="flex items-center justify-between gap-4 py-3">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">المجموع</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">{{ $sub_total }}</dd>
+                                <dt class="text-base font-normal text-neutral-600 "> {{ __('front.sub_total') }}</dt>
+                                <dd class="text-base font-medium  text-neutral-600 dark:text-white">
+                                    {{ $sub_total }} {{ __('front.kwd') }}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">تكلفة التوصيل</dt>
-                                <dd class="text-base font-medium text-red-500">{{ $places->first()->delivery_price }}</dd>
+                                <dt class="text-base font-normal text-neutral-600 "> {{ __('front.delivery_price') }}</dt>
+                                <dd class="text-base font-medium  text-neutral-600 ">
+                                    {{ $places->first()->delivery_price ?? 0 }}
+                                    {{ __('front.kwd') }}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">كود خصم</dt>
-                                <dd id="coupon-cost" class="text-base font-medium text-green-500 dark:text-white">0</dd>
+                                <dt class="text-base font-normal text-neutral-600 "> {{ __('front.code_discount') }}</dt>
+                                <dd id="coupon-cost" class="text-base font-medium  text-neutral-600 dark:text-white">0
+                                    <span class="text-sm"> {{ __('front.kwd') }}</span>
+                                </dd>
                             </dl>
 
 
                             <dl class="flex items-center justify-between gap-4 py-3">
-                                <dt class="text-base font-bold text-gray-900 dark:text-white">الإجمالي</dt>
-                                <dd id="total-cost" class="text-base font-bold text-gray-900 dark:text-white">
-                                    {{ $total }}
+                                <dt class="text-base font-bold text-neutral-800"> {{ __('front.total') }}
+                                </dt>
+                                <dd id="total-cost" class="text-base font-bold  text-neutral-600 dark:text-white">
+                                    {{ $total }} <span class="text-sm"> {{ __('front.kwd') }}</span>
                                 </dd>
                             </dl>
 
                             <div class="py-8">
                                 <div class="relative mb-2">
-                                    <input class="peer hidden" id="radio_1" type="radio" name="payment_method"
-                                        checked />
+                                    <input class="peer hidden" value="credit_card" id="radio_1" type="radio"
+                                        name="payment_method" checked />
                                     <span
-                                        class=" peer-checked:border-gray-700 absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                                        class=" peer-checked:border-primary absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                                     <label
-                                        class=" peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                                        class=" peer-checked:border peer-checked:border-primary flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                                         for="radio_1">
                                         <img class="w-14 object-contain"
                                             src="{{ asset('assets/images/mastercard.png') }}" alt="" />
                                         <div class="ms-5">
-                                            <span class="mt-5 font-semibold">فيزا / ماستر كارد</span>
+                                            <p class="text-slate-500 text-sm leading-6">
+                                                {{ __('front.visa_and_mastercard') }}</p>
                                         </div>
                                     </label>
                                 </div>
                                 <div class="relative">
-                                    <input class="peer hidden" id="radio_2" type="radio" name="payment_method"
-                                        checked />
+                                    <input class="peer hidden" id="radio_2" value='knet' type="radio"
+                                        name="payment_method" checked />
                                     <span
-                                        class=" peer-checked:border-gray-700 absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                                        class=" peer-checked:border-primary absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                                     <label
-                                        class=" peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                                        class=" peer-checked:border peer-checked:border-primary  flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                                         for="radio_2">
                                         <img class="w-14 object-contain" src="{{ asset('assets/images/keynet.png') }}"
                                             alt="" />
                                         <div class="ml-5">
-                                            <p class="text-slate-500 text-sm leading-6">كي نت</p>
+                                            <p class="text-slate-500 text-sm leading-6">{{ __('front.knet') }}</p>
                                         </div>
                                     </label>
                                 </div>
@@ -240,14 +233,12 @@
                             <input id="default-checkbox" type="checkbox" value="1" name="terms"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-checkbox"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">أقر على الموافقة على
-                                الشروط والاحكام</label>
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('front.accept_all_terms') }}</label>
                         </div>
 
                         <button
-                            class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">إتمام
-                            الطلب</button>
-
+                            class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">{{ __('front.pay') }}
+                        </button>
 
                     </div>
                 </div>
@@ -261,6 +252,8 @@
         $(document).ready(function() {
             $('#checkout-form').on('submit', function(e) {
                 e.preventDefault();
+                toastr.info('تتم معالجة الطلب');
+
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -273,7 +266,6 @@
 
                     data: new FormData(this),
                     success: function(response) {
-                        // toastr.success('تمت عملية الشراء بنجاح');
                         if (response.msg == 'change_url') {
                             window.location.href = response.url;
                         }

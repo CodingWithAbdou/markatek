@@ -33,7 +33,7 @@ class CheckoutRequest extends FormRequest
             "note" => 'nullable|string',
             "coupon" => 'nullable|min:4|max:191|string',
             "house_number" => 'required',
-            "payment_method" => 'required',
+            "payment_method" => 'required|string|max:191|in:credit_card,knet',
             "terms" => 'required',
         ];
     }
