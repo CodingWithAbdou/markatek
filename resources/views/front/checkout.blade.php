@@ -203,19 +203,35 @@
                             </dl>
 
                             <div class="py-8">
-                                <div class="flex items-center mb-4">
-                                    <input id="default-radio-1" type="radio" value="knet" name="payment_method"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="default-radio-1"
-                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">كي نت</label>
+                                <div class="relative mb-2">
+                                    <input class="peer hidden" id="radio_1" type="radio" name="payment_method"
+                                        checked />
+                                    <span
+                                        class=" peer-checked:border-gray-700 absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                                    <label
+                                        class=" peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                                        for="radio_1">
+                                        <img class="w-14 object-contain"
+                                            src="{{ asset('assets/images/mastercard.png') }}" alt="" />
+                                        <div class="ms-5">
+                                            <span class="mt-5 font-semibold">فيزا / ماستر كارد</span>
+                                        </div>
+                                    </label>
                                 </div>
-                                <div class="flex items-center">
-                                    <input checked id="default-radio-2" type="radio" value="credit_card"
-                                        name="payment_method"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="default-radio-2"
-                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">فيزا / ماستر
-                                        كارد</label>
+                                <div class="relative">
+                                    <input class="peer hidden" id="radio_2" type="radio" name="payment_method"
+                                        checked />
+                                    <span
+                                        class=" peer-checked:border-gray-700 absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                                    <label
+                                        class=" peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                                        for="radio_2">
+                                        <img class="w-14 object-contain" src="{{ asset('assets/images/keynet.png') }}"
+                                            alt="" />
+                                        <div class="ml-5">
+                                            <p class="text-slate-500 text-sm leading-6">كي نت</p>
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
 
@@ -231,6 +247,8 @@
                         <button
                             class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">إتمام
                             الطلب</button>
+
+
                     </div>
                 </div>
             </div>

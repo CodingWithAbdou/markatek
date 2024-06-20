@@ -5,12 +5,12 @@
         <section class=" rounded-lg slider">
             @foreach ($banners as $banner)
                 <div class="relative overflow-hidden max-h-[450px]">
-                    @if ($banner->{'title_ar'} || $banner->{'description_ar'})
+                    @if ($banner->{'title_' . getLocale()} || $banner->{'description_ar'})
                         <span class="absolute  inset-0 bg-neutral-800 opacity-70"></span>
                     @endif
                     <div class="absolute left-2/4 top-2/4  -translate-x-2/4  -translate-y-2/4  text-white">
                         <h1 class="text-center text-4xl md:text-7xl">
-                            {{ $banner->{'title_ar'} }}
+                            {{ $banner->{'title_' . getLocale()} }}
                         </h1>
                         <p class="text-center  mt-6">{{ $banner->{'description_ar'} }}</p>
                     </div>
@@ -46,7 +46,7 @@
     <section class="mt-16 max-w-screen-2xl mx-auto">
         <div class="flex items-center  gap-2 text-neutral-800 w-fit mx-auto text-4xl mb-8 relative ">
             <i class='bx bx-category-alt'></i>
-            <h2 class="">جميع تصنيفاتنا</h2>
+            <h2 class="">{{ __('front.all_category') }}</h2>
         </div>
         <div class="p-1 flex flex-wrap items-center justify-center">
             @foreach ($categories as $category)
@@ -64,7 +64,7 @@
                         </div>
                         <span
                             class="absolute top-2 right-3 text-white z-10 block opacity-75 -mb-1 text-xs mt-2 bg-primary rounded-lg p-2">عدد
-                            المنتجات
+                            {{ __('front.products') }}
                             :
                             {{ $category->products->count() }}</span>
 
@@ -73,10 +73,10 @@
                     </div>
                     <div class="relative text-white px-6 pb-4 mt-4">
                         <div class="flex justify-between">
-                            <span class="block font-semibold text-xl">{{ $category->name }}</span>
+                            <span class="block font-semibold text-xl">{{ $category->{'name_' . getLocale()} }}</span>
                             <a href="{{ route('product.index', $category->id) }}"
                                 class=" bg-white rounded-full text-primary text-xs font-bold px-3 py-2 leading-none flex items-center">
-                                عرض</a>
+                                {{ __('front.show') }}</a>
                         </div>
                     </div>
                 </div>
@@ -92,14 +92,13 @@
         $(document).ready(function() {
             $('.slider').slick({
                 autoplay: true,
-                autoplaySpeed: 2000,
-                rtl: true,
+                autoplaySpeed: 3000,
+                rtl: {{ getlocale() == 'ar' ? 'true' : 'false' }},
                 dots: true,
                 infinite: true,
                 speed: 500,
                 fade: true,
                 cssEase: 'linear'
-
             });
         });
     </script>

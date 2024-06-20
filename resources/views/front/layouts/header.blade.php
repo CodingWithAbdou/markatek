@@ -25,7 +25,7 @@
                     <div class="pt-2 relative mx-auto text-gray-600">
                         <input
                             class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-primary "
-                            type="search" name="search" placeholder="إبحث عن المنتجات">
+                            type="search" name="search" placeholder="{{ __('front.search_in_products') }}">
                         <button type="submit" class="absolute left-0 top-0 mt-5 ml-4">
                             <i class='bx bx-search text-primary'></i>
                         </button>
@@ -39,7 +39,7 @@
                             class=" flex items-center justify-center gap-1 text-neutral-800 rounded-md px-3 py-2 text-sm font-medium trnsition duration-200 hover:text-primary"
                             aria-current="page">
                             <i class='bx bxs-truck text-2xl' style="transform: rotateY(180deg)"></i>
-                            <span class="mt-1">تتبع الطلبات</span>
+                            <span class="mt-1">{{ __('front.track_order') }}</span>
                         </a>
 
                         <a href="{{ route('cart.index') }}"
@@ -62,9 +62,22 @@
 
                                 <i id="cart" class='bx bx-shopping-bag text-2xl relative'></i>
                             </div>
-                            <span class="mt-1">سلة التسوق</span>
-
+                            <span class="mt-1">{{ __('front.cart') }}</span>
                         </a>
+                        @if (getLocale() == 'ar')
+                            <a class=" flex items-center justify-center gap-1 text-neutral-800 rounded-md ps-3 py-2 text-sm font-medium trnsition duration-200 hover:text-primary"
+                                href="{{ route('lang.switchLang', 'en') }}">
+                                <i class='bx bx-world  text-2xl relative'></i>
+                                <span class="mt-1">English</span>
+
+                            </a>
+                        @else
+                            <a class=" flex items-center justify-center gap-1 text-neutral-800 rounded-md ps-3 py-2 text-sm font-medium trnsition duration-200 hover:text-primary"
+                                href="{{ route('lang.switchLang', 'ar') }}"> <i
+                                    class='bx bx-world  text-2xl relative'></i>
+                                <span class="">عربي</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -77,7 +90,7 @@
             class="flex items-center gap-1 px-4 md:ps-44 md:pe-8 rounded-md py-2 text-sm font-medium text-white transition duration-200 hover:text-gray-100"
             aria-current="page">
             <span><i class='bx bx-home-alt-2  '></i></span>
-            الرئيسية</a>
+            {{ __('front.home') }}</a>
         @php
             $categories = App\Models\Category::orderBy('order_by', 'asc')->get();
         @endphp
@@ -86,7 +99,7 @@
                 <a href="{{ route('product.index', $category->id) }}"
                     class="flex items-center gap-1 px-4  rounded-md py-2 text-sm font-medium text-white transition duration-200 hover:text-gray-100"
                     aria-current="page">
-                    {{ $category->name }}</a>
+                    {{ $category->{'name_' . getLocale()} }}</a>
             @endif
         @endforeach
     </div>

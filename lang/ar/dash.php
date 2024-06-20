@@ -82,7 +82,4 @@ return [
     'product' => 'منتج',
     'max_usage' => 'مرات الاستخدام',
     'message' => 'عرض',
-    'message' => 'عرض',
-    'message' => 'عرض',
-    'message' => 'عرض',
 ];

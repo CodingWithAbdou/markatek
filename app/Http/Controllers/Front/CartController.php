@@ -15,8 +15,11 @@ class CartController extends Controller
         foreach ($cart as $item) {
             $global += $item['price'] * $item['quantity'];
         }
+        $session = collect(session()->get('cart', []));
+        $product_ids = $session->pluck('id')->toArray();
+        $items = Product::whereIn('id', $product_ids)->get();
 
-        return view('front.cart', ['items' => $cart, 'global' => $global]);
+        return view('front.cart', ['items' => $items, 'global' => $global]);
     }
 
     public function store(Request $request)
@@ -33,10 +36,8 @@ class CartController extends Controller
             $product = Product::find($product_id);
             $cart[$product_id] = [
                 "id" => $product_id,
-                "name" => $product->name,
                 "quantity" => $quantity,
                 "price" => $product->price,
-                "description" => $product->description,
                 "image" => $product->cover_path
             ];
             $price = $product->price;

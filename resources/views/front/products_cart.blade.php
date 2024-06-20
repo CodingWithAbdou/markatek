@@ -1,11 +1,12 @@
 @foreach ($items as $id => $item)
     <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex  sm:gap-6 sm:justify-start">
-        <img src="{{ asset($item['image']) }}" alt="product-image" class="w-40 h-40 object-cover rounded-lg sm:w-40" />
+        <img src="{{ asset($item->cover_path) }}" alt="product-image" class="w-40 h-40 object-cover rounded-lg sm:w-40" />
         <div class="relative sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div class="mt-5 sm:mt-0 flex items-start justify-between flex-col py-6">
-                <h2 class="text-lg font-bold text-gray-900">{{ $item['name'] }}</h2>
-                <p class="mt-1 text-xs text-gray-700">{{ $item['description'] }}</p>
-                <p class="mt-1 text-xs text-gray-700">{{ $item['price'] }}</p>
+                <h2 class="text-lg font-bold text-gray-900">{{ $item->{'name_' . getLocale()} }}</h2>
+                <p class="mt-1 text-xs text-gray-700">{{ $item->{'description_' . getLocale()} }}</p>
+                <p class="mt-1 text-xs text-gray-700"><span>{{ $item->price }}</span><span> {{ __('front.kwd') }}</span>
+                </p>
             </div>
             <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                 <input type="hidden" name="product" value="{{ $item['id'] }}">

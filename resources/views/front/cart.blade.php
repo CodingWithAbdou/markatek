@@ -5,11 +5,11 @@
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
         <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
-            <h2 class=" text-5xl font-bold text-neutral-700"> <span>عربة التسوق</h2>
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span>{{ __('front.cart') }}</h2>
             <div class="pt-8">
-                <a class="hover:text-primary" href="{{ route('main') }}">الرئسية</a>
+                <a class="hover:text-primary" href="{{ route('main') }}">{{ __('front.home') }}</a>
                 /
-                <span>عربة التسوق</span>
+                <span>{{ __('front.cart') }}</span>
             </div>
         </div>
     </section>
@@ -24,20 +24,20 @@
 
                     <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
                         <div class="mb-2 flex justify-between">
-                            <p class="text-gray-700">مجموع المنتجات</p>
-                            <p id="global" class="text-gray-700">{{ $global }}</p>
+                            <p class="text-gray-700">{{ __('front.sub_cost') }}</p>
+                            <p id="global" class="text-gray-700">{{ $global }} <span>{{ __('front.kwd') }}</span>
+                            </p>
                         </div>
 
                         <hr class="my-4" />
                         <a href="{{ route('checkout.index') }}"
-                            class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-primary py-1.5 font-medium ">إكمال
-                            الطلب</a>
+                            class="block text-center  mt-6 w-full mx-auto text-white rounded-md bg-primary py-1.5 font-medium ">{{ __('front.next_page') }}</a>
                     </div>
                 </div>
             </div>
         @else
             <div class="col-span-3 px-4 py-3 leading-normal text-primary border border-primary rounded-lg" role="alert">
-                <p>لا توجد منتجات في العربة</p>
+                <p>{{ __('front.empty_cart') }}</p>
             </div>
         @endif
     </section>

@@ -1,15 +1,15 @@
-<footer class="mx-auto max-w-screen-2xl relative">
-    <div class="m-6 rounded-xl shadow border border-gray-200 bg-white">
+<footer class="mx-auto pb-6 max-w-screen-2xl relative">
+    <div class="mx-6 mt-6 rounded-xl shadow border border-gray-200 bg-white">
         <div class="w-full max-w-screen-xl mx-auto p-6 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
-                    <a href="{{ route('main') }}">
+                    {{-- <a href="{{ route('main') }}">
                         <img class="h-8 w-auto mb-8"
                             src="{{ asset(App\Models\Setting::where('setting_key', 'logo')->first()->setting_value) }}"
                             alt="ماركتك">
-                    </a>
+                    </a> --}}
                     <div class="flex items-center gap-4">
-                        <h3 class="text-neutral-600">تواصل معنا :</h3>
+                        <h3 class="text-neutral-600">{{ __('front.contact_us') }}</h3>
                         <ul class="flex flex-wrap items-center mb-6 text-sm font-medium  sm:mb-0 secound_color_t">
                             @php
                                 $facebook = App\Models\Setting::where('setting_key', 'facebook')->first()
@@ -67,7 +67,8 @@
                 </ul>
             </div>
             <hr class="my-6 border-gray-300 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm secound_color_t sm:text-center ">جميع الحقوق محفوضة لماركتك </span>
+            <span
+                class="block text-sm secound_color_t sm:text-center ">{{ App\Models\Setting::where('setting_key', 'footer_description_' . getLocale())->first()->setting_value }}</span>
         </div>
     </div>
 </footer>

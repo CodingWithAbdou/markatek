@@ -3,11 +3,12 @@
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
         <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">
-            <h2 class=" text-5xl font-bold text-neutral-700"> <span> منتجات </span> {{ $category->name }}</h2>
+            <h2 class=" text-5xl font-bold text-neutral-700"> <span> منتجات </span> {{ $category->{'name_' . getLocale()} }}
+            </h2>
             <div class="pt-8">
-                <a class="hover:text-primary" href="{{ route('main') }}">الرئسية</a>
+                <a class="hover:text-primary" href="{{ route('main') }}">{{ __('front.home') }}</a>
                 /
-                <span>المنتجات</span>
+                <span>{{ __('front.products') }}</span>
             </div>
         </div>
     </section>
@@ -21,12 +22,16 @@
                             alt="">
                     </div>
                     <div class="w-2/3 p-4 md:p-4 flex flex-col justify-between">
-                        <h1 class="text-xl font-bold text-nutueral-800 dark:text-white">{{ $product->name }}</h1>
-                        <p class="mt-2 text-sm text-nutueral-400 dark:text-nutueral-300">{{ $product->description }}</p>
+                        <h1 class="text-xl font-bold text-nutueral-800 dark:text-white">
+                            {{ $product->{'name_' . getLocale()} }}</h1>
+                        <p class="mt-2 text-sm text-nutueral-400 dark:text-nutueral-300">
+                            {{ $product->{'name_' . getLocale()} }}</p>
                         <div class="flex justify-between mt-3 item-center">
-                            <h1 class="text-lg font-bold text-nutueral-700 dark:text-nutueral-200 md:text-xl">
-                                {{ $product->price }}
-                            </h1>
+                            <h3 class=" font-bold text-nutueral-700 dark:text-nutueral-200 md:text-xl">
+
+                                <span class="text-lg md:text-xl">{{ $product->price }} </span>
+                                <span class="text-sm ">{{ __('front.kwd') }}</span>
+                            </h3>
                             <form class="add-to-cart">
                                 @php
                                     $cart = session()->get('cart', []);
@@ -36,8 +41,7 @@
                                 <button id="btn-{{ $product->id }}"
                                     class="{{ isset($cart["$product->id"]) ? 'hidden' : 'flex' }}  items-center gap-2 px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded-lg dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600
                                     ">
-                                    <span> اضف
-                                        الي السلة</span>
+                                    <span>{{ __('front.add_to_cart') }}</span>
                                     <i class='bx bx-cart-add text-white text-xl'></i>
                                 </button>
                                 <div id="input-{{ $product->id }}"
@@ -61,7 +65,7 @@
             @empty
                 <div class="col-span-3 px-4 py-3 leading-normal text-primary border border-primary rounded-lg"
                     role="alert">
-                    <p>لا توجد منتجات تحت هذا التصنيف</p>
+                    <p>{{ __('front.empty_products') }}</p>
                 </div>
             @endforelse
         </div>
