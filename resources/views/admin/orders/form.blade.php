@@ -35,14 +35,8 @@
                 </div>
                 <div class="card-body py-0">
                     <div class="row">
-                        <x-inputs.text label="{{ __('dash.code') }}" name="code" required=""
-                            data="{{ isset($data) ? $data->code : '' }}" />
-
-                        <x-inputs.number label="{{ __('dash.discount') }}" name="discount" required=""
-                            data="{{ isset($data) ? $data->discount : '' }}" />
-
                         <x-inputs.select label="{{ __('dash.status') }}" name="status" required=""
-                            data="{{ isset($data) ? $data->status : '' }}" :list="[['value' => 1, 'name' => 'نشظ'], ['value' => 0, 'name' => 'غير نشظ']]" optionValue="value"
+                            data="{{ isset($data) ? $data->status : '' }}" :list="$array" optionValue="value"
                             optionName="name" />
 
                     </div>

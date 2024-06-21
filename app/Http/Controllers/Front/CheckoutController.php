@@ -133,7 +133,6 @@ class CheckoutController extends Controller
                 session()->forget('unique_id');
                 return view('front.success_paid', compact('order'));
             } else {
-
                 return redirect()->route('main');
             }
         }

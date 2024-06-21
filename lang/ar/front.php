@@ -70,4 +70,13 @@ return [
     "update_cart" => "تم تحديث السلة",
     "error_message" => "حدث خطأ ما",
     "delete_cart" => "تم حذف العنصر من السلة",
+    "cancelled" => 'ملغى',
+    "completed" => 'تم التسليم',
+    "processing" => 'يجهز الطلب',
+    "pending" => 'انتضار',
+    "coupy_unique_code_for_track_order" => 'إنسخ كود التتبع لمتابعة الطلب',
+    "we_send_invoice_to_email" => 'تم إرسال الفاتورة إلى البريد الإلكتروني',
+    "success_paid" => 'تمت عملية الدفع بنجاح',
+    "" => '',
+    "" => '',
 ];

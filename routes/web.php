@@ -133,8 +133,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //orders
     Route::get('orders', [OrderController::class, 'index'])->name('dashboard.orders.index');
-    Route::get('orders/create', [OrderController::class, 'create'])->name('dashboard.orders.create');
-    Route::post('orders/store', [OrderController::class, 'store'])->name('dashboard.orders.store');
     Route::get('orders/{obj}/edit', [OrderController::class, 'edit'])->name('dashboard.orders.edit');
     Route::post('orders/{obj}/update', [OrderController::class, 'update'])->name('dashboard.orders.update');
     Route::delete('orders/{obj}/delete', [OrderController::class, 'destroy'])->name('dashboard.orders.destroy');

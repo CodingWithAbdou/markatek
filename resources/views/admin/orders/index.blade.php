@@ -46,20 +46,20 @@
                                     class="badge badge-light-{{ $record->status == 'pending' ? 'warning' : ($record->status == 'processing' ? 'primary' : ($record->status == 'completed' ? 'success' : 'danger')) }}">
 
                                     @if ($record->status == 'pending')
-                                        {{ __('pending') }}
+                                        {{ __('dash.pending') }}
                                     @elseif($record->status == 'processing')
-                                        {{ __('processing') }}
+                                        {{ __('dash.processing') }}
                                     @elseif($record->status == 'completed')
-                                        {{ __('completed') }}
+                                        {{ __('dash.completed') }}
                                     @else
-                                        {{ __('cancelled') }}
+                                        {{ __('dash.cancelled') }}
                                     @endif
 
                                 </div>
                             </td>
-                            <td>{{ $record->total_cost }} {{ __('front.kwd') }}</td>
+                            <td>{{ $record->total_cost }} {{ __('dash.kwd') }}</td>
                             <td>{{ $record->TransactionDate }}</td>
-                            <x-action-btn.coupons :record="$record" />
+                            <x-action-btn.orders :record="$record" />
                         </tr>
                     @endforeach
                 </tbody>

@@ -82,4 +82,9 @@ return [
     'product' => 'منتج',
     'max_usage' => 'مرات الاستخدام',
     'message' => 'عرض',
+    "cancelled" => 'ملغى',
+    "completed" => 'تم التسليم',
+    "processing" => 'يجهز الطلب',
+    "pending" => 'انتضار',
+
 ];
