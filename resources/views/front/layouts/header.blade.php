@@ -23,20 +23,22 @@
                 </div>
                 <div>
                     <div class="hidden lg:flex flex-1 items-center justify-center gap-8 mb-2">
-                        <div class="pt-2 relative mx-auto text-gray-600">
-                            <input
-                                class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-primary "
-                                type="search" name="search" placeholder="{{ __('front.search_in_products') }}">
-                            <button type="submit" class="absolute left-0 top-0 mt-5 ml-4">
-                                <i class='bx bx-search text-primary'></i>
-                            </button>
-                        </div>
+                        <form class="search_form">
+                            <div class="pt-2 relative mx-auto text-gray-600">
+                                <input
+                                    class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-primary "
+                                    type="search" name="search" placeholder="{{ __('front.search_in_products') }}">
+                                <button type="submit" class="absolute left-0 top-0 mt-5 ml-4">
+                                    <i class='bx bx-search text-primary'></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div>
                     <div class="block">
                         <div class="hidden lg:flex gap-3">
-                            <a href="{{ route('main') }}"
+                            <a href="{{ route('track.index') }}"
                                 class=" flex items-center justify-center gap-1 text-neutral-800 rounded-md ps-3 py-2 text-sm font-medium trnsition duration-200 hover:text-primary"
                                 aria-current="page">
                                 <i class='bx bxs-truck text-2xl'
@@ -90,15 +92,17 @@
     </nav>
     <div id="menu"
         class=" flex flex-col gap-4 transition duration-300 h-0 overflow-hidden border border-t px-4 md:px-12 bg-white shadow-sm">
-        <div class=" relative w-fit text-gray-600 pt-2">
-            <input
-                class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-primary "
-                type="search" name="search" placeholder="{{ __('front.search_in_products') }}">
-            <button type="submit" class="absolute left-0 top-0 mt-5 ml-4">
-                <i class='bx bx-search text-primary'></i>
-            </button>
-        </div>
-        <a href="{{ route('main') }}"
+        <form class="search_form">
+            <div class=" relative w-fit text-gray-600 pt-2">
+                <input
+                    class="border border-neutral-300  bg-white h-10 py-2 px-5 pl-16 rounded-full text-sm focus:outline-none focus:border-primary "
+                    type="search" name="search" placeholder="{{ __('front.search_in_products') }}">
+                <button type="submit" class="absolute left-0 top-0 mt-5 ml-4">
+                    <i class='bx bx-search text-primary'></i>
+                </button>
+            </div>
+        </form>
+        <a href="{{ route('track.index') }}"
             class="w-fit flex items-center justify-center gap-1 text-neutral-800 rounded-md ps-3 py-2 text-sm font-medium trnsition duration-200 hover:text-primary"
             aria-current="page">
             <i class='bx bxs-truck text-2xl' style="{{ getLocale() == 'ar' ? 'transform: rotateY(180deg)' : '' }}"></i>
@@ -170,6 +174,28 @@
             $('#btn-menu').click(function() {
                 $('#menu').toggleClass('h-0');
             })
+            $('.search_form').on('submit', function(e) {
+                e.preventDefault();
+                let data = {
+                    search: $(this).find('input[name="search"]').val()
+                }
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "{{ route('search.search') }}",
+                    data: data,
+                    success: function(response) {
+                        window.location.href = response.url;
+                    },
+                    error: function(response) {
+                        toastr.error(response.responseJSON.message)
+                    }
+                });
+            })
+
+
         })
     </script>
 @endpush

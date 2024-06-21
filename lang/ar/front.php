@@ -77,6 +77,11 @@ return [
     "coupy_unique_code_for_track_order" => 'إنسخ كود التتبع لمتابعة الطلب',
     "we_send_invoice_to_email" => 'تم إرسال الفاتورة إلى البريد الإلكتروني',
     "success_paid" => 'تمت عملية الدفع بنجاح',
+    "search" => 'بحث',
+    "search_on" => 'نتائج البحث عن',
+    "count_search" => 'عدد المنتجات',
+    "" => '',
+    "" => '',
     "" => '',
     "" => '',
 ];

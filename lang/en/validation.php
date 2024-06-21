@@ -224,7 +224,10 @@ return [
         'terms' => 'Terms',
         'country' => 'Country',
         'payment_method' => 'Payment Method',
-
+        'place_id' => 'Place',
+        'search' => 'search',
     ],
+    'coupon_required' => 'The coupon field is required.',
+
 
 ];

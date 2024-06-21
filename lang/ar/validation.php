@@ -227,6 +227,7 @@ return [
         'country' => 'الدولة',
         'payment_method' => 'وسيلة الدقع',
         'place_id' => 'المنطقة',
+        'search' => 'البحث',
 
     ],
     'coupon_required' => 'يجب عدم ترك حقل الكوبون فارغ',
