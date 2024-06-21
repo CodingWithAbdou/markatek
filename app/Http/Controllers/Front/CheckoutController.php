@@ -51,13 +51,17 @@ class CheckoutController extends Controller
             $coupon = Coupon::where('code', $request->coupon)->first();
             $session = collect(session()->get('cart', []));
             $productIds = $session->pluck('id')->toArray();
-            if ($coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
+            if ($request->coupon_applay == 1 && $coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() &&  $coupon->used_at < now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
                 $product_price = Product::find($coupon->product_id)->first()->price;
-                $input['coupon_discount'] = floor($product_price /  $coupon->discount);
+                $input['coupon_discount'] = floor(($product_price *  $coupon->discount) / 100);
             } else {
                 $input['coupon_discount'] = 0;
             }
         } else {
+            $input['coupon_discount'] = 0;
+        }
+        if ($request->coupon_applay == 0) {
+            $input['coupon'] = null;
             $input['coupon_discount'] = 0;
         }
 
@@ -110,20 +114,28 @@ class CheckoutController extends Controller
             'KeyType' => 'paymentId'
         ];
         $response = $this->fatoorahServices->getPaymentStatus($data);
-        // if (!isset($response['Data']['InvoiceId'])) {
-        //     return response()->json(["error" => 'error', 'status' => false], 404);
-        // }
-
         $InvoiceId = $response['Data']['InvoiceId'];
-        if ($response['IsSuccess'] == "true" and Order::where('InvoiceId', $InvoiceId)->exists() and Order::where('InvoiceId', $InvoiceId)->where('payment_status', 'unpaid')->exists()) {
-            $order = Order::where('InvoiceId', $InvoiceId)->first();
-            $order->update([
-                'PaymentId' =>  $response['Data']['InvoiceTransactions'][0]['PaymentId'],
-                'TransactionDate' =>  $response['Data']['InvoiceTransactions'][0]['TransactionDate'],
-                'payment_status' => 'paid'
-            ]);
-            session()->flush();
-            return view('front.success_paid', compact('order'));
+        if ($response['IsSuccess'] == "true" and Order::where('InvoiceId', $InvoiceId)->exists()) {
+            if (Order::where('InvoiceId', $InvoiceId)->where('payment_status', 'unpaid')->exists()) {
+                $order = Order::where('InvoiceId', $InvoiceId)->first();
+                $order->update([
+                    'PaymentId' =>  $response['Data']['InvoiceTransactions'][0]['PaymentId'],
+                    'TransactionDate' =>  $response['Data']['InvoiceTransactions'][0]['TransactionDate'],
+                    'payment_status' => 'paid'
+                ]);
+                if ($order->coupon != null) {
+                    $coupon = Coupon::where('code', $order->coupon)->first();
+                    $coupon->update([
+                        'usage_limit' => $coupon->usage_limit - 1
+                    ]);
+                }
+                session()->forget('cart');
+                session()->forget('unique_id');
+                return view('front.success_paid', compact('order'));
+            } else {
+
+                return redirect()->route('main');
+            }
         }
     }
 }

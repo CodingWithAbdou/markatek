@@ -38,7 +38,6 @@
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                     @foreach ($data as $record)
-                        \
                         <tr>
                             <td>
                                 <div class="symbol symbol-50px bg-dark p-3"><img src="{{ asset($record->image_path) }}"

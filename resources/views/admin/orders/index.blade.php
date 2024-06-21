@@ -39,15 +39,26 @@
                 <tbody class="fw-bold text-gray-800">
                     @foreach ($data as $record)
                         <tr>
-                            <td>{{ $record->id }}</td>
+                            <td>{{ $record->unique_id }}</td>
                             <td>{{ $record->phone }} </td>
-                            <td>{{ $record->status }} </td>
-                            <td>{{ $record->total_cost }} </td>
                             <td>
-                                <div class="badge badge-light-{{ $record->status == 1 ? 'success' : 'danger' }}">
-                                    {{ $record->status == 1 ? 'نشط' : 'معطل' }}</div>
+                                <div
+                                    class="badge badge-light-{{ $record->status == 'pending' ? 'warning' : ($record->status == 'processing' ? 'primary' : ($record->status == 'completed' ? 'success' : 'danger')) }}">
+
+                                    @if ($record->status == 'pending')
+                                        {{ __('pending') }}
+                                    @elseif($record->status == 'processing')
+                                        {{ __('processing') }}
+                                    @elseif($record->status == 'completed')
+                                        {{ __('completed') }}
+                                    @else
+                                        {{ __('cancelled') }}
+                                    @endif
+
+                                </div>
                             </td>
-                            <td>{{ $record->created_at }}</td>
+                            <td>{{ $record->total_cost }} {{ __('front.kwd') }}</td>
+                            <td>{{ $record->TransactionDate }}</td>
                             <x-action-btn.coupons :record="$record" />
                         </tr>
                     @endforeach
