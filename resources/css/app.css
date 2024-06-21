@@ -17,14 +17,6 @@
     }
 }
 
-@layer base {
-    :root {
-        --color-primary: 13 148 136;
-        --color-secondary: #ffffff;
-        /* ... */
-    }
-}
-
 @layer utilities {
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {

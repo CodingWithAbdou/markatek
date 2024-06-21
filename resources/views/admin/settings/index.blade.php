@@ -28,8 +28,8 @@
                             role="tab">{{ __('dash.Basic') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#contact"
-                            role="tab">{{ __('dash.Contact Information') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#payment"
+                            role="tab">{{ __('dash.payment_info') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#social"
@@ -74,8 +74,8 @@
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
                                         @if (last(explode('_', $data->setting_key)) == 'ar')
                                             "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'tr')
-                                            "TR"
+                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
+                                            "En"
                                         @else
                                         @endif
                                     </label>
@@ -91,8 +91,8 @@
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
                                         @if (last(explode('_', $data->setting_key)) == 'ar')
                                             "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'tr')
-                                            "TR"
+                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
+                                            "En"
                                         @else
                                         @endif
                                     </label>
@@ -107,8 +107,8 @@
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
                                         @if (last(explode('_', $data->setting_key)) == 'ar')
                                             "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'tr')
-                                            "TR"
+                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
+                                            "En"
                                         @else
                                         @endif
                                     </label>
@@ -193,18 +193,12 @@
                             @endif
                         @endforeach
                     </div>
-                    <div class="tab-pane" id="contact">
+                    <div class="tab-pane" id="payment">
                         @foreach ($setting->where('category', 2) as $data)
                             @if ($data->type_id == 1)
                                 <div class="row mb-10">
                                     <label
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
-                                        @if (last(explode('_', $data->setting_key)) == 'ar')
-                                            "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
-                                            "EN"
-                                        @else
-                                        @endif
                                     </label>
                                     <div class="col-lg-9 col-xl-4">
                                         <input type="text" class="form-control form-control-solid ltr"
@@ -216,12 +210,6 @@
                                 <div class="row mb-10">
                                     <label
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
-                                        @if (last(explode('_', $data->setting_key)) == 'ar')
-                                            "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
-                                            "EN"
-                                        @else
-                                        @endif
                                     </label>
                                     <div class="col-lg-9 col-xl-4">
                                         <textarea class="form-control form-control-solid" name="{{ $data->setting_key }}" rows="5"
@@ -271,37 +259,129 @@
                     </div>
                     <div class="tab-pane" id="other">
                         @foreach ($setting->where('category', 4) as $data)
-                            @if ($data->type_id == 1)
-                                <div class="row mb-10">
-                                    <label
-                                        class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
-                                        @if (last(explode('_', $data->setting_key)) == 'ar')
-                                            "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
-                                            "EN"
-                                        @else
-                                        @endif
-                                    </label>
-                                    <div class="col-lg-9 col-xl-4">
-                                        <input type="text" class="form-control form-control-solid"
-                                            name="{{ $data->setting_key }}" id="{{ $data->setting_key }}"
-                                            value="{{ $data->setting_value }}" autocomplete="off">
+                            @if ($data->type_id == 5)
+                                <div class="row align-items-center mb-10">
+                                    <div class="col-lg-3 col-form-label text-lg-end">
+                                        {{ $data->{'title_' . app()->getLocale()} }}
+                                    </div>
+                                    <div class="form-check col-lg-2">
+                                        <input class="form-check-input" {{ $data->setting_value == 1 ? 'checked' : '' }}
+                                            type="radio" name="dir_production" value='1' id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            {{ __('dash.vertical') }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check col-lg-2 ">
+                                        <input class="form-check-input" {{ $data->setting_value == 2 ? 'checked' : '' }}
+                                            type="radio" name="dir_production" value='2' id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            {{ __('dash.horizontal') }}
+                                        </label>
                                     </div>
                                 </div>
-                            @elseif($data->type_id == 3)
-                                <div class="row mb-10">
+                            @elseif ($data->type_id == 6)
+                                <div class="row align-items-center mb-10">
+                                    <div class="col-lg-3 col-form-label text-lg-end">
+                                        {{ $data->{'title_' . app()->getLocale()} }}
+                                    </div>
+                                    <div class="form-check col-lg-2">
+                                        <input class="form-check-input" {{ $data->setting_value == 1 ? 'checked' : '' }}
+                                            type="radio" name="dir_category" value='1' id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
+                                            {{ __('dash.vertical') }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check col-lg-2 ">
+                                        <input class="form-check-input" {{ $data->setting_value == 2 ? 'checked' : '' }}
+                                            type="radio" name="dir_category" value='2' id="flexRadioDefault4">
+                                        <label class="form-check-label" for="flexRadioDefault4">
+                                            {{ __('dash.horizontal') }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @elseif($data->type_id == 7)
+                                <div class="row align-items-center mb-10">
                                     <label
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
-                                        @if (last(explode('_', $data->setting_key)) == 'ar')
-                                            "AR"
-                                        @elseif(last(explode('_', $data->setting_key)) == 'en')
-                                            "EN"
-                                        @else
-                                        @endif
                                     </label>
                                     <div class="col-lg-9 col-xl-4">
-                                        <textarea class="form-control form-control-solid" name="{{ $data->setting_key }}" rows="5"
-                                            id="{{ $data->setting_key }}" data-kt-autosize="true">{{ $data->setting_value }}</textarea>
+                                        <input class="form-check-input" {{ $data->setting_value == 1 ? 'checked' : '' }}
+                                            type="radio" name="color_site" value="13 148 136"
+                                            {{ $data->setting_value == '13 148 136' ? 'checked' : '' }}
+                                            style="background-color: rgb(13, 148, 136);border-color: rgb(13, 148, 136);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="194 65 12"
+                                            {{ $data->setting_value == '194 65 12' ? 'checked' : '' }}
+                                            style="background-color: rgb(194 65 12);border-color: rgb(194 65 12);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="77 124 15"
+                                            {{ $data->setting_value == '77 124 15' ? 'checked' : '' }}
+                                            style="background-color: rgb(77 124 15);border-color: rgb(77 124 15);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="21 128 61"
+                                            {{ $data->setting_value == '21 128 61' ? 'checked' : '' }}
+                                            style="background-color: rgb(21 128 61);border-color: rgb(21 128 61);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="4 120 87"
+                                            {{ $data->setting_value == '4 120 87' ? 'checked' : '' }}
+                                            style="background-color: rgb(4 120 87);border-color: rgb(4 120 87);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="14 116 144"
+                                            {{ $data->setting_value == '14 116 144' ? 'checked' : '' }}
+                                            style="background-color: rgb(14 116 144);border-color: rgb(14 116 144);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="29 78 216"
+                                            {{ $data->setting_value == '29 78 216' ? 'checked' : '' }}
+                                            style="background-color: rgb(29 78 216);border-color: rgb(29 78 216);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="4 120 87"
+                                            {{ $data->setting_value == '4 120 87' ? 'checked' : '' }}
+                                            style="background-color: rgb(4 120 87);border-color: rgb(4 120 87);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="67 56 202"
+                                            {{ $data->setting_value == '67 56 202' ? 'checked' : '' }}
+                                            style="background-color: rgb(67 56 202);border-color: rgb(67 56 202);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="190 24 93"
+                                            {{ $data->setting_value == '190 24 93' ? 'checked' : '' }}
+                                            style="background-color: rgb(190 24 93);border-color: rgb(190 24 93);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="64 64 64"
+                                            {{ $data->setting_value == '64 64 64' ? 'checked' : '' }}
+                                            style="background-color: rgb(64 64 64);border-color: rgb(64 64 64);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="185 28 28"
+                                            {{ $data->setting_value == '185 28 28' ? 'checked' : '' }}
+                                            style="background-color: rgb(185 28 28);border-color: rgb(185 28 28);cursor: pointer;">
+
+                                        <input class="form-check-input mx-2 mb-2"
+                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                            name="color_site" value="38 38 38"
+                                            {{ $data->setting_value == '38 38 38' ? 'checked' : '' }}
+                                            style="background-color: rgb(38 38 38);border-color: rgb(38 38 38);cursor: pointer;">
+
                                     </div>
                                 </div>
                             @endif

@@ -27,10 +27,23 @@ class SettingController extends Controller
     {
         $this->validate($request, [
             'website_name_ar' => 'required',
+            'website_name_en' => 'required',
             'description_ar' => 'required',
+            'description_en' => 'required',
+            'footer_description_ar' => 'required',
+            'footer_description_en' => 'required',
             'keywords' => 'required',
             'logo' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             'favicon' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            'facebook' => 'nullable',
+            'instagram' => 'nullable',
+            'whatsapp' => 'nullable',
+            'gmail' => 'nullable',
+            'payment_url' => 'required',
+            'api_key' => 'required',
+            'dir_production' => 'required',
+            'dir_category' => 'required',
+            'color_site' => 'required',
         ]);
 
 
@@ -62,7 +75,7 @@ class SettingController extends Controller
             }
         }
 
-        $msg = __('dashboard.updated successfully');
+        $msg = __('dash.updated successfully');
         $request->session()->flash('success', $msg);
         return redirect()->route('dashboard.home');
     }

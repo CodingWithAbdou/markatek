@@ -86,5 +86,10 @@ return [
     "completed" => 'تم التسليم',
     "processing" => 'في طريقه للتوصيل',
     "pending" =>  'يجهز الطلب',
-
+    'kwd' => 'د.ك ',
+    'payment_info' => 'إعدادات الدقع',
+    'Other' => 'اخرى',
+    'vertical' => 'عمودي ',
+    'horizontal' => 'افقي',
+    'updated_successfully' => 'تم تحديث البينات بنجاح',
 ];

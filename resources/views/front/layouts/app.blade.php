@@ -28,7 +28,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* @layer base { */
+        :root {
+            --color-primary: {{ App\Models\Setting::where('setting_key', 'color_site')->first()->setting_value }};
+            /* ... */
+        }
 
+        /* } */
+    </style>
     @vite('resources/css/app.css')
     @stack('style')
 
