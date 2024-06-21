@@ -120,9 +120,9 @@
                 success: function(response) {
                     if (response.msg == 'set_number') {
                         setBadge(response.cart_items)
-                        toastr.success('تمت الإضافة المنتج الي السلة')
+                        toastr.success("{{ __('front.add_to_cart') }}")
                     } else {
-                        toastr.success('تمت تحديث عدد المنتجات ')
+                        toastr.success("{{ __('front.update_cart') }}")
                         if (method == 'asc') {
                             input.val(value + 1)
                         } else {
@@ -132,7 +132,7 @@
                     showInput(data.product)
                 },
                 error: function(response) {
-                    toastr.error('حدث خطأ ما')
+                    toastr.error("{{ __('front.error_message') }}")
                 }
             });
         }

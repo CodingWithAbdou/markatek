@@ -214,6 +214,21 @@ return [
         'email' => 'الايميل',
         'password' => 'كلمة المرور',
         'password_confirmation' => 'تاكيد كلمة المرور',
+
+        'phone' => 'الهاتف',
+        'piece' => 'القطعة',
+        'street' => 'الشارع',
+        'house_number' => 'رقم المنزل',
+        'coupon' => 'كوبون',
+        'note' => 'ملاحظة',
+        'avenue ' => 'الجادة',
+        'terms' => 'جميع الشروط',
+        'email' => 'الايميل',
+        'country' => 'الدولة',
+        'payment_method' => 'وسيلة الدقع',
+        'place_id' => 'المنطقة',
+
     ],
+    'coupon_required' => 'يجب عدم ترك حقل الكوبون فارغ',
 
 ];

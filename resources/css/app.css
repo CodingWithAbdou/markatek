@@ -70,3 +70,13 @@ body {
 .secound_color_b {
     background: var(--secound-color);
 }
+
+/* //// */
+
+#btn-apply:disabled {
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
+#coupon_value:read-only {
+    background: #eeeeee;
+}

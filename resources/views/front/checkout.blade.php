@@ -99,10 +99,10 @@
 
                             <div>
                                 <div class="">
-                                    <label for="select-city-input-3" class="label_desgin">
+                                    <label for="place" class="label_desgin">
                                         {{ __('front.place') }} <span class="text-primary font-bold">*</span> </label>
                                 </div>
-                                <select id="select-city-input-3" name="place_id" class="select_design">
+                                <select id="place" name="place_id" class="select_design" id="place">
                                     @foreach ($places as $place)
                                         <option value="{{ $place->id }}" {{ $loop->index == 0 ? 'selected' : '' }}>
                                             {{ $place->{'name_' . getLocale()} }}</option>
@@ -148,6 +148,7 @@
                             <div></div>
 
                             <div id="coupon-content">
+                                <input type="hidden" name="coupon_applay" value="0" id="coupon-applay">
                                 <label for="your_coupon" class="label_desgin"> {{ __('front.active_you_coupon') }}<span
                                         class="text-primary font-bold">*</span>
                                 </label>
@@ -174,13 +175,15 @@
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-neutral-600 "> {{ __('front.delivery_price') }}</dt>
                                 <dd class="text-base font-medium  text-neutral-600 ">
-                                    {{ $places->first()->delivery_price ?? 0 }}
-                                    {{ __('front.kwd') }}</dd>
+                                    <span id="delivery-price"> 0</span>
+                                    <span> {{ __('front.kwd') }}</span>
+                                </dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-neutral-600 "> {{ __('front.code_discount') }}</dt>
-                                <dd id="coupon-cost" class="text-base font-medium  text-neutral-600 dark:text-white">0
+                                <dd class="text-base font-medium  text-neutral-600 dark:text-white"> <span
+                                        id="coupon-cost">0</span>
                                     <span class="text-sm"> {{ __('front.kwd') }}</span>
                                 </dd>
                             </dl>
@@ -189,8 +192,9 @@
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-bold text-neutral-800"> {{ __('front.total') }}
                                 </dt>
-                                <dd id="total-cost" class="text-base font-bold  text-neutral-600 dark:text-white">
-                                    {{ $total }} <span class="text-sm"> {{ __('front.kwd') }}</span>
+                                <dd class="text-base font-bold  text-neutral-600 dark:text-white">
+                                    <span id="total-cost"> {{ $total }} </span> <span class="text-sm">
+                                        {{ __('front.kwd') }}</span>
                                 </dd>
                             </dl>
 
@@ -213,7 +217,7 @@
                                 </div>
                                 <div class="relative">
                                     <input class="peer hidden" id="radio_2" value='knet' type="radio"
-                                        name="payment_method" checked />
+                                        name="payment_method" />
                                     <span
                                         class=" peer-checked:border-primary absolute right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                                     <label
@@ -247,13 +251,12 @@
     </section>
 @endsection
 @push('script')
-    <x-js.form />
     <script>
         $(document).ready(function() {
             $('#checkout-form').on('submit', function(e) {
                 e.preventDefault();
-                toastr.info('تتم معالجة الطلب');
-
+                toastr.info("{{ __('front.request_processing') }}");
+                HideValidationError($('#checkout-form'))
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -277,8 +280,7 @@
                             let index = i.split('.')[0];
                             showValidationError(form, index, value);
                         });
-
-                        // toastr.error('حدث خطأ ما');
+                        toastr.error("{{ __('front.there_are_errors') }}");
                     }
                 });
             })
@@ -295,29 +297,109 @@
                     data: data,
                     success: function(response) {
                         if (response.msg == 'coupon_applied') {
-                            toastr.success(`تم خصم ${response.discount} بنجاح`);
+                            toastr.success(
+                                `{{ __('front.we_cut') }} ${response.discount}   {{ __('front.kwd') }} {{ __('front.succesfully') }}`
+                            );
                             $('#coupon_value').attr('readonly', '');
                             $('#btn-apply').attr('disabled', 'disabled');
+                            $('#coupon-applay').val(1);
                         } else {
-                            toastr.error('الكوبون غير صالح');
+                            toastr.error("{{ __('front.coupon_not_found') }}");
                         }
                         $("#coupon-cost").html(response.discount);
-                        freshTotal({{ $places->first()->delivery_price }})
+                        freshTotal($('#delivery-price').html())
                     },
                     error: function(response) {
-                        toastr.success(`تم خصم ${response.discount}% بنجاح`);
+                        toastr.error(response.responseJSON.message);
                     }
                 });
             })
 
-            function freshTotal(delivery_pricee) {
-                let total = 0;
-                let sub_total = {{ $sub_total }};
-                let delivery_price = delivery_pricee;
-                let coupon = $('#coupon-cost').html();
-                total = sub_total + delivery_price - coupon;
-                $('#total-cost').html(total);
+
+            $('#place').on('change', function(e) {
+                let data = {
+                    place: $('#place').val()
+                }
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "{{ route('place.change') }}",
+                    data: data,
+                    success: function(response) {
+                        toastr.success(
+                            `{{ __('front.price_delivery') }} ${response.name_place} {{ __('front.it_is') }} ${response.delivery_price} {{ __('front.kwd') }} `
+                        );
+                        $('#delivery-price').html(response.delivery_price);
+                        freshTotal(response.delivery_price)
+                    },
+                    error: function(response) {
+                        toastr.error(response.responseJSON.message);
+                    }
+                });
+            })
+        });
+
+
+        function showValidationError(form, index, value) {
+            form.find("input[name='" + index + "'][type=file]").parents('.error-here').append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+            form.find("input[name='" + index + "'][type!=file]").parent().append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+            form.find("select[name='" + index + "']").parent().append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value +
+                '</div');
+            form.find("textarea[name='" + index + "']").parent().append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value +
+                '</div');
+            form.find("input[name='" + index + "[]'][type=file]").parents('.error-here').append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+            form.find("input[name='" + index + "[]'][type!=file]").parent().append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value + '</div');
+            form.find("select[name='" + index + "[]']").parent().append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' + value +
+                '</div');
+            form.find("textarea[name='" + index + "[]']").parent().append(
+                '<div class="block text-xs text-red-600 invalid-feedback">' +
+                value + '</div');
+        }
+
+        function HideValidationError(form) {
+            form.find('.invalid-feedback').remove();
+        }
+
+        function getPlaceDelivery() {
+            let data = {
+                place: $('#place').val()
             }
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "{{ route('place.get') }}",
+                data: data,
+                success: function(response) {
+                    freshTotal(response.delivery_price)
+                    $('#delivery-price').html(response.delivery_price);
+                },
+                error: function(response) {
+                    alert("{{ __('front.error_message') }}")
+                }
+            });
+        }
+
+        function freshTotal(delivery_pricee) {
+            let total = 0;
+            let sub_total = {{ $sub_total }};
+            let delivery_price = +delivery_pricee;
+            let coupon = $('#coupon-cost').html();
+            total = sub_total + delivery_price - coupon;
+            $('#total-cost').html(total);
+        }
+        $(window).on('pageshow', function(event) {
+            getPlaceDelivery()
         });
     </script>
 @endpush

@@ -11,6 +11,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\CheckoutEventController;
 use App\Http\Controllers\Front\ProductPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -50,7 +51,9 @@ Route::get('/error', [CheckoutController::class, 'error'])->name('fatoorah.error
 
 
 
-Route::post('/coupon/apply', [CheckoutController::class, 'applyCopoun'])->name('coupon.apply');
+Route::post('/coupon/apply', [CheckoutEventController::class, 'applyCopoun'])->name('coupon.apply');
+Route::post('/place/get', [CheckoutEventController::class, 'getPlace'])->name('place.get');
+Route::post('/place/change', [CheckoutEventController::class, 'changePlace'])->name('place.change');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {

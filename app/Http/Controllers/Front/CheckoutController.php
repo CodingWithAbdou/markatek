@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutRequest;
+use App\Http\Requests\CouponApplayRequest;
 use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\Place;
@@ -21,12 +22,12 @@ class CheckoutController extends Controller
 
     public function index()
     {
-
         $places = Place::orderBy('order_by', 'asc')->get();
         $sub_total = collect(session()->get('cart', []))->sum(function ($item) {
             return $item['price'] * $item['quantity'];
         });
-        $total = $sub_total + $places->first()->delivery_price;
+        $delivery_price = $places->first()->delivery_price ?? 0;
+        $total = $sub_total + $delivery_price;
         return view('front.checkout', compact('places', 'sub_total', 'total'));
     }
 
@@ -34,6 +35,7 @@ class CheckoutController extends Controller
     {
         $input = $request->validated();
         unset($input['terms']);
+        unset($input['coupon_applay']);
         $session = collect(session()->get('cart', []));
         $productIds = $session->pluck('id')->toArray();
         $quantities = $session->pluck('quantity')->toArray();
@@ -43,7 +45,6 @@ class CheckoutController extends Controller
             $totalCost += $products[$i]->price * $quantities[$i];
         }
         $input['real_cost'] = $totalCost;
-
         $input['delivery_cost'] = Place::find($input['place_id'])->delivery_price;
 
         if ($request->coupon) {
@@ -52,13 +53,14 @@ class CheckoutController extends Controller
             $productIds = $session->pluck('id')->toArray();
             if ($coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
                 $product_price = Product::find($coupon->product_id)->first()->price;
-                $input['coupon_discount'] = round($product_price /  $coupon->discount);
+                $input['coupon_discount'] = floor($product_price /  $coupon->discount);
             } else {
                 $input['coupon_discount'] = 0;
             }
         } else {
             $input['coupon_discount'] = 0;
         }
+
         $input['total_cost'] = $input['real_cost'] + $input['delivery_cost'] - $input['coupon_discount'];
 
         if ($input['payment_method'] == 'credit_card')  $paymentMethodId = 2;
@@ -123,28 +125,5 @@ class CheckoutController extends Controller
             session()->flush();
             return view('front.success_paid', compact('order'));
         }
-    }
-
-
-    public function applyCopoun(Request $request)
-    {
-        $this->validate($request, [
-            'coupon' => 'required|min:4|max:191|string'
-        ]);
-        $coupon = Coupon::where('code', $request->coupon)->first();
-        $session = collect(session()->get('cart', []));
-        $productIds = $session->pluck('id')->toArray();
-        if ($coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
-            $product_price = Product::find($coupon->product_id)->first()->price;
-            $msg = 'coupon_applied';
-            $discount = round($product_price /  $coupon->discount);
-        } else {
-            $msg = 'coupon_not_applied';
-            $discount = 0;
-        }
-        $status = 'success';
-        return response()->json(
-            compact('status', 'msg', 'discount')
-        );
     }
 }

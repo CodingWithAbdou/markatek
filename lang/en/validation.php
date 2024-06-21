@@ -214,6 +214,16 @@ return [
         'email' => 'Email',
         'password' => 'Password',
         'password_confirmation' => 'Password Confirmation',
+        'phone' => 'Phone',
+        'piece' => 'Piece',
+        'street' => 'Street',
+        'house_number' => 'House Number',
+        'coupon' => 'Coupon',
+        'note' => 'Note',
+        'avenue' => 'Avenue',
+        'terms' => 'Terms',
+        'country' => 'Country',
+        'payment_method' => 'Payment Method',
 
     ],
 

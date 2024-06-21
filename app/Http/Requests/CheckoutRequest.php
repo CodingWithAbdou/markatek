@@ -31,10 +31,11 @@ class CheckoutRequest extends FormRequest
             "avenue" => 'required|string|max:191',
             "house_number" => 'required|email|max:191',
             "note" => 'nullable|string',
-            "coupon" => 'nullable|min:4|max:191|string',
+            "coupon" => 'nullable|min:4|max:191|string|exists:coupons,code',
             "house_number" => 'required',
             "payment_method" => 'required|string|max:191|in:credit_card,knet',
             "terms" => 'required',
+            "coupon_applay" => 'in:0,1',
         ];
     }
 }

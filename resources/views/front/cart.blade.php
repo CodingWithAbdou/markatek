@@ -61,10 +61,10 @@
                     success: function(response) {
                         if (response.msg == 'set_number') {
                             setBadge(response.cart_items);
-                            toastr.success('تمت الإضافة المنتج الي السلة');
+                            toastr.success("{{ __('front.add_to_cart') }}");
                         } else {
                             if (method == 'asc') {
-                                toastr.success('تمت تحديث عدد المنتجات ');
+                                toastr.success("{{ __('front.update_cart') }}");
                                 input.val(value + 1);
                                 $('#global').text(parseInt($('#global').text()) + +response.price);
                                 btn.removeAttr('disabled');
@@ -74,7 +74,7 @@
                                     location.reload();
                                 } else {
                                     if (show_toast) {
-                                        toastr.success('تمت تحديث عدد المنتجات ');
+                                        toastr.success("{{ __('front.update_cart') }}");
                                     }
                                     $('#global').text(parseInt($('#global').text()) - +response.price);
                                     input.val(value - 1);
@@ -85,7 +85,7 @@
                         }
                     },
                     error: function(response) {
-                        toastr.error('حدث خطأ ما');
+                        toastr.error("{{ __('front.error_message') }}");
                     }
                 });
             }
@@ -105,7 +105,7 @@
                         if (response.msg == 'delete') {
                             setBadge(response.cart_items);
                             $('#items').html(response.view);
-                            toastr.success('تمت الحذف من السلة');
+                            toastr.success("{{ __('front.delete_cart') }}");
                             $('.asc_product').off('click');
                             $('.desc_product').off('click');
                             $('.asc_product').on('click', ascProduct);
@@ -113,7 +113,7 @@
                         }
                     },
                     error: function(response) {
-                        toastr.error('حدث خطأ ما');
+                        toastr.error("{{ __('front.error_message') }}");
                     }
                 });
             }
@@ -151,7 +151,6 @@
                     quantity: quantity,
                 };
                 changeCart(data, input, value, 'desc', $(this), show_toast);
-
             }
         });
     </script>
