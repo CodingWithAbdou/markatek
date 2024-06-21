@@ -84,7 +84,7 @@ return [
     'message' => 'عرض',
     "cancelled" => 'ملغى',
     "completed" => 'تم التسليم',
-    "processing" => 'يجهز الطلب',
-    "pending" => 'انتضار',
+    "processing" => 'في طريقه للتوصيل',
+    "pending" =>  'يجهز الطلب',
 
 ];

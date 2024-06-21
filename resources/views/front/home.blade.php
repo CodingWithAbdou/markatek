@@ -1,10 +1,10 @@
 @extends('front.layouts.app')
 
 @section('content')
-    @if ($banners->count() > 0)
-        <section class="slider rounded-lg  ">
+    <section class="slider rounded-lg   max-h-[450px] overflow-hidden">
+        @if ($banners->count() > 0)
             @foreach ($banners as $banner)
-                <div class="relative overflow-hidden max-h-[450px]">
+                <div class="relative  max-h-[450px]" overflow-hidden>
                     @if ($banner->{'title_' . getLocale()} || $banner->{'description_ar'})
                         <span class="absolute  inset-0 bg-neutral-800 opacity-70"></span>
                     @endif
@@ -14,12 +14,12 @@
                         </h1>
                         <p class="text-center  mt-6">{{ $banner->{'description_ar'} }}</p>
                     </div>
-                    <img class="w-full object-cover  shadow-sm border-indigo-200 h-[450px]"
+                    <img class="w-full object-cover shadow-sm border-indigo-200 h-[450px]"
                         src="{{ asset($banner->image_path) }}"alt="">
                 </div>
             @endforeach
-        </section>
-    @endif
+        @endif
+    </section>
     {{-- <section class="relative z-30 max-w-screen-2xl mx-auto grid grid-cols-2  md:grid-cols-4 border">
         <div class="flex  gap-4 items-center justify-center  md:text-3xl bg-white py-6 border-l">
             <i class='bx bxs-purchase-tag mt-1'></i>
