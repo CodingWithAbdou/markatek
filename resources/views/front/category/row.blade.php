@@ -16,7 +16,7 @@
                     class="absolute top-2 right-3 text-white z-10 block opacity-75 -mb-1 text-xs mt-2 bg-primary rounded-lg p-2">
                     {{ __('front.count_of_products') }}
                     :
-                    {{ $category->products->count() }}</span>
+                    {{ $category->products->where('quantity', '>', 0)->count() }}</span>
 
                 <img class="relative w-72  object-cover h-48 " src="{{ asset($category->image_path) }}" alt="">
             </div>

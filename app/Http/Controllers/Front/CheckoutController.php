@@ -100,6 +100,7 @@ class CheckoutController extends Controller
         if (Order::where('unique_id', $input['unique_id'])->exists() and Order::where('unique_id', $input['unique_id'])->where('payment_status', 'unpaid')->exists()) {
             Order::where('unique_id', $input['unique_id'])->delete();
         }
+        $input['phone'] =  '+966 ' . $input['phone'];
         Order::create($input);
         return response()->json(compact('status', 'msg', 'url'));
     }
@@ -123,7 +124,8 @@ class CheckoutController extends Controller
                 $order->update([
                     'PaymentId' =>  $response['Data']['InvoiceTransactions'][0]['PaymentId'],
                     'TransactionDate' =>  $response['Data']['InvoiceTransactions'][0]['TransactionDate'],
-                    'payment_status' => 'paid'
+                    'payment_status' => 'paid',
+                    'status' => "pending"
                 ]);
                 if ($order->coupon != null) {
                     $coupon = Coupon::where('code', $order->coupon)->first();
@@ -137,14 +139,12 @@ class CheckoutController extends Controller
                 for ($i = 0; $i < count($productIds); $i++) {
                     $order->products()->attach($productIds[$i], ['quantity' => $quantities[$i]]);
                     Product::find($productIds[$i])->update([
-                        'quantity' => Product::find($productIds[$i])->quantity - $quantities[$i]
+                        'quantity' => Product::find($productIds[$i])->quantity - $quantities[$i] > 0 ? Product::find($productIds[$i])->quantity - $quantities[$i] : 0
                     ]);
                 }
                 Mail::to($order->email)->send(new OrderMail($order));
 
-
-                session()->forget('cart');
-                session()->forget('unique_id');
+                session()->forget(['cart', 'unique_id']);
                 return view('front.success_paid', compact('order'));
             } else {
                 return redirect()->route('main');

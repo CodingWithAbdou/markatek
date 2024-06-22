@@ -62,6 +62,8 @@
                         if (response.msg == 'set_number') {
                             setBadge(response.cart_items);
                             toastr.success("{{ __('front.add_to_cart') }}");
+                        } else if (response.msg == 'not_enough') {
+                            toastr.error("{{ __('front.not_enough') }}")
                         } else {
                             if (method == 'asc') {
                                 toastr.success("{{ __('front.update_cart') }}");

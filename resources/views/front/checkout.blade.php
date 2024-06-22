@@ -28,7 +28,7 @@
                                         {{ __('front.country') }} <span class="text-primary font-bold">*</span> </label>
                                 </div>
                                 <select id="select-country-input-3" name="country" class="select_design">
-                                    <option value="KW" selected>{{ __('front.Kuwait') }} </option>
+                                    <option value="{{ __('front.country') }}" selected>{{ __('front.Kuwait') }} </option>
                                 </select>
                             </div>
 
@@ -40,45 +40,24 @@
                                     <button id="dropdown-phone-button-3"
                                         class="z-10 inline-flex shrink-0 items-center rounded-s-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                                         type="button">
-                                        <svg fill="none" aria-hidden="true" class="me-2 h-4 w-4" viewBox="0 0 20 15">
-                                            <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
-                                            <mask id="a" style="mask-type:luminance" width="20" height="15"
-                                                x="0" y="0" maskUnits="userSpaceOnUse">
-                                                <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
-                                            </mask>
-                                            <g mask="url(#a)">
-                                                <path fill="#D02F44" fill-rule="evenodd"
-                                                    d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z"
-                                                    clip-rule="evenodd" />
-                                                <path fill="#46467F" d="M0 .5h8.4v6.533H0z" />
-                                                <g filter="url(#filter0_d_343_121520)">
-                                                    <path fill="url(#paint0_linear_343_121520)" fill-rule="evenodd"
-                                                        d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z"
-                                                        clip-rule="evenodd" />
-                                                </g>
-                                            </g>
-                                            <defs>
-                                                <linearGradient id="paint0_linear_343_121520" x1=".933" x2=".933"
-                                                    y1="1.433" y2="6.1" gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#fff" />
-                                                    <stop offset="1" stop-color="#F0F0F0" />
-                                                </linearGradient>
-                                                <filter id="filter0_d_343_121520" width="6.533" height="5.667" x=".933"
-                                                    y="1.433" color-interpolation-filters="sRGB"
-                                                    filterUnits="userSpaceOnUse">
-                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                    <feColorMatrix in="SourceAlpha" result="hardAlpha"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                                                    <feOffset dy="1" />
-                                                    <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
-                                                    <feBlend in2="BackgroundImageFix"
-                                                        result="effect1_dropShadow_343_121520" />
-                                                    <feBlend in="SourceGraphic" in2="effect1_dropShadow_343_121520"
-                                                        result="shape" />
-                                                </filter>
-                                            </defs>
+                                        <span class="me-2 mt-[1px] -mb-[1px] text-xs">+ 966</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 32 32">
+                                            <path fill="#fff" d="M1 11H31V21H1z"></path>
+                                            <path d="M5,4H27c2.208,0,4,1.792,4,4v4H1v-4c0-2.208,1.792-4,4-4Z"
+                                                fill="#357942"></path>
+                                            <path d="M5,20H27c2.208,0,4,1.792,4,4v4H1v-4c0-2.208,1.792-4,4-4Z"
+                                                transform="rotate(180 16 24)" fill="#be2a2c"></path>
+                                            <path
+                                                d="M11,12L2.316,5.053c-.803,.732-1.316,1.776-1.316,2.947V24c0,1.172,.513,2.216,1.316,2.947l8.684-6.947V12Z">
+                                            </path>
+                                            <path
+                                                d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
+                                                opacity=".15"></path>
+                                            <path
+                                                d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
+                                                fill="#fff" opacity=".2"></path>
                                         </svg>
-                                        +966
                                     </button>
 
                                     <div class="relative w-full">
@@ -240,7 +219,7 @@
                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('front.accept_all_terms') }}</label>
                         </div>
 
-                        <button
+                        <button id="btn-checkout"
                             class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">{{ __('front.pay') }}
                         </button>
 
@@ -255,6 +234,7 @@
         $(document).ready(function() {
             $('#checkout-form').on('submit', function(e) {
                 e.preventDefault();
+                $('#btn-checkout').attr('disabled', 'disabled');
                 toastr.info("{{ __('front.request_processing') }}");
                 HideValidationError($('#checkout-form'))
                 $.ajax({
@@ -274,6 +254,8 @@
                         }
                     },
                     error: function(response) {
+                        $('#btn-checkout').removeAttr('disabled');
+
                         let array = []
                         let form = $('#checkout-form')
                         $.each(response.responseJSON.errors, function(i, value) {

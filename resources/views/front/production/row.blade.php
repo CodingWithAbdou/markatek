@@ -24,7 +24,7 @@
                         <input type="hidden" name="product" value="{{ $product->id }}">
                         <input type="hidden" name="quantity" value="1">
                         <button id="btn-{{ $product->id }}"
-                            class="{{ isset($cart["$product->id"]) ? 'hidden' : 'flex' }}  items-center gap-2 px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded-lg dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600
+                            class="{{ isset($cart["$product->id"]) ? 'hidden' : 'flex' }}  btn_cart items-center gap-2 px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded-lg dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600
                             ">
                             <span class="hidden md:inline-block">{{ __('front.add_cart') }}</span>
                             <i class='bx bx-cart-add text-white text-xl'></i>

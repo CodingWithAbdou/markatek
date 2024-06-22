@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         $banners = Banner::orderBy('order_by', 'asc')->get();
         $categories = Category::orderBy('order_by', 'asc')->get();
-        $products = Product::orderBy('order_by', 'asc')->get();
+        $products = Product::where('quantity', '>', 0)->orderBy('order_by', 'asc')->get();
         return view('front.home', compact('banners', 'categories', 'products'));
     }
 }

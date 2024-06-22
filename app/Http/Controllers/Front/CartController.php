@@ -28,12 +28,20 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
 
         $quantity = $request->quantity;
+        $product = Product::find($product_id);
+
         if (isset($cart[$product_id])) {
+            if ($product->quantity < $quantity) {
+                $status = false;
+                $msg = __('not_enough');
+                return response()->json(compact('status', 'msg'));
+            }
             $cart[$product_id]['quantity'] =  $quantity;
             $price = $cart[$product_id]['price'];
             $msg = __('show_toast');
         } else {
             $product = Product::find($product_id);
+
             $cart[$product_id] = [
                 "id" => $product_id,
                 "quantity" => $quantity,

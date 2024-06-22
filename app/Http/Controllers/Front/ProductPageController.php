@@ -10,7 +10,7 @@ class ProductPageController extends Controller
 {
     public function products(Category $category)
     {
-        $products = $category->products()->get();
+        $products = $category->products()->where('quantity', '>', 0)->get();
         return view('front.products', compact('category', 'products'));
     }
 }

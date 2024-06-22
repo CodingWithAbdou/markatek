@@ -53,7 +53,9 @@
             let data = {
                 product: $(this).find('[name="product"]').val(),
                 quantity: $(this).find('[name="quantity"]').val(),
+
             }
+            $(this).find('.btn_cart').attr('disabled', true)
             changeCart(data)
         })
 
@@ -69,6 +71,8 @@
                     if (response.msg == 'set_number') {
                         setBadge(response.cart_items)
                         toastr.success("{{ __('front.add_to_cart') }}")
+                    } else if (response.msg == 'not_enough') {
+                        toastr.error("{{ __('front.not_enough') }}")
                     } else {
                         toastr.success("{{ __('front.update_cart') }}")
                         if (method == 'asc') {
