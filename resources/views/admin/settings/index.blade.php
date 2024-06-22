@@ -300,88 +300,18 @@
                                     </div>
                                 </div>
                             @elseif($data->type_id == 7)
-                                <div class="row align-items-center mb-10">
+                                <div class="row align-items-center mb-10 border-right border-left px-2  ">
                                     <label
                                         class="col-lg-3 col-form-label text-lg-end">{{ $data->{'title_' . app()->getLocale()} }}
                                     </label>
                                     <div class="col-lg-9 col-xl-4">
-                                        <input class="form-check-input" {{ $data->setting_value == 1 ? 'checked' : '' }}
-                                            type="radio" name="color_site" value="13 148 136"
-                                            {{ $data->setting_value == '13 148 136' ? 'checked' : '' }}
-                                            style="background-color: rgb(13, 148, 136);border-color: rgb(13, 148, 136);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="194 65 12"
-                                            {{ $data->setting_value == '194 65 12' ? 'checked' : '' }}
-                                            style="background-color: rgb(194 65 12);border-color: rgb(194 65 12);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="77 124 15"
-                                            {{ $data->setting_value == '77 124 15' ? 'checked' : '' }}
-                                            style="background-color: rgb(77 124 15);border-color: rgb(77 124 15);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="21 128 61"
-                                            {{ $data->setting_value == '21 128 61' ? 'checked' : '' }}
-                                            style="background-color: rgb(21 128 61);border-color: rgb(21 128 61);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="4 120 87"
-                                            {{ $data->setting_value == '4 120 87' ? 'checked' : '' }}
-                                            style="background-color: rgb(4 120 87);border-color: rgb(4 120 87);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="14 116 144"
-                                            {{ $data->setting_value == '14 116 144' ? 'checked' : '' }}
-                                            style="background-color: rgb(14 116 144);border-color: rgb(14 116 144);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="29 78 216"
-                                            {{ $data->setting_value == '29 78 216' ? 'checked' : '' }}
-                                            style="background-color: rgb(29 78 216);border-color: rgb(29 78 216);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="4 120 87"
-                                            {{ $data->setting_value == '4 120 87' ? 'checked' : '' }}
-                                            style="background-color: rgb(4 120 87);border-color: rgb(4 120 87);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="67 56 202"
-                                            {{ $data->setting_value == '67 56 202' ? 'checked' : '' }}
-                                            style="background-color: rgb(67 56 202);border-color: rgb(67 56 202);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="190 24 93"
-                                            {{ $data->setting_value == '190 24 93' ? 'checked' : '' }}
-                                            style="background-color: rgb(190 24 93);border-color: rgb(190 24 93);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="64 64 64"
-                                            {{ $data->setting_value == '64 64 64' ? 'checked' : '' }}
-                                            style="background-color: rgb(64 64 64);border-color: rgb(64 64 64);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="185 28 28"
-                                            {{ $data->setting_value == '185 28 28' ? 'checked' : '' }}
-                                            style="background-color: rgb(185 28 28);border-color: rgb(185 28 28);cursor: pointer;">
-
-                                        <input class="form-check-input mx-2 mb-2"
-                                            {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
-                                            name="color_site" value="38 38 38"
-                                            {{ $data->setting_value == '38 38 38' ? 'checked' : '' }}
-                                            style="background-color: rgb(38 38 38);border-color: rgb(38 38 38);cursor: pointer;">
-
+                                        @foreach ($colors as $color)
+                                            <input class="form-check-input mx-2 mb-2"
+                                                {{ $data->setting_value == 1 ? 'checked' : '' }} type="radio"
+                                                name="color_site" value="{{ $color }}"
+                                                {{ $data->setting_value == $color ? 'checked' : '' }}
+                                                style="background-color: rgb({{ $color }});border-color: rgb({{ $color }});cursor: pointer;">
+                                        @endforeach
                                     </div>
                                 </div>
                             @endif
