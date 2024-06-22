@@ -9,7 +9,7 @@
         </div>
     </button>
     <div class="modal fade" tabindex="-1" id="message-modal-{{ $record->id }}">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{ __('dash.order_info') }}</h5>
@@ -31,12 +31,136 @@
                         </thead>
                         <tbody class="fw-bold text-gray-800">
                             <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.payment_status') }}</td>
+                                <td>
+                                    <div
+                                        class="badge badge-light-{{ $record->payment_status == 'paid' ? 'success' : 'danger' }}">
+                                        @if ($record->payment_status == 'paid')
+                                            {{ __('dash.paid') }}
+                                        @else
+                                            {{ __('dash.unpaid') }}
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.status') }}</td>
+                                <td>
+                                    <div
+                                        class="badge badge-light-{{ $record->status == 'pending' ? 'warning' : ($record->status == 'processing' ? 'primary' : ($record->status == 'completed' ? 'success' : 'danger')) }}">
+
+                                        @if ($record->status == 'pending')
+                                            {{ __('dash.pending') }}
+                                        @elseif($record->status == 'processing')
+                                            {{ __('dash.processing') }}
+                                        @elseif($record->status == 'completed')
+                                            {{ __('dash.completed') }}
+                                        @else
+                                            {{ __('dash.cancelled') }}
+                                        @endif
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.unique_id') }}</td>
+                                <td>{{ $record->unique_id }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.InvoiceId') }}</td>
+                                <td>{{ $record->InvoiceId }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.PaymentId') }}</td>
+                                <td>{{ $record->PaymentId }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.TransactionDate') }}</td>
+                                <td>{{ $record->TransactionDate }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.country') }}</td>
+                                <td>{{ $record->country }}</td>
+                            </tr>
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.phone') }}</td>
+                                <td>{{ $record->phone }}</td>
                             </tr>
 
                             <tr class="p-4">
                                 <td class="ps-3">{{ __('dash.email') }}</td>
                                 <td>{{ $record->email }}</td>
                             </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.place') }}</td>
+                                <td>{{ App\Models\Place::find($record->place_id)->{'name_' . getLocale()} }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.piece') }}</td>
+                                <td>{{ $record->piece }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.street') }}</td>
+                                <td>{{ $record->street }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.avenue') }}</td>
+                                <td>{{ $record->avenue }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.house_number') }}</td>
+                                <td>{{ $record->house_number }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.products') }} </td>
+                                <td>
+                                    @foreach ($record->products as $product)
+                                        <p>{{ $product->{'name_' . getLocale()} }} x {{ $product->pivot->quantity }}
+                                        </p>
+                                    @endforeach
+                                </td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.payment_method') }}</td>
+                                <td>{{ $record->payment_method == 'knet' ? __('front.knet') : __('front.visa_and_mastercard') }}
+                                </td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.real_cost') }}</td>
+                                <td>{{ $record->real_cost }} {{ __('dash.kwd') }}</td>
+                            </tr>
+
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.coupon') }}</td>
+                                <td>{{ $record->coupon }}</td>
+                            </tr>
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.coupon_discount') }}</td>
+                                <td>{{ $record->coupon_discount }} %</td>
+                            </tr>
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.delivery_cost') }}</td>
+                                <td>{{ $record->delivery_cost }} {{ __('dash.kwd') }}</td>
+                            </tr>
+                            <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.total_cost') }} </td>
+                                <td>{{ $record->total_cost }} {{ __('dash.kwd') }}</td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -77,5 +201,4 @@
         </span>
         <span class="btn-loader d-none"><i class="fas fa-circle-notch fa-spin p-0"></i></span>
     </a>
-
 </td>

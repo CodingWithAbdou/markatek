@@ -229,6 +229,7 @@ return [
         'place_id' => 'المنطقة',
         'search' => 'البحث',
         'track' => 'التتبع',
+        'place' => 'المتطقة',
 
         'website_name_ar' => 'اسم الموقع بالعربية',
         'website_name_en' => 'اسم الموقع بالانجليزية',

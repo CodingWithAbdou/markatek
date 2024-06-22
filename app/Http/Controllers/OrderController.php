@@ -18,7 +18,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $data = Order::where('payment_status', 'paid')->orderBy('created_at', 'desc')->get();
+        $data = Order::orderBy('created_at', 'desc')->get();
         return view('admin.orders.index', compact('data'));
     }
 

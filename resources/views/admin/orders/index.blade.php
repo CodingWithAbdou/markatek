@@ -1,7 +1,8 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">{{ $model->{'title_' . app()->getLocale()} }}</h1>
+    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">
+        {{ $model->{'title_' . app()->getLocale()} }}</h1>
     <span class="h-20px border-gray-300 border-start mx-4"></span>
     <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
         <li class="breadcrumb-item text-muted">
@@ -28,19 +29,27 @@
             <table class="table align-middle table-row-dashed fs-6 gy-5" id="datatable">
                 <thead>
                     <tr class="text-start text-dark fw-bolder fs-7 text-uppercase gs-0">
-                        <th class="min-w-150px">{{ __('dash.number_order') }}</th>
-                        <th class="min-w-150px">{{ __('dash.phone') }}</th>
+                        <th class="min-w-150px">{{ __('dash.payment_status') }}</th>
                         <th class="min-w-150px">{{ __('dash.status') }}</th>
+                        <th class="min-w-150px">{{ __('dash.phone') }}</th>
                         <th class="min-w-150px">{{ __('dash.total_cost') }}</th>
-                        <th class="min-w-150px">{{ __('dash.created_pay') }}</th>
+                        <th class="min-w-150px">{{ __('dash.created_at') }}</th>
                         <th class="min-w-70px no-export">{{ __('dash.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                     @foreach ($data as $record)
                         <tr>
-                            <td>{{ $record->unique_id }}</td>
-                            <td>{{ $record->phone }} </td>
+                            <td>
+                                <div
+                                    class="badge badge-light-{{ $record->payment_status == 'paid' ? 'success' : 'danger' }}">
+                                    @if ($record->payment_status == 'paid')
+                                        {{ __('dash.paid') }}
+                                    @else
+                                        {{ __('dash.unpaid') }}
+                                    @endif
+                                </div>
+                            </td>
                             <td>
                                 <div
                                     class="badge badge-light-{{ $record->status == 'pending' ? 'warning' : ($record->status == 'processing' ? 'primary' : ($record->status == 'completed' ? 'success' : 'danger')) }}">
@@ -57,8 +66,10 @@
 
                                 </div>
                             </td>
+                            <td>{{ $record->phone }} </td>
+
                             <td>{{ $record->total_cost }} {{ __('dash.kwd') }}</td>
-                            <td>{{ $record->TransactionDate }}</td>
+                            <td>{{ $record->created_at }}</td>
                             <x-action-btn.orders :record="$record" />
                         </tr>
                     @endforeach

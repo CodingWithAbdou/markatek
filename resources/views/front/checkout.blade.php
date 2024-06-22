@@ -385,7 +385,8 @@
                     $('#delivery-price').html(response.delivery_price);
                 },
                 error: function(response) {
-                    alert("{{ __('front.error_message') }}")
+                    $('#delivery-price').html(0);
+                    toastr.error(response.responseJSON.message);
                 }
             });
         }

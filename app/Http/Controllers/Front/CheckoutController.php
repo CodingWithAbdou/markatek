@@ -129,6 +129,16 @@ class CheckoutController extends Controller
                         'usage_limit' => $coupon->usage_limit - 1
                     ]);
                 }
+                $session = collect(session()->get('cart', []));
+                $productIds = $session->pluck('id')->toArray();
+                $quantities = $session->pluck('quantity')->toArray();
+                for ($i = 0; $i < count($productIds); $i++) {
+                    $order->products()->attach($productIds[$i], ['quantity' => $quantities[$i]]);
+                    Product::find($productIds[$i])->update([
+                        'quantity' => Product::find($productIds[$i])->quantity - $quantities[$i]
+                    ]);
+                }
+
                 session()->forget('cart');
                 session()->forget('unique_id');
                 return view('front.success_paid', compact('order'));
