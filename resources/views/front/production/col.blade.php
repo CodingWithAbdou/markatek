@@ -13,7 +13,6 @@
                     {{ $product->{'name_' . getLocale()} }}</p>
                 <div class="flex justify-between mt-3 item-center">
                     <h3 class=" font-bold text-nutueral-700 dark:text-nutueral-200 md:text-xl">
-
                         <span class="text-lg md:text-xl">{{ $product->price }} </span>
                         <span class="text-sm ">{{ __('front.kwd') }}</span>
                     </h3>

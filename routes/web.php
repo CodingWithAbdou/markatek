@@ -56,6 +56,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 Route::get('/track', [TrackController::class, 'index'])->name('track.index');
 Route::post('/track', [TrackController::class, 'search'])->name('track.search');
 
+Route::get('/mail', [TrackController::class, 'mail'])->name('mail');
 
 
 Route::post('/coupon/apply', [CheckoutEventController::class, 'applyCopoun'])->name('coupon.apply');

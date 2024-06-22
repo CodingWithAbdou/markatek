@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutRequest;
 use App\Http\Requests\CouponApplayRequest;
+use App\Mail\OrderMail;
 use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\Place;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Services\FatoorahServices;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -138,6 +140,8 @@ class CheckoutController extends Controller
                         'quantity' => Product::find($productIds[$i])->quantity - $quantities[$i]
                     ]);
                 }
+                Mail::to($order->email)->send(new OrderMail($order));
+
 
                 session()->forget('cart');
                 session()->forget('unique_id');

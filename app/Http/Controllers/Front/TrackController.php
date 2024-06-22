@@ -28,4 +28,9 @@ class TrackController extends Controller
         }
         return response()->json(compact('msg', 'status_order'));
     }
+
+    public function mail()
+    {
+        return view('mail.order');
+    }
 }
