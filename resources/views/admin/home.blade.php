@@ -11,7 +11,7 @@
 @section('content')
     @if (session('success'))
         <div class="alert alert-success">
-            {{ __('') }}
+            {{ __('dash.updated successfully') }}
         </div>
     @endif
     <!-- Your content here -->

@@ -40,7 +40,7 @@
     @vite('resources/css/app.css')
     @stack('style')
 
-    <title></title>
+    <title>@yield('title')</title>
 </head>
 
 <body class="relative ">

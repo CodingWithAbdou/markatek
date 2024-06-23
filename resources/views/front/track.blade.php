@@ -1,4 +1,8 @@
 @extends('front.layouts.app')
+@section('title')
+    {{ __('front.track') }}
+@endsection
+
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
         <div class="flex items-center justify-center flex-col  text-neutral-800 mx-auto relative ">

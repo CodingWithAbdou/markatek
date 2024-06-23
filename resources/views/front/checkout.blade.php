@@ -1,5 +1,8 @@
 @extends('front.layouts.app')
 
+@section('title')
+    {{ __('front.finsh_order') }}
+@endsection
 
 
 @section('content')

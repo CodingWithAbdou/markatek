@@ -87,7 +87,7 @@ return [
     "status_order_is" => 'Order status is',
     "add_cart" => 'Add to cart',
     "not_enough" => 'Not enough quantity',
-    "" => '',
+    "error_paid" => 'Payment failed',
     "" => '',
 
 ];

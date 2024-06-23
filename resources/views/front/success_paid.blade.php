@@ -1,5 +1,8 @@
 @extends('front.layouts.app')
 
+@section('title')
+    {{ __('front.success_paid') }}
+@endsection
 
 
 @section('content')

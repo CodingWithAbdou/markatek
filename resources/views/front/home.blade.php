@@ -1,4 +1,5 @@
 @extends('front.layouts.app')
+@section('title', __('front.home'))
 
 @section('content')
     <section class="slider rounded-lg   max-h-[450px] overflow-hidden">

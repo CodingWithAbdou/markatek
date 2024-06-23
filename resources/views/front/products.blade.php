@@ -1,4 +1,7 @@
 @extends('front.layouts.app')
+@section('title')
+    {{ __('front.product_of') }} {{ $category->{'name_' . getLocale()} }}
+@endsection
 
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
