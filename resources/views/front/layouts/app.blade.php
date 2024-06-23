@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content=" , ,  " />
-    <meta name="title" content="" />
-    <meta name="description" content="" />
+    <meta name="keywords" content="{{ App\Models\Setting::where('setting_key', 'keywords')->first()->setting_value }}" />
+    <meta name="title"
+        content=" {{ App\Models\Setting::where('setting_key', 'website_name_' . getLocale())->first()->setting_value }}" />
+    <meta name="description"
+        content="{{ App\Models\Setting::where('setting_key', 'description_' . getLocale())->first()->setting_value }}" />
     <meta name="author" content="Khaldi Abdou  https://khaldiabdou.com" />
     <meta name="copyright" content="https://github.com/CodingWithAbdou" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     {{-- FavIcon --}}
-    <link rel="shortcut icon" href="images/logo2.jpeg" type="image/x-icon" />
+    <link rel="shortcut icon"
+        href=" {{ asset(App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value) }}"
+        type="image/x-icon" />
     {{-- Font Family --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
