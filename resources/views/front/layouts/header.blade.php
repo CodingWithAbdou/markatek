@@ -165,7 +165,7 @@
             @foreach ($categories as $category)
                 @if ($loop->index < 5)
                     <a href="{{ route('product.index', $category->id) }}"
-                        class="{{ $loop->index == 4 ? ' hidden md:flex ' : 'flex' }}items-center gap-1 px-4  rounded-md py-2 text-sm font-medium text-white transition duration-200 hover:text-gray-100"
+                        class="{{ $loop->index >= 3 ? ' hidden md:flex ' : 'flex' }}items-center gap-1 px-4  rounded-md py-2 text-sm font-medium text-white transition duration-200 hover:text-gray-100"
                         aria-current="page">
                         {{ $category->{'name_' . getLocale()} }}</a>
                 @endif

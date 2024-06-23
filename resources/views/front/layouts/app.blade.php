@@ -41,7 +41,9 @@
     @vite('resources/css/app.css')
     @stack('style')
 
-    <title>@yield('title')</title>
+    <title> {{ App\Models\Setting::where('setting_key', 'website_name_' . getLocale())->first()->setting_value }} |
+        @yield('title')
+    </title>
 </head>
 
 <body class="relative ">
