@@ -280,11 +280,11 @@
                                                             <table cellpadding="0" cellspacing="0" border="0"
                                                                 align="center" role="presentation">
                                                                 <tr>
-                                                                    <td align="center">
-                                                                        <img src="{{ asset(App\Models\Setting::where('setting_key', 'logo')->first()->setting_value) }}"
-                                                                            alt="Logo" width="220" height="35"
-                                                                            class="logo">
+                                                                    <td align="center"
+                                                                        style="color: white;font-size:40px">
+                                                                        {{ App\Models\Setting::where('setting_key', 'website_name_' . getLocale())->first()->setting_value }}
                                                                     </td>
+
                                                                 </tr>
                                                             </table>
                                                             <table cellpadding="0" cellspacing="0" border="0"
