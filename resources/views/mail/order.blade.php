@@ -280,19 +280,23 @@
                                                             <table cellpadding="0" cellspacing="0" border="0"
                                                                 align="center" role="presentation">
                                                                 <tr>
-                                                                <tr>
-                                                                    <td align="center"
-                                                                        style="color: white;font-size:40px">
-                                                                        {{ App\Models\Setting::where('setting_key', 'website_name_' . getLocale())->first()->setting_value }}
+                                                                    <td align="center">
+                                                                        <img src="{{ asset(App\Models\Setting::where('setting_key', 'logo')->first()->setting_value) }}"
+                                                                            alt="Logo" width="220" height="35"
+                                                                            class="logo">
                                                                     </td>
                                                                 </tr>
-                                                    </tr>
-                                                </table>
-                                                <table cellpadding="0" cellspacing="0" border="0" align="center"
-                                                    width="640" style="width: 640px; min-width: 640px;"
-                                                    role="presentation" bgcolor="#383e56">
-                                                    <tr>
-                                                        <td height="35" style="line-height:35px;min-height:35px;">
+                                                            </table>
+                                                            <table cellpadding="0" cellspacing="0" border="0"
+                                                                align="center" width="640"
+                                                                style="width: 640px; min-width: 640px;"
+                                                                role="presentation" bgcolor="#383e56">
+                                                                <tr>
+                                                                    <td height="35"
+                                                                        style="line-height:35px;min-height:35px;">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -301,444 +305,438 @@
                                     </table>
                                 </td>
                             </tr>
+                        </tbody>
                     </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <!--Top Header Ends Here -->
-    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-        <tbody>
-            <tr>
-                <td align="center"
-                    style="color:#45535C;padding:20px 40px 0 40px;font-family: 'Noto
+                    <!--Top Header Ends Here -->
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                        <tbody>
+                            <tr>
+                                <td align="center"
+                                    style="color:#45535C;padding:20px 40px 0 40px;font-family: 'Noto
                                     Kufi Arabic',
                                     sans-serif;font-weight:800;font-size:34px;-webkit-font-smoothing:antialiased;line-height:1.2;"
-                    class="table-container mobile-title">
-                    {{ __('mail.thanks_for_order') }}
-                </td>
-            </tr>
-            <tr>
-                <td align="center"
-                    style="color:#45535C;padding:20px 40px 0 40px;font-family: 'Noto
+                                    class="table-container mobile-title">
+                                    {{ __('mail.thanks_for_order') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center"
+                                    style="color:#45535C;padding:20px 40px 0 40px;font-family: 'Noto
                                     Kufi Arabic',
                                     sans-serif;font-weight:800;font-size:18px;-webkit-font-smoothing:antialiased;line-height:1.2;"
-                    class="table-container mobile-title">
-                    {{ __('mail.order_production') }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-        <tr>
-            <td height="60" style="line-height:60px;min-height:60px;">
-            </td>
-        </tr>
-    </table>
-    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-        <tbody>
-            <tr>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
+                                    class="table-container mobile-title">
+                                    {{ __('mail.order_production') }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
                         <tr>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                            <td bgcolor="#f9f9f9" align="left"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ __('mail.number_track') }} #
-                            </td>
-                            <td bgcolor="#f9f9f9" align="right"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ $order->unique_id }}
-                            </td>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                            <td height="60" style="line-height:60px;min-height:60px;">
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
-                        <tr>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                            <td bgcolor="#f9f9f9" align="left"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ __('mail.number_order') }} #
-                            </td>
-                            <td bgcolor="#f9f9f9" align="right"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ $order->InvoiceId }}
-
-                            </td>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
-                        <tr>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                            <td bgcolor="#f9f9f9" align="left"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ __('mail.number_payment') }} #
-                            </td>
-                            <td bgcolor="#f9f9f9" align="right"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ $order->PaymentId }}
-
-                            </td>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
-                        @foreach ($order->products as $product)
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                        <tbody>
                             <tr>
-                                <td bgcolor="#FFF" width="40" align="left"
-                                    style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                            <td bgcolor="#f9f9f9" align="left"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                Kufi Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                {{ __('mail.number_track') }} #
+                                            </td>
+                                            <td bgcolor="#f9f9f9" align="right"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                Kufi Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                {{ $order->unique_id }}
+                                            </td>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                            <td bgcolor="#f9f9f9" align="left"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                Kufi Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                {{ __('mail.number_order') }} #
+                                            </td>
+                                            <td bgcolor="#f9f9f9" align="right"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                Kufi Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                {{ $order->InvoiceId }}
+
+                                            </td>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                            <td bgcolor="#f9f9f9" align="left"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                Kufi Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                {{ __('mail.number_payment') }} #
+                                            </td>
+                                            <td bgcolor="#f9f9f9" align="right"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                Kufi Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                {{ $order->PaymentId }}
+
+                                            </td>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                Arabic',
+                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        @foreach ($order->products as $product)
+                                            <tr>
+                                                <td bgcolor="#FFF" width="40" align="left"
+                                                    style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                     Arabic',
                                                     sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                </td>
-                                <td bgcolor="#FFFFFF" align="left"
-                                    style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                </td>
+                                                <td bgcolor="#FFFFFF" align="left"
+                                                    style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                     Kufi Arabic',
                                                     sans-serif;font-weight:normal;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                    {{ $product->{'name_' . getLocale()} }}
-                                </td>
-                                @if (getLocale() == 'ar')
-                                    <td bgcolor="#FFFFFF" align="right"
-                                        style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                        {{ $product->price }}
-                                        {{ __('front.kwd') }}
-                                        *
-                                        {{ $product->pivot->quantity }}
-
-                                        =
-                                        {{ $product->price * $product->pivot->quantity }}
-                                        {{ __('front.kwd') }}
-
-                                    </td>
-                                @else
-                                    <td bgcolor="#FFFFFF" align="right"
-                                        style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                        Kufi Arabic',
-                                        sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                        {{ $product->price }} {{ __('front.kwd') }} *
-                                        {{ $product->pivot->quantity }} =
-                                        {{ $product->price * $product->pivot->quantity }}
-                                        {{ __('front.kwd') }}
-                                    </td>
-                                @endif
-
-
-                                <td bgcolor="#FFF" width="40" align="left"
-                                    style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                    {{ $product->{'name_' . getLocale()} }}
+                                                </td>
+                                                <td bgcolor="#FFFFFF" align="right"
+                                                    style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                    Kufi Arabic',
+                                                    sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                                    {{ $product->price }} {{ __('front.kwd') }} x
+                                                    {{ $product->pivot->quantity }} =
+                                                    {{ $product->price * $product->pivot->quantity }}
+                                                    {{ __('front.kwd') }}
+                                                </td>
+                                                <td bgcolor="#FFF" width="40" align="left"
+                                                    style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                     Arabic',
                                                     sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                </td>
-                            </tr>
-                        @endforeach
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                    </tbody>
-                </table>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
-                        <tr>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                    </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                 Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                            <td bgcolor="#FFFFFF" align="left"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                            </td>
+                                            <td bgcolor="#FFFFFF" align="left"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:normal;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ __('mail.coupon_discount') }}
-                            </td>
-                            <td bgcolor="#FFFFFF" align="right"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                                {{ __('mail.coupon_discount') }}
+                                            </td>
+                                            <td bgcolor="#FFFFFF" align="right"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ $order->coupon_discount ?? 0 }} {{ __('front.kwd') }}
-                            </td>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                {{ $order->coupon_discount ?? 0 }} {{ __('front.kwd') }}
+                                            </td>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                 Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
-                        <tr>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                 Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                            <td bgcolor="#FFFFFF" align="left"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                            </td>
+                                            <td bgcolor="#FFFFFF" align="left"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:normal;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ __('mail.delivery_discount') }}
+                                                {{ __('mail.delivery_discount') }}
 
-                            </td>
-                            <td bgcolor="#FFFFFF" align="right"
-                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                            </td>
+                                            <td bgcolor="#FFFFFF" align="right"
+                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                {{ $order->delivery_cost }} {{ __('front.kwd') }}
-                            </td>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                {{ $order->delivery_cost }} {{ __('front.kwd') }}
+                                            </td>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                 Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                    <tbody>
-                        <tr>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                 Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                            </td>
-                            <td bgcolor="#FFFFFF" align="left"
-                                style="border-top:2px solid #CCCCCC;border-bottom:2px solid #CCCCCC;color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                            </td>
+                                            <td bgcolor="#FFFFFF" align="left"
+                                                style="border-top:2px solid #CCCCCC;border-bottom:2px solid #CCCCCC;color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;"
-                                class="table-container">
-                                {{ __('mail.total_price') }}
+                                                class="table-container">
+                                                {{ __('mail.total_price') }}
 
-                            </td>
-                            <td bgcolor="#FFFFFF" align="right"
-                                style="border-top:2px solid #CCCCCC;border-bottom:2px solid #CCCCCC;color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
+                                            </td>
+                                            <td bgcolor="#FFFFFF" align="right"
+                                                style="border-top:2px solid #CCCCCC;border-bottom:2px solid #CCCCCC;color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:bold;font-size:16px;-webkit-font-smoothing:antialiased;line-height:1.4;"
-                                class="table-container">
-                                {{ $order->total_cost }} {{ __('front.kwd') }}
-                            </td>
-                            <td bgcolor="#FFF" width="40" align="left"
-                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
+                                                class="table-container">
+                                                {{ $order->total_cost }} {{ __('front.kwd') }}
+                                            </td>
+                                            <td bgcolor="#FFF" width="40" align="left"
+                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
                                                 Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                        style="width: 640px; min-width: 640px;" bgcolor="#FFFFFF" role="presentation"
+                        class="table-container ">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0 40px;">
+                                    <table cellpadding="0" cellspacing="0" border="0" align="left"
+                                        width="270" role="presentation" class="table-container">
+                                        <tbody>
+                                            <tr>
+                                                <td height="20" style="line-height:20px;min-height:20px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top"
+                                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
+                                                    font-size: 16px; line-height: 16px;font-weight:bold;">
+                                                    {{ __('mail.delivery_address') }}:
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="10" style="line-height:10px;min-height:10px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top"
+                                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
+                                                    font-size: 14px; line-height: 14px;font-weight:normal;">
+                                                    {{ $order->country }} ,
+                                                    {{ App\Models\Place::find($order->place_id)->first()->{'name_' . getLocale()} }}
+                                                    ,
+                                                    {{ $order->piece }} , {{ $order->street }} , {{ $order->avenue }}
+                                                    ,
+                                                    {{ $order->house_number }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table cellpadding="0" cellspacing="0" border="0" align="right"
+                                        width="270" role="presentation" class="table-container">
+                                        <tbody>
+                                            <tr>
+                                                <td height="20" style="line-height:20px;min-height:20px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top"
+                                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
+                                                    font-size: 16px; line-height: 16px;font-weight:bold;">
+                                                    {{ __('mail.payment_methode') }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="10" style="line-height:10px;min-height:10px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top"
+                                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
+                                                    font-size: 14px; line-height: 14px;font-weight:normal;">
+                                                    {{ $order->payment_method == 'credit_card' ? __('mail.credit_card') : __('mail.knet') }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
+                        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
+                        <tr>
+                            <td height="60" style="line-height:60px;min-height:60px;">
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </tr>
-        </tbody>
-    </table>
+                    </table>
+                    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center"
+                        width="640" style="width: 640px; min-width: 640px;" role="presentation"
+                        class="table-container ">
+                        <tr>
+                            <td height="35" style="line-height:35px;min-height:35px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center"
+                        width="640" style="width: 640px; min-width: 640px;" role="presentation"
+                        class="table-container ">
+                        <tr>
+                            <td height="35" style="line-height:35px;min-height:35px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" width="640" style="width: 640px; min-width: 640px;" cellspacing="0"
+                        border="0" role="presentation" align="center" bgcolor="#383e56">
+                        <tbody>
+                            @php
+                                $facebook = App\Models\Setting::where('setting_key', 'facebook')->first()
+                                    ->setting_value;
+                                $instagram = App\Models\Setting::where('setting_key', 'instagram')->first()
+                                    ->setting_value;
+                                $whatsapp = App\Models\Setting::where('setting_key', 'whatsapp')->first()
+                                    ->setting_value;
+                                $gmail = App\Models\Setting::where('setting_key', 'gmail')->first()->setting_value;
+                            @endphp
 
-    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" bgcolor="#FFFFFF" role="presentation" class="table-container ">
-        <tbody>
-            <tr>
-                <td style="padding:0 40px;">
-                    <table cellpadding="0" cellspacing="0" border="0" align="left" width="270"
-                        role="presentation" class="table-container">
-                        <tbody>
                             <tr>
-                                <td height="20" style="line-height:20px;min-height:20px;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" valign="top"
-                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
-                                                    font-size: 16px; line-height: 16px;font-weight:bold;">
-                                    {{ __('mail.delivery_address') }}:
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="10" style="line-height:10px;min-height:10px;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" valign="top"
-                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
-                                                    font-size: 14px; line-height: 14px;font-weight:normal;">
-                                    {{ $order->country }} ,
-                                    {{ App\Models\Place::find($order->place_id)->first()->{'name_' . getLocale()} }}
-                                    ,
-                                    {{ $order->piece }} , {{ $order->street }} , {{ $order->avenue }}
-                                    ,
-                                    {{ $order->house_number }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table cellpadding="0" cellspacing="0" border="0" align="right" width="270"
-                        role="presentation" class="table-container">
-                        <tbody>
-                            <tr>
-                                <td height="20" style="line-height:20px;min-height:20px;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" valign="top"
-                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
-                                                    font-size: 16px; line-height: 16px;font-weight:bold;">
-                                    {{ __('mail.payment_methode') }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="10" style="line-height:10px;min-height:10px;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" valign="top"
-                                    style="color: #111111; font-family: 'Noto Kufi Arabic', sans-serif;
-                                                    font-size: 14px; line-height: 14px;font-weight:normal;">
-                                    {{ $order->payment_method == 'credit_card' ? __('mail.credit_card') : __('mail.knet') }}
+                                <td>
+                                    <table cellpadding="0" width="220" cellspacing="0" border="0"
+                                        role="presentation" align="center" bgcolor="#383e56">
+                                        <tbody>
+                                            <tr class="social-icons">
+                                                @if ($facebook)
+                                                    <td style="padding:0 10px 0 10px; ">
+                                                        <a href="{{ $facebook }}"
+                                                            style="color:white;font-size:24px;"
+                                                            target="_blank">facebook</a>
+                                                    </td>
+                                                @endif
+                                                @if ($instagram)
+                                                    <td style="padding:0 10px 0 10px; ">
+                                                        <a href="{{ $instagram }}"style="color:white;font-size:24px;"
+                                                            target="_blank">instagram</a>
+                                                    </td>
+                                                @endif
+                                                @if ($whatsapp)
+                                                    <td style="padding:0 10px 0 10px; ">
+                                                        <a href="{{ $whatsapp }}"
+                                                            style="color:white;font-size:24px;"
+                                                            target="_blank">whatsapp</a>
+                                                    </td>
+                                                @endif
+                                                @if ($gmail)
+                                                    <td style="padding:0 10px 0 10px; ">
+                                                        <a href="{{ $gmail }}"
+                                                            style="color:white;font-size:24px;"
+                                                            target="_blank">email</a>
+                                                    </td>
+                                                @endif
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center"
+                        width="640" style="width: 640px; min-width: 640px;" role="presentation"
+                        class="table-container ">
+                        <tr>
+                            <td height="35" style="line-height:35px;min-height:35px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center"
+                        width="640" style="width: 640px; min-width: 640px;" role="presentation"
+                        class="table-container ">
+                        <tr>
+                            <td height="60" style="line-height:60px;min-height:60px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center"
+                        width="640" style="width: 640px; min-width: 640px;" role="presentation"
+                        class="table-container ">
+                        <tr>
+                            <td height="60" style="line-height:60px;min-height:60px;">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--Bottom Section Ends Here -->
+                    <!--Main Td  Ends Here -->
                 </td>
             </tr>
         </tbody>
-    </table>
-    <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-        <tr>
-            <td height="60" style="line-height:60px;min-height:60px;">
-            </td>
-        </tr>
-    </table>
-    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" class="table-container ">
-        <tr>
-            <td height="35" style="line-height:35px;min-height:35px;">
-            </td>
-        </tr>
-    </table>
-    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" class="table-container ">
-        <tr>
-            <td height="35" style="line-height:35px;min-height:35px;">
-            </td>
-        </tr>
-    </table>
-    <table cellpadding="0" width="640" style="width: 640px; min-width: 640px;" cellspacing="0" border="0"
-        role="presentation" align="center" bgcolor="#383e56">
-        <tbody>
-            @php
-                $facebook = App\Models\Setting::where('setting_key', 'facebook')->first()->setting_value;
-                $instagram = App\Models\Setting::where('setting_key', 'instagram')->first()->setting_value;
-                $whatsapp = App\Models\Setting::where('setting_key', 'whatsapp')->first()->setting_value;
-                $gmail = App\Models\Setting::where('setting_key', 'gmail')->first()->setting_value;
-            @endphp
-
-            <tr>
-                <td>
-                    <table cellpadding="0" width="220" cellspacing="0" border="0" role="presentation"
-                        align="center" bgcolor="#383e56">
-                        <tbody>
-                            <tr class="social-icons">
-                                @if ($facebook)
-                                    <td style="padding:0 10px 0 10px; color:white;font-size:24px;">
-                                        <a href="{{ $facebook }}" target="_blank">facebook</a>
-                                    </td>
-                                @endif
-                                @if ($instagram)
-                                    <td style="padding:0 10px 0 10px; color:white;font-size:24px;">
-                                        <a href="{{ $instagram }}" target="_blank">instagram</a>
-                                    </td>
-                                @endif
-                                @if ($whatsapp)
-                                    <td style="padding:0 10px 0 10px; color:white;font-size:24px;">
-                                        <a href="{{ $whatsapp }}" target="_blank">whatsapp</a>
-                                    </td>
-                                @endif
-                                @if ($gmail)
-                                    <td style="padding:0 10px 0 10px; color:white;font-size:24px;">
-                                        <a href="{{ $gmail }}" target="_blank">email</a>
-                                    </td>
-                                @endif
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" class="table-container ">
-        <tr>
-            <td height="35" style="line-height:35px;min-height:35px;">
-            </td>
-        </tr>
-    </table>
-    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" class="table-container ">
-        <tr>
-            <td height="60" style="line-height:60px;min-height:60px;">
-            </td>
-        </tr>
-    </table>
-    <table bgcolor="#383e56" cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-        style="width: 640px; min-width: 640px;" role="presentation" class="table-container ">
-        <tr>
-            <td height="60" style="line-height:60px;min-height:60px;">
-            </td>
-        </tr>
-    </table>
-
-    <!--Bottom Section Ends Here -->
-    <!--Main Td  Ends Here -->
-    </td>
-    </tr>
-    </tbody>
-    <!--Main Parent Table Ends Here -->
+        <!--Main Parent Table Ends Here -->
     </table>
 </body>
 
