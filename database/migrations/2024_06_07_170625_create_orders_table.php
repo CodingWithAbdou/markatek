@@ -34,7 +34,7 @@ return new class extends Migration
             $table->bigInteger('coupon_discount')->default(0);
             $table->decimal('delivery_cost', 8, 2)->default(0.00);
             $table->decimal('total_cost', 8, 2);
-            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('cancelled');
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->timestamps();
         });
