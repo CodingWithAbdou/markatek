@@ -19,7 +19,7 @@
                                     التحكم</a>
                             </div>
                         </div>
-                    @endauth --}}
+                @endauth --}}
                 </div>
                 <div>
                     <div class="hidden lg:flex flex-1 items-center justify-center gap-8 mb-2">

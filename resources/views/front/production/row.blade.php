@@ -2,10 +2,12 @@
     @forelse ($products as $product)
         <div
             class="relative z-40 col-span-1 flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg border border-neutral-200 ">
-            <div class="w-1/3 bg-cover bg-gray-300 border-l  border-neutral-200 ">
+            <a href="{{ asset($product->cover_path) }}"
+                class="w-1/3 bg-cover bg-gray-300 border-l  border-neutral-200 cursor-pointer " data-fancybox
+                data-caption="{{ $product->{'name_' . getLocale()} }}">
                 <img class="w-full h-full object-cover " src="{{ asset($product->cover_path) }}" width="400"
                     alt="">
-            </div>
+            </a>
             <div class="w-2/3 p-4 md:p-4 flex flex-col justify-between">
                 <h1 class="text-xl font-bold text-nutueral-800 dark:text-white">
                     {{ $product->{'name_' . getLocale()} }}</h1>

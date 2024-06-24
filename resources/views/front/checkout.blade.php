@@ -43,7 +43,7 @@
                                     <button id="dropdown-phone-button-3"
                                         class="z-10 inline-flex shrink-0 items-center rounded-s-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                                         type="button">
-                                        <span class="me-2 mt-[1px] -mb-[1px] text-xs">+ 966</span>
+                                        <span class="me-2 mt-[1px] -mb-[1px] text-xs">+965</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 32 32">
                                             <path fill="#fff" d="M1 11H31V21H1z"></path>
@@ -73,7 +73,7 @@
 
                             <div class="">
                                 <label for="your_email" class="label_desgin ">
-                                    {{ __('front.email') }} <span class="text-primary font-bold">*</span>
+                                    {{ __('front.email') }} <span class="text-primary font-bold"></span>
                                 </label>
                                 <input type="email" id="your_email" name="email" class="input_desgin"
                                     placeholder="test@test.com" />
@@ -108,7 +108,7 @@
 
                             <div>
                                 <label for="your_avenue" class="label_desgin">
-                                    {{ __('front.avenue') }} <span class="text-primary font-bold">*</span></label>
+                                    {{ __('front.avenue') }} <span class="text-primary font-bold"></span></label>
                                 <input type="text" id="your_avenue" name="avenue" class="input_desgin"
                                     placeholder=" {{ __('front.avenue_example') }}" />
                             </div>
@@ -122,7 +122,7 @@
 
                             <div>
                                 <label for="message" class="label_desgin"> {{ __('front.note') }} <span
-                                        class="text-primary font-bold">*</span></label>
+                                        class="text-primary font-bold"></span></label>
                                 <textarea id="message" rows="4" name="note" class="input_desgin resize-none h-fit block p-4"
                                     placeholder=" {{ __('front.enter_note') }}..."></textarea>
                             </div>
@@ -132,7 +132,7 @@
                             <div id="coupon-content">
                                 <input type="hidden" name="coupon_applay" value="0" id="coupon-applay">
                                 <label for="your_coupon" class="label_desgin"> {{ __('front.active_you_coupon') }}<span
-                                        class="text-primary font-bold">*</span>
+                                        class="text-primary font-bold"></span>
                                 </label>
                                 <div class="flex max-w-md items-center gap-4">
                                     <input id="coupon_value" type="text" id="your_coupon" name="coupon"
@@ -219,7 +219,7 @@
                             <input id="default-checkbox" type="checkbox" value="1" name="terms"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-checkbox"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('front.accept_all_terms') }}</label>
+                                class="ms-2 text-sm font-medium text-neutral-800 bg-white">{{ __('front.accept_all_terms') }}</label>
                         </div>
 
                         <button id="btn-checkout"

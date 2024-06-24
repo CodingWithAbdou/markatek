@@ -98,7 +98,7 @@ return [
     'TransactionDate' => 'Transaction Date',
     'country' => 'Country',
     'place' => 'Place',
-    'piece' => 'Piece',
+    'piece' => 'Block',
     'street' => 'Street',
     'avenue' => 'Avenue',
     'house_number' => 'House Number',

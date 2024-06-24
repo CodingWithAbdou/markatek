@@ -30,7 +30,7 @@ return [
     "phone_number" => "Phone Number",
     "email" => "Email",
     "place" => "Area",
-    "piece" => "Piece",
+    "piece" => "Block",
     "street " => "Street",
     "avenue" => "Avenue",
     "number_house" => "House Number",

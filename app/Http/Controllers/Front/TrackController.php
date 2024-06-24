@@ -18,7 +18,7 @@ class TrackController extends Controller
     {
 
         $track = $request->validated();
-        $order = Order::where('unique_id', $track)->first();
+        $order = Order::where('InvoiceId', $track)->first();
         if (!$order) {
             $msg = 'not_found';
             $status_order = 'not_found';

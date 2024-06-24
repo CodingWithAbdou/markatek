@@ -24,11 +24,11 @@ class CheckoutRequest extends FormRequest
         return [
             "country" => 'required|string|max:191',
             "phone" => 'required|string|max:191',
-            "email" => 'required|email|max:191',
+            "email" => 'nullable|email|max:191',
             "place_id" => 'required|integer',
             "piece" => 'required|string|max:191',
             "street" => 'required|string|max:191',
-            "avenue" => 'required|string|max:191',
+            "avenue" => 'nullable|string|max:191',
             "house_number" => 'required|email|max:191',
             "note" => 'nullable|string',
             "coupon" => 'nullable|min:4|max:191|string|exists:coupons,code',

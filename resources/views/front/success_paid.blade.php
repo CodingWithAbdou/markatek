@@ -14,7 +14,7 @@
             @if ($order->email)
                 <p class="mb-4"> * {{ __('front.we_send_invoice_to_email') }} : {{ $order->email }}</p>
             @endif
-            <p>* {{ __('front.coupy_unique_code_for_track_order') }} : {{ $order->unique_id }}</p>
+            <p>* {{ __('front.coupy_unique_code_for_track_order') }} : {{ $order->InvoiceId }}</p>
         </div>
     </section>
 @endsection

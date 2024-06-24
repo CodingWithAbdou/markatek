@@ -66,11 +66,6 @@
 
                             <tr class="p-4">
                                 <td class="ps-3">{{ __('dash.unique_id') }}</td>
-                                <td>{{ $record->unique_id }}</td>
-                            </tr>
-
-                            <tr class="p-4">
-                                <td class="ps-3">{{ __('dash.InvoiceId') }}</td>
                                 <td>{{ $record->InvoiceId }}</td>
                             </tr>
 

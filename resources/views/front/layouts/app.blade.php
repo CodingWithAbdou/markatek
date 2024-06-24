@@ -23,6 +23,9 @@
     {{-- slider Library --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/slick/slick.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/slick/slick-theme.css') }}" />
+    {{-- FancyApps --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
     {{-- Library Icons --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -64,23 +67,33 @@
     <!--------------
             Main Content
         --------------->
-    <main class="min-h-[600px] relative overflow-hidden pt-[132px]">
+    <main class="min-h-[100vh] relative overflow-hidden pt-[132px]">
         @yield('content')
     </main>
     <!--------------
             Footerca
         --------------->
     @include('front.layouts.footer')
-
+    {{-- jquery library --}}
     <script src="{{ asset('assets/lib/jquery.js') }}"></script>
+    {{-- slick library --}}
     <script type="text/javascript" src="{{ asset('assets/lib/slick/slick.js') }}"></script>
+    {{-- toastr library --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- boxicons library icon --}}
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    {{-- fancyapps library --}}
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
     @vite('resources/js/app.js')
 
-
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+    </script>
     @stack('script')
 </body>
 

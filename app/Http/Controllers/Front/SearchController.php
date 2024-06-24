@@ -14,7 +14,7 @@ class SearchController extends Controller
             'search' => 'required|string|min:3|max:12|regex:/^[\p{L}\s]+$/u'
         ]);
         $search = $request->search;
-        $products = Product::where('name_' . getLocale(), 'like', '%' . $search . '%')->get();
+        $products = Product::where('name_' . getLocale(), 'like', '%' . $search . '%')->where('quantity', '>', 0)->get();
 
         return view('front.search', compact('products', 'search'));
     }

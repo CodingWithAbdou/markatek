@@ -34,8 +34,8 @@ class ProductRequest extends FormRequest
             'description_en' => 'nullable',
             'price' => 'required|numeric|max:9999999.99',
             'quantity' => 'required|numeric',
-            'images[]' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
-            'new_images[]' =>  'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            // 'images[]' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
+            // 'new_images[]' =>  'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];
     }
 }

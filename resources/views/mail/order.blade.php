@@ -361,37 +361,7 @@
                                                 style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
                                                 Kufi Arabic',
                                                 sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                                {{ $order->unique_id }}
-                                            </td>
-                                            <td bgcolor="#FFF" width="40" align="left"
-                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
-                                    style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
-                                    <tbody>
-                                        <tr>
-                                            <td bgcolor="#FFF" width="40" align="left"
-                                                style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
-                                                Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                            </td>
-                                            <td bgcolor="#f9f9f9" align="left"
-                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
-                                                {{ __('mail.number_order') }} #
-                                            </td>
-                                            <td bgcolor="#f9f9f9" align="right"
-                                                style="color:#5a5a5a;padding:10px 40px 10px 40px;font-family: 'Noto
-                                                Kufi Arabic',
-                                                sans-serif;font-weight:bold;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;">
                                                 {{ $order->InvoiceId }}
-
                                             </td>
                                             <td bgcolor="#FFF" width="40" align="left"
                                                 style="color:#5a5a5a;padding:10px 0 10px 0;font-family: 'Noto Kufi
@@ -401,6 +371,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
                                 <table cellpadding="0" cellspacing="0" border="0" align="center" width="640"
                                     style="width: 640px; min-width: 640px;" role="presentation" bgcolor="#FFFFFF">
                                     <tbody>

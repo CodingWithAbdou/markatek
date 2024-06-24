@@ -100,7 +100,7 @@ class CheckoutController extends Controller
         if (Order::where('unique_id', $input['unique_id'])->exists() and Order::where('unique_id', $input['unique_id'])->where('payment_status', 'unpaid')->exists()) {
             Order::where('unique_id', $input['unique_id'])->delete();
         }
-        $input['phone'] =  '+966 ' . $input['phone'];
+        $input['phone'] =   $input['phone'];
         Order::create($input);
         return response()->json(compact('status', 'msg', 'url'));
     }
@@ -142,7 +142,9 @@ class CheckoutController extends Controller
                         'quantity' => Product::find($productIds[$i])->quantity - $quantities[$i] > 0 ? Product::find($productIds[$i])->quantity - $quantities[$i] : 0
                     ]);
                 }
-                Mail::to($order->email)->send(new OrderMail($order));
+                if ($order->email) {
+                    Mail::to($order->email)->send(new OrderMail($order));
+                }
 
                 session()->forget(['cart', 'unique_id']);
                 return view('front.success_paid', compact('order'));

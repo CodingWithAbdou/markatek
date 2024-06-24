@@ -22,14 +22,14 @@ class TrackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'track' => 'regex:/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/'
+            'track' => 'required|numeric',
         ];
     }
 
     public function messages()
     {
         return [
-            'track.regex' => __('validation.invalid_track'),
+            // 'track.regex' => __('validation.invalid_track'),
         ];
     }
 }

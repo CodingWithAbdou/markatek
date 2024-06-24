@@ -42,7 +42,7 @@
                     <div class="row">
                         <x-inputs.text label="{{ __('dash.name') . ' AR' }}" name="name_ar" required=""
                             data="{{ isset($data) ? $data->name_ar : '' }}" />
-                        <x-inputs.text label="{{ __('dash.name') . ' Em' }}" name="name_en" required=""
+                        <x-inputs.text label="{{ __('dash.name') . ' En' }}" name="name_en" required=""
                             data="{{ isset($data) ? $data->name_en : '' }}" />
                         <x-inputs.select label="{{ __('dash.categories') }}" name="category_id" required=""
                             data="{{ isset($data) ? $data->category_id : '' }}" :list="\App\Models\Category::all()" optionValue="id"
@@ -60,23 +60,23 @@
                         <x-inputs.number label="{{ __('dash.quantity') }}" name="quantity" required=""
                             data="{{ isset($data) ? $data->quantity : '' }}" />
 
-                        @if (isset($data))
+                        {{-- @if (isset($data))
                             @foreach ($data->images as $image)
                                 <div class="col-md-6">
                                     <x-inputs.image label="{{ __('dash.image') . ' ' . $loop->index + 1 }}"
                                         name="images[{{ $image->id }}]" required="" data="{{ $image->path }}" />
                                 </div>
                             @endforeach
-                        @endif
+                        @endif --}}
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="new_images" class="form-label">{{ __('dash.upload_images') }}</label>
                             <input class="form-control" type="file" id="new_images" name="new_images[]"
                                 accept="{{ acceptImageType() }}" multiple>
                             <div class="text-muted fs-7">{{ __('dash.Allowed image types') }}:
                                 {{ acceptImageType() }}
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

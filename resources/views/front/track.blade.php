@@ -28,7 +28,7 @@
                 </button>
             </form>
             <div class="text-neutral-600 px-4 text-xs">{{ __('front.example_order_id') }} : <span class="text-xs">
-                    15820888-c62e-4916-97ec-4e5df0327ebc</span></div>
+                    4061557</span></div>
 
             <div id="order-content" class="hidden bg-white mt-16 py-6 px-4 rounded-lg shadow w-full">
                 <span id="order-status">
