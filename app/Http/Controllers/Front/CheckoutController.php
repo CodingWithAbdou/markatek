@@ -37,6 +37,7 @@ class CheckoutController extends Controller
     {
         $input = $request->validated();
         unset($input['terms']);
+        unset($input['full_phone']);
         unset($input['coupon_applay']);
         $session = collect(session()->get('cart', []));
         $productIds = $session->pluck('id')->toArray();
@@ -100,7 +101,7 @@ class CheckoutController extends Controller
         if (Order::where('unique_id', $input['unique_id'])->exists() and Order::where('unique_id', $input['unique_id'])->where('payment_status', 'unpaid')->exists()) {
             Order::where('unique_id', $input['unique_id'])->delete();
         }
-        $input['phone'] =   $input['phone'];
+        $input['phone'] = $request->full_phone;
         Order::create($input);
         return response()->json(compact('status', 'msg', 'url'));
     }

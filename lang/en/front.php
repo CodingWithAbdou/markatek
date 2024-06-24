@@ -88,6 +88,9 @@ return [
     "add_cart" => 'Add to cart',
     "not_enough" => 'Not enough quantity',
     "error_paid" => 'Payment failed',
-    "" => '',
-
+    "kw" => 'Kuwait ',
+    "sa" => 'saudi arabia',
+    "bh" => 'bahrain ',
+    "ae" => 'UAE',
+    "om" => 'oman ',
 ];

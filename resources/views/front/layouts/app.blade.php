@@ -25,7 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/slick/slick-theme.css') }}" />
     {{-- FancyApps --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-
+    {{-- ntl-tel-input --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.1.0/build/css/intlTelInput.css">
     {{-- Library Icons --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -86,13 +87,12 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     {{-- fancyapps library --}}
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
+    {{-- intlTelInput library --}}
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.1.0/build/js/intlTelInput.min.js"></script>
     @vite('resources/js/app.js')
 
     <script>
-        Fancybox.bind("[data-fancybox]", {
-            // Your custom options
-        });
+        Fancybox.bind("[data-fancybox]", {});
     </script>
     @stack('script')
 </body>
