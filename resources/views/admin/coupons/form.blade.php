@@ -44,8 +44,14 @@
                             data="{{ isset($data) ? $data->product_id : '' }}" :list="App\Models\Product::all()" optionValue="id"
                             optionName="{{ 'name_' . getLocale() }}" />
 
-                        <x-inputs.number label="{{ __('dash.discount') . '%' }}" name="discount" required=""
-                            data="{{ isset($data) ? $data->discount : '' }}" />
+
+                        <x-inputs.select label="{{ __('dash.type_discount') }}" name="type_discount" required=""
+                            data="{{ isset($data) ? $data->type_discount : '' }}" :list="$array" optionValue="value"
+                            optionName="name" />
+
+
+                        <x-inputs.number label="{{ __('dash.value_discount') }}" name="value_discount" required=""
+                            data="{{ isset($data) ? $data->value_discount : '' }}" />
 
                         <x-inputs.number label="{{ __('dash.max_usage') }}" name="usage_limit" required=""
                             data="{{ isset($data) ? $data->usage_limit : '' }}" />

@@ -25,7 +25,8 @@ class CouponController extends Controller
 
     public function create()
     {
-        return view('admin.coupons.form');
+        $array = [['value' => "direct", 'name' => __('dash.discount_$')], ['value' => "percent", 'name' => __('dash.discount_%')]];
+        return view('admin.coupons.form', compact('array'));
     }
 
     public function store(CouponRequest $request)
@@ -42,7 +43,9 @@ class CouponController extends Controller
 
     public function edit(Coupon $obj)
     {
-        return view('admin.coupons.form', ['data' => $obj]);
+        $array = [['value' => "direct", 'name' => __('dash.discount_$')], ['value' => "percent", 'name' => __('dash.discount_%')]];
+
+        return view('admin.coupons.form', ['data' => $obj, 'array' => $array]);
     }
 
     public function update(CouponRequest $request, Coupon $obj)

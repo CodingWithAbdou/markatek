@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->string('code')->nullable();;
-            $table->bigInteger('discount')->default(0.00);
+            $table->bigInteger('value_discount')->default(0.00);
+            $table->enum('type_discount', ['direct', 'percent'])->default('direct');
             $table->boolean('status')->default(true);
             $table->dateTime('expired_at')->nullable();
             $table->dateTime('used_at')->nullable();

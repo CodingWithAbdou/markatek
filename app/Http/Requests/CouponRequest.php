@@ -28,9 +28,9 @@ class CouponRequest extends FormRequest
 
         return [
             'code' =>  $validator . '|unique:coupons,code|min:4|max:20',
-            'discount' => 'required|numeric',
             'product_id' => 'required|exists:products,id',
-            'discount' => 'required|numeric',
+            'value_discount' => 'required|numeric',
+            'type_discount' => 'required',
             'usage_limit' => 'required|numeric',
             'used_at' => 'required|date',
             'expired_at' => 'required|date|after:used_at',

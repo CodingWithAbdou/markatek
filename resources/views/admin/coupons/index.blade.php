@@ -43,7 +43,7 @@
                     @foreach ($data as $record)
                         <tr>
                             <td>{{ $record->code }}</td>
-                            <td>{{ $record->discount }} %</td>
+                            <td>{{ $record->value_discount }} </td>
                             <td>{{ $record->used_at }}</td>
                             <td>{{ $record->expired_at }}</td>
                             <x-action-btn.coupons :record="$record" />

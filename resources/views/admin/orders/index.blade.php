@@ -53,7 +53,6 @@
                             <td>
                                 <div
                                     class="badge badge-light-{{ $record->status == 'pending' ? 'warning' : ($record->status == 'processing' ? 'primary' : ($record->status == 'completed' ? 'success' : 'danger')) }}">
-
                                     @if ($record->status == 'pending')
                                         {{ __('dash.pending') }}
                                     @elseif($record->status == 'processing')

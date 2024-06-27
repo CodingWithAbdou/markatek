@@ -68,7 +68,13 @@ class CheckoutController extends Controller
                 && in_array($coupon->product_id, $productIds)
             ) {
                 $product_price = Product::find($coupon->product_id)->first()->price;
-                $input['coupon_discount'] = floor(($product_price *  $coupon->discount) / 100);
+                $discount = 0;
+                if ($coupon->type_discount == 'direct')
+                    $discount = $coupon->value_discount;
+                else
+                    $discount = (($product_price *  $coupon->value_discount) / 100);
+
+                $input['coupon_discount'] =  $discount;
             } else {
                 $input['coupon_discount'] = 0;
             }

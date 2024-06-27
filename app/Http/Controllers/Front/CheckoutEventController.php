@@ -19,8 +19,11 @@ class CheckoutEventController extends Controller
         $productIds = $session->pluck('id')->toArray();
         if ($coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() &&  $coupon->used_at < now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
             $product_price = Product::find($coupon->product_id)->first()->price;
+            if ($coupon->type_discount == 'direct')
+                $discount = $coupon->value_discount;
+            else
+                $discount = (($product_price *  $coupon->value_discount) / 100);
             $msg = 'coupon_applied';
-            $discount = floor(($product_price *  $coupon->discount) / 100);
         } else {
             $msg = 'coupon_not_applied';
             $discount = 0;
