@@ -88,7 +88,7 @@ class SettingSeeder extends Seeder
             "setting_value" => "test",
             "title_ar" => "الشروط والأحكام",
             "title_en" => "Terms and Conditions",
-            "type_id" => "5",
+            "type_id" => "3",
             "category" => "1",
             "order_by" => "1",
         ]);
@@ -97,7 +97,7 @@ class SettingSeeder extends Seeder
             "setting_value" => "test",
             "title_ar" => "الشروط والأحكام",
             "title_en" => "Terms and Conditions",
-            "type_id" => "5",
+            "type_id" => "3",
             "category" => "1",
             "order_by" => "1",
         ]);

@@ -1,5 +1,5 @@
 <div class="fixed top-0 left-0 right-0 z-50">
-    <nav class="relative flex items-center justify-center z-10 px-4 md:px-12 bg-white py-2 shadow-sm  bg-prima">
+    <nav class="relative flex items-center justify-center z-[99] px-4 md:px-12 bg-white py-2 shadow-sm  bg-prima">
         <div class="max-w-screen-2xl flex-1">
             <div class="relative flex h-16 items-center justify-between">
 
