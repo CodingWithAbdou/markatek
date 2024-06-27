@@ -4,6 +4,33 @@
     {{ __('front.finsh_order') }}
 @endsection
 
+@if (getLocale() == 'ar')
+    @push('style')
+        <style>
+            [dir=rtl] .iti--allow-dropdown .iti__country-container {
+                right: auto;
+                left: 0;
+            }
+
+            .iti__selected-country {
+                flex-direction: row-reverse
+            }
+
+            .iti--inline-dropdown .iti__dropdown-content {
+                left: 0;
+            }
+
+            [dir=rtl] .iti--allow-dropdown input.iti__tel-input,
+            [dir=rtl] .iti--allow-dropdown input.iti__tel-input[type=text],
+            [dir=rtl] .iti--allow-dropdown input.iti__tel-input[type=tel] {
+                padding-right: 1rem !important;
+                padding-left: 94px;
+                border-radius: 6px
+            }
+        </style>
+    @endpush
+@endif
+
 
 @section('content')
     <section class="py-16" style="background: url('{{ asset('assets/images/head-bg.png') }}')">
@@ -36,13 +63,11 @@
                             </div>
 
                             <div class="">
-                                <label for="text" class="label_desgin"> {{ __('front.phone_number') }} <span
+                                <label for="phone" class="label_desgin"> {{ __('front.phone_number') }} <span
                                         class="text-primary font-bold">*</span>
                                 </label>
-                                <input type="tel" id="phone" dir="{{ getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
-                                    name="phone"
+                                <input type="tel" id="phone" name="phone"
                                     class="input_desgin pl-16 rounded-tr-none rounded-br-none ltr:rounded-tl-none ltr:rounded-bl-none " />
-                                {{-- <input type="hidden" value="+965" name="countr_code" id=""> --}}
                             </div>
 
                             <div class="">
@@ -59,8 +84,10 @@
                                         {{ __('front.place') }} <span class="text-primary font-bold">*</span> </label>
                                 </div>
                                 <select id="place" name="place_id" class="select_design" id="place">
+                                    <option value="{{ __('front.shoos_place') }}" disabled selected>
+                                        {{ __('front.shoos_place') }}</option>
                                     @foreach ($places as $place)
-                                        <option value="{{ $place->id }}" {{ $loop->index == 0 ? 'selected' : '' }}>
+                                        <option value="{{ $place->id }}">
                                             {{ $place->{'name_' . getLocale()} }}</option>
                                     @endforeach
                                 </select>
@@ -350,6 +377,7 @@
             let data = {
                 place: $('#place').val()
             }
+            if (!data.place) return
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

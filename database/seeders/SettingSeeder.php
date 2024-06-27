@@ -54,9 +54,6 @@ class SettingSeeder extends Seeder
             "order_by" => "1",
         ]);
 
-
-
-
         Setting::create([
             "setting_key" => "keywords",
             "setting_value" => "11",
@@ -66,6 +63,7 @@ class SettingSeeder extends Seeder
             "category" => "1",
             "order_by" => "1",
         ]);
+
         Setting::create([
             "setting_key" => "footer_description_ar",
             "setting_value" => "جميع",
@@ -75,12 +73,31 @@ class SettingSeeder extends Seeder
             "category" => "1",
             "order_by" => "1",
         ]);
+
         Setting::create([
             "setting_key" => "footer_description_en",
             "setting_value" => "test",
             "title_ar" => "وصف الفوتر ",
             "title_en" => "Footer Description",
             "type_id" => "3",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+        Setting::create([
+            "setting_key" => "terms_ar",
+            "setting_value" => "test",
+            "title_ar" => "الشروط والأحكام",
+            "title_en" => "Terms and Conditions",
+            "type_id" => "5",
+            "category" => "1",
+            "order_by" => "1",
+        ]);
+        Setting::create([
+            "setting_key" => "terms_en",
+            "setting_value" => "test",
+            "title_ar" => "الشروط والأحكام",
+            "title_en" => "Terms and Conditions",
+            "type_id" => "5",
             "category" => "1",
             "order_by" => "1",
         ]);

@@ -21,8 +21,13 @@ class CouponRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $routeName = $this->route()->getName();
+        $methodName = explode('.', $routeName)[2];
+        $validator = $methodName == 'update' ? 'nullable' : 'required';
+
         return [
-            'code' => 'required|unique:coupons,code|min:4|max:20',
+            'code' =>  $validator . '|unique:coupons,code|min:4|max:20',
             'discount' => 'required|numeric',
             'product_id' => 'required|exists:products,id',
             'discount' => 'required|numeric',

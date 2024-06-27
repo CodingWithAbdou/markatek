@@ -93,4 +93,5 @@ return [
     "bh" => 'bahrain ',
     "ae" => 'UAE',
     "om" => 'oman ',
+    "shoos_place" => 'Shoos Place',
 ];

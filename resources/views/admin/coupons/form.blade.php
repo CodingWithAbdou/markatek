@@ -35,8 +35,10 @@
                 </div>
                 <div class="card-body py-0">
                     <div class="row">
-                        <x-inputs.text label="{{ __('dash.code') }}" name="code" required=""
-                            data="{{ isset($data) ? $data->code : '' }}" />
+                        @if (!isset($data))
+                            <x-inputs.text label="{{ __('dash.code') }}" name="code" required=""
+                                data="{{ isset($data) ? $data->code : '' }}" />
+                        @endif
 
                         <x-inputs.select label="{{ __('dash.product') }}" name="product_id" required=""
                             data="{{ isset($data) ? $data->product_id : '' }}" :list="App\Models\Product::all()" optionValue="id"

@@ -14,6 +14,7 @@ use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\CheckoutEventController;
 use App\Http\Controllers\Front\ProductPageController;
 use App\Http\Controllers\Front\SearchController;
+use App\Http\Controllers\Front\TermController;
 use App\Http\Controllers\Front\TrackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -56,6 +57,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 Route::get('/track', [TrackController::class, 'index'])->name('track.index');
 Route::post('/track', [TrackController::class, 'search'])->name('track.search');
 
+Route::post('/terms', [TermController::class, 'index'])->name('terms.index');
 
 
 Route::post('/coupon/apply', [CheckoutEventController::class, 'applyCopoun'])->name('coupon.apply');

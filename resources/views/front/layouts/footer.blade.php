@@ -55,16 +55,15 @@
                 </div>
                 <ul class="flex gap-4 flex-wrap items-center mb-6 text-sm font-medium  sm:mb-0 secound_color_t">
                     <li>
-                        <img class="grayscale" src="{{ asset('assets/images/mastercard.png') }}" width="30"
+                        <img class="" src="{{ asset('assets/images/mastercard.png') }}" width="30"
                             alt="">
                     </li>
                     <li>
-                        <img class="grayscale" src="{{ asset('assets/images/visacard.png') }}" width="30"
+                        <img class="" src="{{ asset('assets/images/visacard.png') }}" width="30"
                             alt="">
                     </li>
                     <li>
-                        <img class="w-12 grayscale" src="{{ asset('assets/images/keynet.png') }}" width="30"
-                            alt="">
+                        <img class="w-12 " src="{{ asset('assets/images/keynet.png') }}" width="30" alt="">
                     </li>
                 </ul>
             </div>

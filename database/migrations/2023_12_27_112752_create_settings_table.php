@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('setting_key');
-            $table->text('setting_value');
+            $table->text('setting_value')->nullable();
             $table->string('title_ar');
             $table->string('title_en');
             $table->string('type_id')->default('1')->comment('1 input, 2 image , 3 textarea, 4 manual');
