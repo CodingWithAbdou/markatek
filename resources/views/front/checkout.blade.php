@@ -27,6 +27,10 @@
                 padding-left: 94px;
                 border-radius: 6px
             }
+
+            .iti__selected-dial-code {
+                direction: ltr;
+            }
         </style>
     @endpush
 @endif
@@ -151,7 +155,7 @@
                         <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-neutral-600 "> {{ __('front.sub_total') }}</dt>
-                                <dd class="text-base font-medium  text-neutral-600 dark:text-white">
+                                <dd class="text-base font-medium  text-neutral-600 ">
                                     {{ $sub_total }} {{ __('front.kwd') }}</dd>
                             </dl>
 
@@ -165,8 +169,8 @@
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-neutral-600 "> {{ __('front.code_discount') }}</dt>
-                                <dd class="text-base font-medium  text-neutral-600 dark:text-white"> <span
-                                        id="coupon-cost">0</span>
+                                <dd class="text-base font-medium  text-neutral-600 ">
+                                    <span id="coupon-cost">0</span>
                                     <span class="text-sm"> {{ __('front.kwd') }}</span>
                                 </dd>
                             </dl>
@@ -175,7 +179,7 @@
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-bold text-neutral-800"> {{ __('front.total') }}
                                 </dt>
-                                <dd class="text-base font-bold  text-neutral-600 dark:text-white">
+                                <dd class="text-base font-bold  text-neutral-600 ">
                                     <span id="total-cost">0</span> <span class="text-sm">
                                         {{ __('front.kwd') }}</span>
                                 </dd>

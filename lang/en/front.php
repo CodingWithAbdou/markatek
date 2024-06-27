@@ -95,6 +95,6 @@ return [
     "om" => 'oman ',
     "shoos_place" => 'Shoos Place',
     "terms" => 'Terms and Conditions',
-    "link_terms" => '  terms',
+    "link_terms" => 'Terms and Conditions',
 
 ];
