@@ -52,7 +52,7 @@ return [
     "enter_note" => "Enter a note",
     "enter_promo_code" => "Enter promo code",
     "enter_piece" => "Enter the piece",
-    "accept_all_terms" => "I accept all terms",
+    "accept_all_terms" => "I accept all",
     "enter_street" => "Enter the street",
     "street" => "Street",
     "count_of_products" => "Number of products",
@@ -94,4 +94,7 @@ return [
     "ae" => 'UAE',
     "om" => 'oman ',
     "shoos_place" => 'Shoos Place',
+    "terms" => 'Terms and Conditions',
+    "link_terms" => '  terms',
+
 ];

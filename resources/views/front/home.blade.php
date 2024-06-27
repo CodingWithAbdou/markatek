@@ -45,10 +45,10 @@
     </section> --}}
 
     <section class="mt-16 max-w-screen-2xl mx-auto">
-        <div class="flex items-center  gap-2 text-neutral-800 w-fit mx-auto text-4xl mb-8 relative ">
+        {{-- <div class="flex items-center  gap-2 text-neutral-800 w-fit mx-auto text-4xl mb-8 relative ">
             <i class='bx bx-category-alt'></i>
             <h2 class="">{{ __('front.all_category') }}</h2>
-        </div>
+        </div> --}}
         @if (App\Models\Setting::where('setting_key', 'dir_category')->first()->setting_value == '1')
             @include('front.category.row')
         @else

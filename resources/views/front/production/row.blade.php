@@ -33,16 +33,16 @@
                         </button>
                         <div id="input-{{ $product->id }}"
                             class="{{ isset($cart["$product->id"]) ? 'flex' : 'hidden' }} items-center justify-center border-gray-100">
-                            <span
+                            <button
                                 class="desc_product cursor-pointer rtl:rounded-r ltr:rounded-l  py-1 px-3.5 duration-100 hover:bg-primary hover:text-white">
-                                - </span>
+                                - </button>
                             <input class="count_product h-8 w-8 border  bg-white text-center text-xs outline-none"
                                 type="number"
                                 value="{{ isset($cart["$product->id"]) ? $cart["$product->id"]['quantity'] : '1' }}"
                                 min="1" disabled />
-                            <span
+                            <button
                                 class="asc_product  cursor-pointer rtl:rounded-l ltr:rounded-r  py-1 px-3 duration-100 hover:bg-primary hover:text-white">
-                                + </span>
+                                + </button>
                         </div>
                     </form>
                 </div>

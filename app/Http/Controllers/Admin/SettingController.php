@@ -64,6 +64,8 @@ class SettingController extends Controller
             'dir_production' => 'required',
             'dir_category' => 'required',
             'color_site' => 'required',
+            'terms_ar' => 'required',
+            'terms_en' => 'required',
         ]);
 
 

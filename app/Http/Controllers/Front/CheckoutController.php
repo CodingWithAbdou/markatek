@@ -22,15 +22,27 @@ class CheckoutController extends Controller
         $this->fatoorahServices = $fatoorahServices;
     }
 
+    public function calcSubTotal()
+    {
+        $session = collect(session()->get('cart', []));
+        $productIds = $session->pluck('id')->toArray();
+        $quantities = $session->pluck('quantity')->toArray();
+        $subtotalCost = 0;
+        $products = Product::whereIn('id', $productIds)->get();
+
+        for ($i = 0; $i < count($session); $i++) {
+            $subtotalCost += Product::where('id', $productIds[$i])->first()->price * $quantities[$i];
+        }
+        return $subtotalCost;
+    }
+
     public function index()
     {
         $places = Place::orderBy('order_by', 'asc')->get();
-        $sub_total = collect(session()->get('cart', []))->sum(function ($item) {
-            return $item['price'] * $item['quantity'];
-        });
-        $delivery_price = $places->first()->delivery_price ?? 0;
-        $total = $sub_total + $delivery_price;
-        return view('front.checkout', compact('places', 'sub_total', 'total'));
+
+        $sub_total = $this->calcSubTotal();
+        if ($sub_total == 0) return redirect()->route('main');
+        return view('front.checkout', compact('places', 'sub_total'));
     }
 
     public function store(CheckoutRequest $request)
@@ -40,21 +52,21 @@ class CheckoutController extends Controller
         unset($input['full_phone']);
         unset($input['coupon_applay']);
         $session = collect(session()->get('cart', []));
-        $productIds = $session->pluck('id')->toArray();
-        $quantities = $session->pluck('quantity')->toArray();
-        $totalCost = 0;
-        $products = Product::whereIn('id', $productIds)->get();
-        for ($i = 0; $i < count($products); $i++) {
-            $totalCost += $products[$i]->price * $quantities[$i];
-        }
-        $input['real_cost'] = $totalCost;
+        $input['real_cost'] = $this->calcSubTotal();
         $input['delivery_cost'] = Place::find($input['place_id'])->delivery_price;
 
         if ($request->coupon) {
             $coupon = Coupon::where('code', $request->coupon)->first();
-            $session = collect(session()->get('cart', []));
             $productIds = $session->pluck('id')->toArray();
-            if ($request->coupon_applay == 1 && $coupon && $coupon->status == 1 && $coupon->code === $request->coupon && $coupon->expired_at > now() &&  $coupon->used_at < now() && $coupon->usage_limit > 0 && in_array($coupon->product_id, $productIds)) {
+            if (
+                $request->coupon_applay == 1 && $coupon
+                && $coupon->status == 1
+                && $coupon->code === $request->coupon
+                && $coupon->expired_at > now()
+                &&  $coupon->used_at < now()
+                && $coupon->usage_limit > 0
+                && in_array($coupon->product_id, $productIds)
+            ) {
                 $product_price = Product::find($coupon->product_id)->first()->price;
                 $input['coupon_discount'] = floor(($product_price *  $coupon->discount) / 100);
             } else {

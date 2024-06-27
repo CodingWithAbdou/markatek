@@ -52,8 +52,7 @@
             $('.asc_product').on('click', ascProduct);
             $('.desc_product').on('click', descProduct);
 
-
-            function changeCart(data, input, value, method, btn, show_toast = true) {
+            function changeCart(data, input, value, method, btn) {
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -74,17 +73,12 @@
                                 $('#global').text(parseInt($('#global').text()) + +response.price);
                                 btn.removeAttr('disabled');
                             } else {
-                                if (parseInt($('#global').text()) - +response.price == 0) {
-                                    $('#cart_section').remove()
-                                    location.reload();
-                                } else {
-                                    if (show_toast) {
-                                        toastr.success("{{ __('front.update_cart') }}");
-                                    }
-                                    $('#global').text(parseInt($('#global').text()) - +response.price);
-                                    input.val(value - 1);
-                                    btn.removeAttr('disabled');
-                                }
+
+                                toastr.success("{{ __('front.update_cart') }}");
+                                input.val(value - 1);
+                                btn.removeAttr('disabled');
+                                $('#global').text(parseInt($('#global').text()) - +response
+                                    .price);
 
                             }
                         }
@@ -115,6 +109,10 @@
                             $('.desc_product').off('click');
                             $('.asc_product').on('click', ascProduct);
                             $('.desc_product').on('click', descProduct);
+                            $('#global').text(response.global);
+                            if (response.global == 0) {
+                                window.location.reload();
+                            }
                         }
                     },
                     error: function(response) {
@@ -146,16 +144,15 @@
                 let value = parseInt(input.val());
                 let quantity = value - 1;
                 $(this).prop('disabled', true);
-                let show_toast = true
                 if (value <= 1) {
                     removeCart($(this).parent().parent().find('[name="product"]').val());
-                    show_toast = false
+                } else {
+                    let data = {
+                        product: $(this).parent().parent().find('[name="product"]').val(),
+                        quantity: quantity,
+                    };
+                    changeCart(data, input, value, 'desc', $(this));
                 }
-                let data = {
-                    product: $(this).parent().parent().find('[name="product"]').val(),
-                    quantity: quantity,
-                };
-                changeCart(data, input, value, 'desc', $(this), show_toast);
             }
         });
     </script>

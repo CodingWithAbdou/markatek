@@ -35,25 +35,26 @@
             let input = $(this).parent().find('.count_product')
             let value = parseInt(input.val())
             let quantity = +input.val() - 1;
+            $(this).prop('disabled', true);
 
             if (value > 1) {
                 let data = {
                     product: $(this).parent().parent().find('[name="product"]').val(),
                     quantity: quantity,
                 }
-                changeCart(data, input, value, 'desc')
+                changeCart(data, input, value, 'desc', $(this))
             }
         })
         $('.asc_product').on('click', function() {
             let input = $(this).parent().find('.count_product')
             let value = parseInt(input.val())
             let quantity = +input.val() + 1;
-            console.log(quantity)
+            $(this).prop('disabled', true);
             let data = {
                 product: $(this).parent().parent().find('[name="product"]').val(),
                 quantity: quantity,
             }
-            changeCart(data, input, value, 'asc')
+            changeCart(data, input, value, 'asc', $(this))
         })
 
         $('.add-to-cart').on('submit', function(e) {
@@ -67,7 +68,7 @@
             changeCart(data)
         })
 
-        function changeCart(data, input, value, method) {
+        function changeCart(data, input, value, method, btn) {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -83,11 +84,11 @@
                         toastr.error("{{ __('front.not_enough') }}")
                     } else {
                         toastr.success("{{ __('front.update_cart') }}")
-                        if (method == 'asc') {
+                        if (method == 'asc')
                             input.val(value + 1)
-                        } else {
+                        else
                             input.val(value - 1)
-                        }
+                        btn.removeAttr('disabled');
                     }
                     showInput(data.product)
                 },

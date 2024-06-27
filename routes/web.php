@@ -57,7 +57,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 Route::get('/track', [TrackController::class, 'index'])->name('track.index');
 Route::post('/track', [TrackController::class, 'search'])->name('track.search');
 
-Route::post('/terms', [TermController::class, 'index'])->name('terms.index');
+Route::get('/terms', [TermController::class, 'index'])->name('terms.index');
 
 
 Route::post('/coupon/apply', [CheckoutEventController::class, 'applyCopoun'])->name('coupon.apply');

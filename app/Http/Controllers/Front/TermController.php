@@ -10,7 +10,7 @@ class TermController extends Controller
 {
     public function index()
     {
-        $text = Setting::where('setting_key', 'terms')->first()->setting_value;
+        $text = Setting::where('setting_key', 'terms_' . getLocale())->first()->setting_value;
         return view('front.terms', compact('text'));
     }
 }

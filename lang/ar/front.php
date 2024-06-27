@@ -52,7 +52,7 @@ return [
     "enter_note" => "أدخل ملاحظة",
     "enter_promo_code" => "أدخل كود الخصم",
     "enter_piece" => "أدخل القطعة",
-    "accept_all_terms" => "أوافق على جميع الشروط",
+    "accept_all_terms" => " أوافق على جميع ",
     "enter_street" => "أدخل الشارع",
     "street" => "شارع",
     "count_of_products" => "عدد المنتجات",
@@ -95,5 +95,7 @@ return [
     "ae" => 'الإمارات العربية المتحدة',
     "om" => 'عمان',
     "shoos_place" => 'إختر المنطقة',
+    "terms" => 'الشروط والاحكام',
+    "link_terms" => 'الشروط  ',
 
 ];
