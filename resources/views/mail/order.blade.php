@@ -634,7 +634,7 @@
                                     ->setting_value;
                                 $whatsapp = App\Models\Setting::where('setting_key', 'whatsapp')->first()
                                     ->setting_value;
-                                $gmail = App\Models\Setting::where('setting_key', 'gmail')->first()->setting_value;
+                                $mail = App\Models\Setting::where('setting_key', 'gmail')->first()->setting_value;
                             @endphp
 
                             <tr>
@@ -663,11 +663,10 @@
                                                             target="_blank">whatsapp</a>
                                                     </td>
                                                 @endif
-                                                @if ($gmail)
+                                                @if ($mail)
                                                     <td style="padding:0 10px 0 10px; ">
-                                                        <a href="{{ $gmail }}"
-                                                            style="color:white;font-size:24px;"
-                                                            target="_blank">email</a>
+                                                        <span style="color:white;font-size:24px;"
+                                                            target="_blank">{{ $mail }}</span>
                                                     </td>
                                                 @endif
                                             </tr>

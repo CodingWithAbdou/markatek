@@ -34,7 +34,6 @@
                     <tr class="text-start text-dark fw-bolder fs-7 text-uppercase gs-0">
                         <th class="min-w-150px">{{ __('dash.code') }}</th>
                         <th class="min-w-150px">{{ __('dash.discount') }}</th>
-                        <th class="min-w-150px">{{ __('dash.status') }}</th>
                         <th class="min-w-150px">{{ __('dash.used_at') }}</th>
                         <th class="min-w-150px">{{ __('dash.expired_at') }}</th>
                         <th class="min-w-70px no-export">{{ __('dash.actions') }}</th>
@@ -45,10 +44,6 @@
                         <tr>
                             <td>{{ $record->code }}</td>
                             <td>{{ $record->discount }} %</td>
-                            <td>
-                                <div class="badge badge-light-{{ $record->status == 1 ? 'success' : 'danger' }}">
-                                    {{ $record->status == 1 ? 'نشط' : 'معطل' }}</div>
-                            </td>
                             <td>{{ $record->used_at }}</td>
                             <td>{{ $record->expired_at }}</td>
                             <x-action-btn.coupons :record="$record" />

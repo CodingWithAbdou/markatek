@@ -41,7 +41,7 @@ class CheckoutController extends Controller
         $places = Place::orderBy('order_by', 'asc')->get();
 
         $sub_total = $this->calcSubTotal();
-        if ($sub_total == 0) return redirect()->route('main');
+        if ($sub_total == 0) return abort(404);
         return view('front.checkout', compact('places', 'sub_total'));
     }
 
