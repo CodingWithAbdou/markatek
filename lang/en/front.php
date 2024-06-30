@@ -93,6 +93,7 @@ return [
     "bh" => 'bahrain ',
     "ae" => 'UAE',
     "om" => 'oman ',
+    "qa" => 'qatar ',
     "shoos_place" => 'Shoos Place',
     "terms" => 'Terms and Conditions',
     "link_terms" => 'Terms and Conditions',

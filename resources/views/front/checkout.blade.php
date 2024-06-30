@@ -246,7 +246,7 @@
         window.intlTelInput(input, {
             separateDialCode: true,
             initialCountry: "kw",
-            onlyCountries: ['kw', 'sa', 'bh', 'ae', 'om'],
+            onlyCountries: ['kw', 'sa', 'bh', 'ae', 'om', 'qa'],
             hiddenInput: () => ({
                 phone: "full_phone",
             }),
@@ -256,6 +256,7 @@
                 bh: "{{ __('front.bh') }}",
                 ae: "{{ __('front.ae') }}",
                 om: "{{ __('front.om') }}",
+                qa: "{{ __('front.qa') }}",
             },
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.1.0/build/js/utils.js" // just for formatting/placeholders etc
         });
