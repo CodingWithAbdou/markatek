@@ -251,6 +251,8 @@ return [
         'avenue' => 'Avenue',
         'terms_ar' => 'Terms and Conditions (Arabic)',
         'terms_en' => 'Terms and Conditions (English)',
+        'value_discount' => 'value discount',
+        'type_discount' => ' type discount',
     ],
     'coupon_required' => 'The coupon field is required.',
     'invalid_track' => 'The field value must be valid and follow the example structure with a length of 36 characters.',

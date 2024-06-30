@@ -24,6 +24,7 @@ class CheckoutRequest extends FormRequest
         return [
             "country" => 'required|string|max:191',
             "phone" => 'required|string|max:191',
+            "name" => 'required|string|max:191',
             // "full_phone" => 'required|string|max:191',
             "email" => 'nullable|email|max:191',
             "place_id" => 'required|integer',

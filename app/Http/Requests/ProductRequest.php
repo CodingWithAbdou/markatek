@@ -33,7 +33,7 @@ class ProductRequest extends FormRequest
             'description_ar' => 'nullable',
             'description_en' => 'nullable',
             'price' => 'required|numeric|max:9999999.99',
-            'quantity' => 'required|numeric',
+            'quantity' => 'required|integer',
             // 'images[]' => 'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
             // 'new_images[]' =>  'nullable|max:' . getMaxSize() . '|mimes:' . acceptImageType(0),
         ];

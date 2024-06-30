@@ -89,6 +89,11 @@
                             </tr>
 
                             <tr class="p-4">
+                                <td class="ps-3">{{ __('dash.name') }}</td>
+                                <td>{{ $record->name }}</td>
+                            </tr>
+
+                            <tr class="p-4">
                                 <td class="ps-3">{{ __('dash.email') }}</td>
                                 <td>{{ $record->email }}</td>
                             </tr>

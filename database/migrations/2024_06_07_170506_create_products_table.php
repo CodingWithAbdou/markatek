@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('cover_path');
             $table->text('description_ar');
             $table->text('description_en');
-            $table->decimal('price', 8, 2);
+            $table->decimal('price', 20, 3);
             $table->unsignedInteger('quantity');
             $table->integer('order_by')->nullable();;
 

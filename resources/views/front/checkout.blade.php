@@ -74,6 +74,14 @@
                                     class="input_desgin pl-16 rounded-tr-none rounded-br-none ltr:rounded-tl-none ltr:rounded-bl-none " />
                             </div>
 
+
+                            <div>
+                                <label for="your_name" class="label_desgin">
+                                    {{ __('front.name') }} <span class="text-primary font-bold">*</span></label>
+                                <input type="text" id="your_name" name="name" class="input_desgin"
+                                    placeholder=" {{ __('front.enter_you_name') }} " />
+                            </div>
+
                             <div class="">
                                 <label for="your_email" class="label_desgin ">
                                     {{ __('front.email') }} <span class="text-primary font-bold"></span>
@@ -125,14 +133,16 @@
                                     placeholder=" {{ __('front.enter_number_house') }}" />
                             </div>
 
+                            <div></div>
+
                             <div>
                                 <label for="message" class="label_desgin"> {{ __('front.note') }} <span
                                         class="text-primary font-bold"></span></label>
                                 <textarea id="message" rows="4" name="note" class="input_desgin resize-none h-fit block p-4"
                                     placeholder=" {{ __('front.enter_note') }}..."></textarea>
                             </div>
-
                             <div></div>
+
 
                             <div id="coupon-content">
                                 <input type="hidden" name="coupon_applay" value="0" id="coupon-applay">

@@ -31,7 +31,7 @@ class CouponRequest extends FormRequest
             'product_id' => 'required|exists:products,id',
             'value_discount' => 'required|numeric',
             'type_discount' => 'required',
-            'usage_limit' => 'required|numeric',
+            'usage_limit' => 'required|integer',
             'used_at' => 'required|date',
             'expired_at' => 'required|date|after:used_at',
         ];

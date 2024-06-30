@@ -111,7 +111,7 @@ return [
     'unpaid' => 'Unpaid',
     'discount' => 'Discount',
     'discount_direct' => 'Direct Discount',
-    'discount_$' => 'Discount in KWD',
+    'discount_$' => 'Discount in value',
     'discount_%' => 'Percentage Discount',
     'type_discount' => 'Discount Type',
     'value_discount' => 'Discount Value',

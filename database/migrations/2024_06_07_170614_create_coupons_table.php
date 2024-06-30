@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->string('code')->nullable();;
-            $table->bigInteger('value_discount')->default(0.00);
+            $table->string('code')->nullable();
+            $table->decimal('value_discount', 20, 3)->default(0.00);
             $table->enum('type_discount', ['direct', 'percent'])->default('direct');
             $table->boolean('status')->default(true);
             $table->dateTime('expired_at')->nullable();

@@ -99,5 +99,7 @@ return [
     "terms" => 'Terms and Conditions',
     "link_terms" => 'Terms & Conditions',
     "after_complete_order" => ' when creating order',
+    "name" => 'name ',
+    "enter_you_name" => 'Enter you name ',
 
 ];
