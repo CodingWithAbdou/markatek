@@ -136,9 +136,9 @@
 
                             <div id="coupon-content">
                                 <input type="hidden" name="coupon_applay" value="0" id="coupon-applay">
-                                <label for="your_coupon" class="label_desgin"> {{ __('front.active_you_coupon') }}<span
+                                {{-- <label for="your_coupon" class="label_desgin"> {{ __('front.active_you_coupon') }}<span
                                         class="text-primary font-bold"></span>
-                                </label>
+                                </label> --}}
                                 <div class="flex max-w-md items-center gap-4">
                                     <input id="coupon_value" type="text" id="your_coupon" name="coupon"
                                         class="input_desgin" placeholder=" {{ __('front.enter_promo_code') }}" />
@@ -186,25 +186,9 @@
                             </dl>
 
                             <div class="py-8">
-                                <div class="relative mb-2 z-50">
-                                    <input class="peer hidden" value="credit_card" id="radio_1" type="radio"
-                                        name="payment_method" checked />
-                                    <span
-                                        class=" peer-checked:border-primary absolute -z-10 right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-                                    <label
-                                        class=" peer-checked:border peer-checked:border-primary flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
-                                        for="radio_1">
-                                        <img class="w-14 object-contain"
-                                            src="{{ asset('assets/images/mastercard.png') }}" alt="" />
-                                        <div class="ms-5">
-                                            <p class="text-slate-500 text-sm leading-6">
-                                                {{ __('front.visa_and_mastercard') }}</p>
-                                        </div>
-                                    </label>
-                                </div>
                                 <div class="relative z-50">
                                     <input class="peer hidden" id="radio_2" value='knet' type="radio"
-                                        name="payment_method" />
+                                        name="payment_method" checked />
                                     <span
                                         class=" peer-checked:border-primary absolute -z-10 right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                                     <label
@@ -217,21 +201,39 @@
                                         </div>
                                     </label>
                                 </div>
+                                <div class="relative mt-2 z-50">
+                                    <input class="peer hidden" value="credit_card" id="radio_1" type="radio"
+                                        name="payment_method" />
+                                    <span
+                                        class=" peer-checked:border-primary absolute -z-10 right-4 rtl:right-auto rtl:left-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                                    <label
+                                        class=" peer-checked:border peer-checked:border-primary flex items-center cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                                        for="radio_1">
+                                        <img class="w-14 object-contain" src="{{ asset('assets/images/pngegg.png') }}"
+                                            alt="" />
+                                        <div class="ms-5">
+                                            <p class="text-slate-500 text-sm leading-6">
+                                                {{ __('front.visa_and_mastercard') }}</p>
+                                        </div>
+                                    </label>
+                                </div>
+
                             </div>
 
                         </div>
-                        <div class="flex items-center mb-4">
+                        <div class="flex items-center gap-0 mb-4 text-xs">
                             <input id="default-checkbox" type="checkbox" value="1" name="terms"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-neutral-800 bg-white">
+                            <label for="default-checkbox" class="ms-2  font-medium text-neutral-800 bg-white">
                                 {{ __('front.accept_all_terms') }}
+                                <a class="text-primary underline mx-1" href="{{ route('terms.index') }}">
+                                    {{ __('front.link_terms') }} </a>
+                                {{ __('front.after_complete_order') }}
                             </label>
-                            <a class="text-primary underline ms-2" href="{{ route('terms.index') }}">
-                                {{ __('front.link_terms') }} </a>
                         </div>
 
                         <button id="btn-checkout"
-                            class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">{{ __('front.pay') }}
+                            class="flex mt-12 items-center w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary focus:outline-none focus:ring-4 focus:ring-indbg-primary dark:bg-primary dark:hover:bg-primary dark:focus:ring-indbg-primary">{{ __('front.countinue_pay') }}
                         </button>
 
                     </div>
