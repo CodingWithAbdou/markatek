@@ -22,7 +22,8 @@ class CheckoutEventController extends Controller
             if ($coupon->type_discount == 'direct')
                 $discount = $coupon->value_discount;
             else
-                $discount = (($product_price *  $coupon->value_discount) / 100);
+                $discount = number_format(($product_price *  $coupon->value_discount) / 100, 3);
+
             $msg = 'coupon_applied';
         } else {
             $msg = 'coupon_not_applied';
