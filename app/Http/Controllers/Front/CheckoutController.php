@@ -48,7 +48,7 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request)
     {
         $input = $request->validated();
-        unset($input['terms']);
+        // unset($input['terms']);
         unset($input['full_phone']);
         unset($input['coupon_applay']);
         $session = collect(session()->get('cart', []));
