@@ -46,7 +46,7 @@ return [
     "pay" => "Complete Order",
     "finsh_order" => "Finish Order",
     "Kuwait" => "Kuwait",
-    "enter_number_piece" => "Enter the number of pieces",
+    "enter_number_piece" => "Enter the number of block",
     "avenue_example" => "Enter the avenue",
     "enter_number_house" => "Enter the house number",
     "note" => "Notes",
@@ -98,8 +98,8 @@ return [
     "shoos_place" => 'Choose Area',
     "terms" => 'Terms and Conditions',
     "link_terms" => 'Terms & Conditions',
-    "after_complete_order" => ' when creating order',
-    "name" => 'name ',
+    "after_complete_order" => 'when creating order.',
+    "name" => 'Name ',
     "enter_you_name" => 'Enter you name ',
 
 ];
