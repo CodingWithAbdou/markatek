@@ -138,7 +138,7 @@
                             <div>
                                 <label for="message" class="label_desgin"> {{ __('front.note') }} <span
                                         class="text-primary font-bold"></span></label>
-                                <textarea id="message" rows="4" name="note" class="input_desgin resize-none h-fit block p-4"
+                                <textarea id="message" rows="4" name="note" class="input_desgin resize-none h-fit block px-2 py-4"
                                     placeholder=" {{ __('front.enter_note') }}..."></textarea>
                             </div>
                             <div></div>
