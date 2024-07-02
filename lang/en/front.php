@@ -42,7 +42,7 @@ return [
     "total" => "Total",
     "visa_and_mastercard" => "Visa / Mastercard",
     "knet" => "Knet",
-    "countinue_pay" => "Complete the order",
+    "countinue_pay" => "Complete order",
     "pay" => "Complete Order",
     "finsh_order" => "Finish Order",
     "Kuwait" => "Kuwait",
